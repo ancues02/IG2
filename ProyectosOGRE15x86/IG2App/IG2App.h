@@ -18,8 +18,7 @@ protected:
   virtual void setup();
   virtual void shutdown();
   virtual void setupScene();
-  int scene = 0;
-  int rad = 500;
+  
   virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);  // InputListener
       
   Ogre::SceneManager* mSM = nullptr;
@@ -36,6 +35,10 @@ protected:
 
   OgreBites::CameraMan* mCamMgr = nullptr;
  
+  int scene = 0;
+  int rad = 500;
+  bool rotaReloj = false;
+  bool rotaEsferas = false;
 };
 
 #endif

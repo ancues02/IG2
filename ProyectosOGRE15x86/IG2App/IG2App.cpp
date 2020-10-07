@@ -13,6 +13,17 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
     {
         getRoot()->queueEndRendering();
     }
+    else if (evt.keysym.sym == SDLK_g) {
+        Clock->roll(Ogre::Degree(-10));
+        rotaReloj = !rotaReloj;
+    }
+    else if (evt.keysym.sym == SDLK_h) {
+        for (int i = 0; i < 12; ++i) {
+            
+            Clock->getChild("Hora "+ std::to_string(i + 1))->roll(Ogre::Degree(10));
+        }
+        rotaEsferas = !rotaEsferas;
+    }
     //else if (evt.keysym.sym == SDLK_0) scene = 0;
    // else if (evt.keysym.sym == SDLK_1) scene = 1;
   
@@ -20,7 +31,7 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 }
 
 void IG2App::shutdown()
-{
+ {
   mShaderGenerator->removeSceneManager(mSM);  
   mSM->removeRenderQueueListener(mOverlaySystem);  
 					
@@ -132,19 +143,25 @@ void IG2App::setupScene(void)
         }*/
     }
     // Agujas del reloj
+   
     for (int i = 0; i < 3; i++) {
         Ogre::Entity* aguja = mSM->createEntity("cube.mesh");
         mAgujas[i] = Clock->createChildSceneNode("Aguja " + std::to_string(i + 1));
         mAgujas[i]->attachObject(aguja);
-        mAgujas[i]->roll(Ogre::Degree(-90 + 90 * i));
 
-        mAgujas[i]->setScale(0.2/(i+1), 3, 0.1);
+        mAgujas[i]->setScale(0.2/(i+1), 4, 0.1);
 
-        mAgujas[i]->setPosition(0, 100, 0);
 
     }
-    //mHourNode[i] = mSM->getRootSceneNode()->getAttachedObject("Clock");
-     // mEsferasNode->attachObject(sphere);
+    Ogre::SceneNode* agujaHora = mSM->getSceneNode("Aguja 1");
+    agujaHora->setPosition(150, 5, 0);
+    agujaHora->roll(Ogre::Degree(-90));
+    Ogre::SceneNode* agujaMin = mSM->getSceneNode("Aguja 2");
+    agujaMin->setPosition(0, 150, 0);
+    Ogre::SceneNode* agujaSec = mSM->getSceneNode("Aguja 3");
+    agujaSec->setPosition(0, -100, 0);
+    agujaSec->roll(Ogre::Degree(-180));
+
 
       //------------------------------------------------------------------------
   /*}
