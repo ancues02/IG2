@@ -18,7 +18,8 @@ protected:
   virtual void setup();
   virtual void shutdown();
   virtual void setupScene();
-
+  int scene = 0;
+  int rad = 500;
   virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);  // InputListener
       
   Ogre::SceneManager* mSM = nullptr;
@@ -26,6 +27,13 @@ protected:
   Ogre::SceneNode* mLightNode = nullptr;
   Ogre::SceneNode* mCamNode = nullptr;
   Ogre::SceneNode* mSinbadNode = nullptr;
+  Ogre::SceneNode* mEdificioNode = nullptr;
+
+  Ogre::SceneNode* Clock = nullptr;
+  Ogre::SceneNode* mHourNode[12];
+  Ogre::SceneNode* mAgujas[3];
+
+
   OgreBites::CameraMan* mCamMgr = nullptr;
  
 };

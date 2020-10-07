@@ -9,11 +9,12 @@ using namespace Ogre;
 
 bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
-  if (evt.keysym.sym == SDLK_ESCAPE)
-  {
-    getRoot()->queueEndRendering();
-  }
-  //else if (evt.keysym.sym == SDLK_???)
+    if (evt.keysym.sym == SDLK_ESCAPE)
+    {
+        getRoot()->queueEndRendering();
+    }
+    //else if (evt.keysym.sym == SDLK_0) scene = 0;
+   // else if (evt.keysym.sym == SDLK_1) scene = 1;
   
   return true;
 }
@@ -70,7 +71,7 @@ void IG2App::setupScene(void)
   
   // and tell it to render into the main window
   Viewport* vp = getRenderWindow()->addViewport(cam);
-  //vp->setBackgroundColour(Ogre::ColourValue(1, 1, 1));
+  vp->setBackgroundColour(Ogre::ColourValue(0.7,0.8,0.9));//cambia el color del fondo
 
   //------------------------------------------------------------------------
 
@@ -90,20 +91,66 @@ void IG2App::setupScene(void)
   //------------------------------------------------------------------------
 
   // finally something to render
+  //if (scene == 0) {
+     /* Ogre::Entity* ent = mSM->createEntity("Sinbad.mesh");
 
-  Ogre::Entity* ent = mSM->createEntity("Sinbad.mesh");
+      mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
+      mSinbadNode->attachObject(ent);
 
-  mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
-  mSinbadNode->attachObject(ent);
+      mSinbadNode->setPosition(0, 20, 0);
+      mSinbadNode->setScale(20, 20, 20);
+      //mSinbadNode->yaw(Ogre::Degree(-45));
+      //mSinbadNode->showBoundingBox(true);
+      //mSinbadNode->setVisible(false);
+      Ogre::Entity* ent2 = mSM->createEntity("RomanBathUpper.mesh");
 
-  //mSinbadNode->setPosition(400, 100, -300);
-  mSinbadNode->setScale(20, 20, 20);
-  //mSinbadNode->yaw(Ogre::Degree(-45));
-  //mSinbadNode->showBoundingBox(true);
-  //mSinbadNode->setVisible(false);
+      mEdificioNode = mSM->getRootSceneNode()->createChildSceneNode("edificio");
+      mEdificioNode->attachObject(ent2);
+      Ogre::Entity* ent3 = mSM->createEntity("RomanBathLower.mesh");
+      mEdificioNode->attachObject(ent3);
+      //Columns.mesh
+      Ogre::Entity* ent4 = mSM->createEntity("Columns.mesh");
+      mEdificioNode->attachObject(ent4);*/
 
-  //------------------------------------------------------------------------
+      //Esferas reloj
 
+      //mEsferasNode = mSM->getRootSceneNode()->createChildSceneNode("esferas");
+  //std::to_string(i)
+    Clock = mSM->getRootSceneNode()->createChildSceneNode("Reloj");
+    int nEsferas = 12;
+    for (int i = 0; i < nEsferas; i++) {
+        Ogre::Entity* sphere = mSM->createEntity("sphere.mesh");
+        mHourNode[i] = Clock->createChildSceneNode("Hora " + std::to_string(i + 1));
+
+        mHourNode[i]->attachObject(sphere);
+        mHourNode[i]->setPosition(Ogre::Math::Cos(Ogre::Degree(i * 360.0 / (float)nEsferas)) * rad, Ogre::Math::Sin(Ogre::Degree(i * 360.0 / (float)nEsferas)) * rad, 0.0);
+
+        //Rotar accediendo mediante el nodo
+        /*if (i % 2 == 0){
+            Ogre::SceneNode* hora = mSM->getSceneNode("Hora " + std::to_string(i + 1));
+            hora->setScale(0.5, 0.5, 0.5);
+        }*/
+    }
+    // Agujas del reloj
+    for (int i = 0; i < 3; i++) {
+        Ogre::Entity* aguja = mSM->createEntity("cube.mesh");
+        mAgujas[i] = Clock->createChildSceneNode("Aguja " + std::to_string(i + 1));
+        mAgujas[i]->attachObject(aguja);
+        mAgujas[i]->roll(Ogre::Degree(-90 + 90 * i));
+
+        mAgujas[i]->setScale(0.2/(i+1), 3, 0.1);
+
+        mAgujas[i]->setPosition(0, 100, 0);
+
+    }
+    //mHourNode[i] = mSM->getRootSceneNode()->getAttachedObject("Clock");
+     // mEsferasNode->attachObject(sphere);
+
+      //------------------------------------------------------------------------
+  /*}
+  else if(scene==1) {
+
+  }*/
   mCamMgr = new OgreBites::CameraMan(mCamNode);
   addInputListener(mCamMgr);
   mCamMgr->setStyle(OgreBites::CS_ORBIT);  
