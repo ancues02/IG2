@@ -18,10 +18,9 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
         rotaReloj = !rotaReloj;
     }
     else if (evt.keysym.sym == SDLK_h) {
-        for (int i = 0; i < 12; ++i) {
-            
-            Clock->getChild("Hora "+ std::to_string(i + 1))->roll(Ogre::Degree(10));
-        }
+
+        Clock->getChild("Esferas")->roll(Ogre::Degree(10));
+
         rotaEsferas = !rotaEsferas;
     }
     //else if (evt.keysym.sym == SDLK_0) scene = 0;
@@ -128,10 +127,11 @@ void IG2App::setupScene(void)
       //mEsferasNode = mSM->getRootSceneNode()->createChildSceneNode("esferas");
   //std::to_string(i)
     Clock = mSM->getRootSceneNode()->createChildSceneNode("Reloj");
+    spheresParent = Clock->createChildSceneNode("Esferas");
     int nEsferas = 12;
     for (int i = 0; i < nEsferas; i++) {
         Ogre::Entity* sphere = mSM->createEntity("sphere.mesh");
-        mHourNode[i] = Clock->createChildSceneNode("Hora " + std::to_string(i + 1));
+        mHourNode[i] = spheresParent->createChildSceneNode("Hora " + std::to_string(i + 1));
 
         mHourNode[i]->attachObject(sphere);
         mHourNode[i]->setPosition(Ogre::Math::Cos(Ogre::Degree(i * 360.0 / (float)nEsferas)) * rad, Ogre::Math::Sin(Ogre::Degree(i * 360.0 / (float)nEsferas)) * rad, 0.0);
@@ -159,8 +159,10 @@ void IG2App::setupScene(void)
     Ogre::SceneNode* agujaMin = mSM->getSceneNode("Aguja 2");
     agujaMin->setPosition(0, 150, 0);
     Ogre::SceneNode* agujaSec = mSM->getSceneNode("Aguja 3");
-    agujaSec->setPosition(0, -100, 0);
-    agujaSec->roll(Ogre::Degree(-180));
+    agujaSec->setPosition(-150, -80, 0);
+    agujaSec->roll(Ogre::Degree(-240));
+    //agujaSec->setPosition(0, -100, 0);
+    //agujaSec->roll(Ogre::Degree(-180));
 
 
       //------------------------------------------------------------------------

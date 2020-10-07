@@ -31,7 +31,7 @@ protected:
   Ogre::SceneNode* Clock = nullptr;
   Ogre::SceneNode* mHourNode[12];
   Ogre::SceneNode* mAgujas[3];
-
+  Ogre::SceneNode* spheresParent = nullptr;
 
   OgreBites::CameraMan* mCamMgr = nullptr;
  
