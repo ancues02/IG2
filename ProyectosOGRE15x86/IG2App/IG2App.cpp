@@ -13,13 +13,13 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
     {
         getRoot()->queueEndRendering();
     }
-    /*else if (evt.keysym.sym == SDLK_g) {
-        Clock->roll(Ogre::Degree(-10));
+    //Apartado 3
+    else if (evt.keysym.sym == SDLK_g) {
+        for (int i = 0; i < 12; i++) {
+            numAspas[i]->getChild("adorno_" + std::to_string(i + 1))->roll(Ogre::Degree(10.0f));
+        }
+        aspas->roll(Ogre::Degree(-10.0f));
     }
-    else if (evt.keysym.sym == SDLK_h) {
-
-        Clock->getChild("Esferas")->roll(Ogre::Degree(10));
-    }*/
     //else if (evt.keysym.sym == SDLK_0) scene = 0;
    // else if (evt.keysym.sym == SDLK_1) scene = 1;
   
@@ -196,7 +196,7 @@ void IG2App::setupScene(void)
       tablero->setScale(5, 1, 0.1);
       
 
-      Ogre::SceneNode* adorno = numAspas[i]->createChildSceneNode("adorno_1" + std::to_string(i + 1));
+      Ogre::SceneNode* adorno = numAspas[i]->createChildSceneNode("adorno_" + std::to_string(i + 1));
       ent = mSM->createEntity("Barrel.mesh");
       adorno->attachObject(ent);
       adorno->setScale(5, 10,5);
