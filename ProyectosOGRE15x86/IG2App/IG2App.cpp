@@ -160,21 +160,22 @@ void IG2App::setupScene(void)
     //agujaSec->roll(Ogre::Degree(-240));
     ////agujaSec->setPosition(0, -100, 0);
     ////agujaSec->roll(Ogre::Degree(-180));
-
  
-  aspaNode = mSM->getRootSceneNode()->createChildSceneNode("aspa");
-  tableroNode = aspaNode->createChildSceneNode("tablero");
-  cilindroNode = aspaNode->createChildSceneNode("adorno");
 
-  Ogre::Entity* ent = mSM->createEntity("cube.mesh");
-  tableroNode->attachObject(ent);
-  tableroNode->setScale(5, 1, 0.2);
-  
-  ent = mSM->createEntity("Barrel.mesh");
-  cilindroNode->attachObject(ent);
-  cilindroNode->setScale(5, 10,5);
-  cilindroNode->setPosition(150, 0, 30);
-  
+   // Apartado 1
+  //aspaNode = mSM->getRootSceneNode()->createChildSceneNode("aspa");
+  //tableroNode = aspaNode->createChildSceneNode("tablero");
+  //cilindroNode = aspaNode->createChildSceneNode("adorno");
+
+  //Ogre::Entity* ent = mSM->createEntity("cube.mesh");
+  //tableroNode->attachObject(ent);
+  //tableroNode->setScale(5, 1, 0.1);
+  //
+  //ent = mSM->createEntity("Barrel.mesh");
+  //cilindroNode->attachObject(ent);
+  //cilindroNode->setScale(5, 10,5);
+  //cilindroNode->setPosition(150, 0, 20);
+  //
 
   /*for (int i = 0; i < 1; i++) {
 	      Ogre::Entity* aguja = mSM->createEntity("cube.mesh");
@@ -185,6 +186,26 @@ void IG2App::setupScene(void)
 
 
   }*/
+  // Apartado 2
+  aspas = mSM->getRootSceneNode()->createChildSceneNode("aspas");
+  for (int i = 0; i < 12; i++) {
+      numAspas[i] = aspas->createChildSceneNode("aspa_" + std::to_string(i + 1));
+      Ogre::SceneNode* tablero = numAspas[i]->createChildSceneNode("tablero_" + std::to_string(i + 1));
+      Ogre::Entity* ent = mSM->createEntity("cube.mesh");
+      tablero->attachObject(ent);
+      tablero->setScale(5, 1, 0.1);
+      
+
+      Ogre::SceneNode* adorno = numAspas[i]->createChildSceneNode("adorno_1" + std::to_string(i + 1));
+      ent = mSM->createEntity("Barrel.mesh");
+      adorno->attachObject(ent);
+      adorno->setScale(5, 10,5);
+      adorno->setPosition(150, 0, 20);
+      float rotation = (360.0f / 12.0f) * i;
+      numAspas[i]->roll(Ogre::Degree(rotation), Ogre::Node::TS_PARENT);
+      numAspas[i]->translate(200, 0, 0, Ogre::Node::TS_LOCAL);
+      adorno->roll(Ogre::Degree(-rotation));
+  }
       //------------------------------------------------------------------------
  
   mCamMgr = new OgreBites::CameraMan(mCamNode);

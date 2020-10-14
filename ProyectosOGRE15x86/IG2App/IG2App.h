@@ -28,10 +28,12 @@ protected:
   Ogre::SceneNode* mSinbadNode = nullptr;
   Ogre::SceneNode* mEdificioNode = nullptr;
 
-  Ogre::SceneNode* aspaNode = nullptr;
-  Ogre::SceneNode* tableroNode = nullptr;;
-  Ogre::SceneNode* cilindroNode = nullptr;
-
+  // Apartado 1
+  //Ogre::SceneNode* aspaNode = nullptr;
+  //Ogre::SceneNode* tableroNode = nullptr;;
+  //Ogre::SceneNode* cilindroNode = nullptr;
+  Ogre::SceneNode* aspas = nullptr;
+  Ogre::SceneNode* numAspas[12];
   OgreBites::CameraMan* mCamMgr = nullptr;
  
   int rad = 500;
