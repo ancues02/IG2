@@ -1,1 +1,8 @@
-.vs
+.vs/
+*.exe
+*.obj
+*.iobj
+*.pdb
+*.ipdb
+*.tlog
+*.tlog
