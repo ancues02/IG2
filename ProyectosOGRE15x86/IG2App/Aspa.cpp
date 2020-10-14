@@ -17,3 +17,7 @@ Aspa::Aspa(Ogre::SceneNode* parentNode)
     adorno->setScale(5, 10, 5);
     adorno->setPosition(150, 0, 20);*/
 }
+
+Aspa::~Aspa()
+{
+}
