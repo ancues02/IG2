@@ -28,17 +28,14 @@ protected:
   Ogre::SceneNode* mSinbadNode = nullptr;
   Ogre::SceneNode* mEdificioNode = nullptr;
 
-  Ogre::SceneNode* Clock = nullptr;
-  Ogre::SceneNode* mHourNode[12];
-  Ogre::SceneNode* mAgujas[3];
-  Ogre::SceneNode* spheresParent = nullptr;
+  Ogre::SceneNode* aspaNode = nullptr;
+  Ogre::SceneNode* tableroNode = nullptr;;
+  Ogre::SceneNode* cilindroNode = nullptr;
 
   OgreBites::CameraMan* mCamMgr = nullptr;
  
-  int scene = 0;
   int rad = 500;
-  bool rotaReloj = false;
-  bool rotaEsferas = false;
+ 
 };
 
 #endif

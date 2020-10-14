@@ -13,16 +13,13 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
     {
         getRoot()->queueEndRendering();
     }
-    else if (evt.keysym.sym == SDLK_g) {
+    /*else if (evt.keysym.sym == SDLK_g) {
         Clock->roll(Ogre::Degree(-10));
-        rotaReloj = !rotaReloj;
     }
     else if (evt.keysym.sym == SDLK_h) {
 
         Clock->getChild("Esferas")->roll(Ogre::Degree(10));
-
-        rotaEsferas = !rotaEsferas;
-    }
+    }*/
     //else if (evt.keysym.sym == SDLK_0) scene = 0;
    // else if (evt.keysym.sym == SDLK_1) scene = 1;
   
@@ -126,50 +123,70 @@ void IG2App::setupScene(void)
 
       //mEsferasNode = mSM->getRootSceneNode()->createChildSceneNode("esferas");
   //std::to_string(i)
-    Clock = mSM->getRootSceneNode()->createChildSceneNode("Reloj");
-    spheresParent = Clock->createChildSceneNode("Esferas");
-    int nEsferas = 12;
-    for (int i = 0; i < nEsferas; i++) {
-        Ogre::Entity* sphere = mSM->createEntity("sphere.mesh");
-        mHourNode[i] = spheresParent->createChildSceneNode("Hora " + std::to_string(i + 1));
+    //Clock = mSM->getRootSceneNode()->createChildSceneNode("Reloj");
+    //spheresParent = Clock->createChildSceneNode("Esferas");
+    //int nEsferas = 12;
+    //for (int i = 0; i < nEsferas; i++) {
+    //    Ogre::Entity* sphere = mSM->createEntity("sphere.mesh");
+    //    mHourNode[i] = spheresParent->createChildSceneNode("Hora " + std::to_string(i + 1));
 
-        mHourNode[i]->attachObject(sphere);
-        mHourNode[i]->setPosition(Ogre::Math::Cos(Ogre::Degree(i * 360.0 / (float)nEsferas)) * rad, Ogre::Math::Sin(Ogre::Degree(i * 360.0 / (float)nEsferas)) * rad, 0.0);
+    //    mHourNode[i]->attachObject(sphere);
+    //    mHourNode[i]->setPosition(Ogre::Math::Cos(Ogre::Degree(i * 360.0 / (float)nEsferas)) * rad, Ogre::Math::Sin(Ogre::Degree(i * 360.0 / (float)nEsferas)) * rad, 0.0);
 
-        //Rotar accediendo mediante el nodo
-        /*if (i % 2 == 0){
-            Ogre::SceneNode* hora = mSM->getSceneNode("Hora " + std::to_string(i + 1));
-            hora->setScale(0.5, 0.5, 0.5);
-        }*/
-    }
-    // Agujas del reloj
+    //    //Rotar accediendo mediante el nodo
+    //    /*if (i % 2 == 0){
+    //        Ogre::SceneNode* hora = mSM->getSceneNode("Hora " + std::to_string(i + 1));
+    //        hora->setScale(0.5, 0.5, 0.5);
+    //    }*/
+    //}
+    //// Agujas del reloj
    
-    for (int i = 0; i < 3; i++) {
-        Ogre::Entity* aguja = mSM->createEntity("cube.mesh");
-        mAgujas[i] = Clock->createChildSceneNode("Aguja " + std::to_string(i + 1));
-        mAgujas[i]->attachObject(aguja);
+    //for (int i = 0; i < 3; i++) {
+    //    Ogre::Entity* aguja = mSM->createEntity("cube.mesh");
+    //    mAgujas[i] = Clock->createChildSceneNode("Aguja " + std::to_string(i + 1));
+    //    mAgujas[i]->attachObject(aguja);
 
-        mAgujas[i]->setScale(0.2/(i+1), 4, 0.1);
-
-
-    }
-    Ogre::SceneNode* agujaHora = mSM->getSceneNode("Aguja 1");
-    agujaHora->setPosition(150, 5, 0);
-    agujaHora->roll(Ogre::Degree(-90));
-    Ogre::SceneNode* agujaMin = mSM->getSceneNode("Aguja 2");
-    agujaMin->setPosition(0, 150, 0);
-    Ogre::SceneNode* agujaSec = mSM->getSceneNode("Aguja 3");
-    agujaSec->setPosition(-150, -80, 0);
-    agujaSec->roll(Ogre::Degree(-240));
-    //agujaSec->setPosition(0, -100, 0);
-    //agujaSec->roll(Ogre::Degree(-180));
+    //    mAgujas[i]->setScale(0.2/(i+1), 4, 0.1);
 
 
-      //------------------------------------------------------------------------
-  /*}
-  else if(scene==1) {
+    //}
+    //Ogre::SceneNode* agujaHora = mSM->getSceneNode("Aguja 1");
+    //agujaHora->setPosition(150, 5, 0);
+    //agujaHora->roll(Ogre::Degree(-90));
+    //Ogre::SceneNode* agujaMin = mSM->getSceneNode("Aguja 2");
+    //agujaMin->setPosition(0, 150, 0);
+    //Ogre::SceneNode* agujaSec = mSM->getSceneNode("Aguja 3");
+    //agujaSec->setPosition(-150, -80, 0);
+    //agujaSec->roll(Ogre::Degree(-240));
+    ////agujaSec->setPosition(0, -100, 0);
+    ////agujaSec->roll(Ogre::Degree(-180));
+
+ 
+  aspaNode = mSM->getRootSceneNode()->createChildSceneNode("aspa");
+  tableroNode = aspaNode->createChildSceneNode("tablero");
+  cilindroNode = aspaNode->createChildSceneNode("adorno");
+
+  Ogre::Entity* ent = mSM->createEntity("cube.mesh");
+  tableroNode->attachObject(ent);
+  tableroNode->setScale(5, 1, 0.2);
+  
+  ent = mSM->createEntity("Barrel.mesh");
+  cilindroNode->attachObject(ent);
+  cilindroNode->setScale(5, 10,5);
+  cilindroNode->setPosition(150, 0, 30);
+  
+
+  /*for (int i = 0; i < 1; i++) {
+	      Ogre::Entity* aguja = mSM->createEntity("cube.mesh");
+	      mAgujas[i] = mSM->getRootSceneNode()->createChildSceneNode("Aguja " + std::to_string(i + 1));
+	      mAgujas[i]->attachObject(aguja);
+
+	      mAgujas[i]->setScale(1, 5, 0.1);
+
 
   }*/
+      //------------------------------------------------------------------------
+ 
   mCamMgr = new OgreBites::CameraMan(mCamNode);
   addInputListener(mCamMgr);
   mCamMgr->setStyle(OgreBites::CS_ORBIT);  
