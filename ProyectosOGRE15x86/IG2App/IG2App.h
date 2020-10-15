@@ -7,6 +7,7 @@
 #include <OgreTrays.h>
 #include <OgreCameraMan.h>
 
+#include "Aspa.h"
 
 class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener 
 {
@@ -34,6 +35,7 @@ protected:
   //Ogre::SceneNode* cilindroNode = nullptr;
   Ogre::SceneNode* aspas = nullptr;
   Ogre::SceneNode* numAspas[12];
+  AspasMolino* molino = nullptr;
   OgreBites::CameraMan* mCamMgr = nullptr;
  
   int rad = 500;

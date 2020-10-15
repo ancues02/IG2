@@ -14,12 +14,12 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
         getRoot()->queueEndRendering();
     }
     //Apartado 3
-    else if (evt.keysym.sym == SDLK_g) {
-        for (int i = 0; i < 12; i++) {
-            numAspas[i]->getChild("adorno_" + std::to_string(i + 1))->roll(Ogre::Degree(10.0f));
-        }
-        aspas->roll(Ogre::Degree(-10.0f));
-    }
+    //else if (evt.keysym.sym == SDLK_g) {
+    //    for (int i = 0; i < 12; i++) {
+    //        numAspas[i]->getChild("adorno_" + std::to_string(i + 1))->roll(Ogre::Degree(10.0f));
+    //    }
+    //    aspas->roll(Ogre::Degree(-10.0f));
+    //}
     //else if (evt.keysym.sym == SDLK_0) scene = 0;
    // else if (evt.keysym.sym == SDLK_1) scene = 1;
   
@@ -28,6 +28,7 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 
 void IG2App::shutdown()
  {
+    delete molino;
   mShaderGenerator->removeSceneManager(mSM);  
   mSM->removeRenderQueueListener(mOverlaySystem);  
 					
@@ -122,25 +123,30 @@ void IG2App::setupScene(void)
 
   }*/
   // Apartado 2
-  aspas = mSM->getRootSceneNode()->createChildSceneNode("aspas");
-  for (int i = 0; i < 12; i++) {
-      numAspas[i] = aspas->createChildSceneNode("aspa_" + std::to_string(i + 1));
-      Ogre::SceneNode* tablero = numAspas[i]->createChildSceneNode("tablero_" + std::to_string(i + 1));
-      Ogre::Entity* ent = mSM->createEntity("cube.mesh");
-      tablero->attachObject(ent);
-      tablero->setScale(5, 1, 0.1);
-      
+  //aspas = mSM->getRootSceneNode()->createChildSceneNode("aspas");
+  //for (int i = 0; i < 12; i++) {
+  //    numAspas[i] = aspas->createChildSceneNode("aspa_" + std::to_string(i + 1));
+  //    Ogre::SceneNode* tablero = numAspas[i]->createChildSceneNode("tablero_" + std::to_string(i + 1));
+  //    Ogre::Entity* ent = mSM->createEntity("cube.mesh");
+  //    tablero->attachObject(ent);
+  //    tablero->setScale(5, 1, 0.1);
+  //    
 
-      Ogre::SceneNode* adorno = numAspas[i]->createChildSceneNode("adorno_" + std::to_string(i + 1));
-      ent = mSM->createEntity("Barrel.mesh");
-      adorno->attachObject(ent);
-      adorno->setScale(5, 10,5);
-      adorno->setPosition(150, 0, 20);
-      float rotation = (360.0f / 12.0f) * i;
-      numAspas[i]->roll(Ogre::Degree(rotation), Ogre::Node::TS_PARENT);
-      numAspas[i]->translate(200, 0, 0, Ogre::Node::TS_LOCAL);
-      adorno->roll(Ogre::Degree(-rotation));
-  }
+  //    Ogre::SceneNode* adorno = numAspas[i]->createChildSceneNode("adorno_" + std::to_string(i + 1));
+  //    ent = mSM->createEntity("Barrel.mesh");
+  //    adorno->attachObject(ent);
+  //    adorno->setScale(5, 10,5);
+  //    adorno->setPosition(150, 0, 20);
+  //    float rotation = (360.0f / 12.0f) * i;
+  //    numAspas[i]->roll(Ogre::Degree(rotation), Ogre::Node::TS_PARENT);
+  //    numAspas[i]->translate(200, 0, 0, Ogre::Node::TS_LOCAL);
+  //    adorno->roll(Ogre::Degree(-rotation));
+  //}
+  // Apartado 4
+  // Aspa* aspa = new Aspa(mSM->getRootSceneNode());
+  // Apartado 7
+  molino = new AspasMolino(mSM->getRootSceneNode(), 12);
+  addInputListener(molino);
       //------------------------------------------------------------------------
  
   mCamMgr = new OgreBites::CameraMan(mCamNode);
