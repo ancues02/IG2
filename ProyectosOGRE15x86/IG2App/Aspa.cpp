@@ -31,9 +31,26 @@ bool Aspa::keyPressed(const OgreBites::KeyboardEvent& evt)
 
 AspasMolino::AspasMolino(Ogre::SceneNode* parentNode, int nAspas) : numAspas(nAspas)
 {
-    aspasNode = parentNode->createChildSceneNode("aspas");
-    arrayAspas = new Aspa*[numAspas];
+    aspasNode = parentNode->createChildSceneNode("aspas");//creamos el nodo de las aspas como hijo del que nos pasan
+    arrayAspas = new Aspa*[numAspas];//array de tamaño del numero de aspas
     for (int i = 0; i < numAspas; i++) {
+		// Apartado 5
+		//creamos las aspas a sin utilizar la clase Aspa
+		/*SceneNode* aspa = aspasNode->createChildSceneNode("aspa_" + std::to_string(i + 1));
+		SceneNode* tablero = aspa->createChildSceneNode("tablero_" + std::to_string(i + 1));
+		Ogre::Entity* ent = parentNode->getCreator()->createEntity("cube.mesh");
+		tablero->attachObject(ent);
+		tablero->setScale(5, 1, 0.1);
+		Ogre::SceneNode* adorno = aspa->createChildSceneNode("adorno_" + std::to_string(i + 1));
+		ent = parentNode->getCreator()->createEntity("Barrel.mesh");
+		adorno->attachObject(ent);
+		adorno->setScale(5, 10, 5);
+		adorno->setPosition(150, 0, 20);
+		float rotation = (360.0f / numAspas) * i;
+		aspa->roll(Ogre::Degree(rotation), Ogre::Node::TS_PARENT);
+		aspa->translate(200, 0, 0, Ogre::Node::TS_LOCAL);
+		adorno->roll(Ogre::Degree(-rotation));*/
+
         // Apartado 7
         arrayAspas[i] = new Aspa(aspasNode);
         float rotation = (360.0f / numAspas) * i;
@@ -42,28 +59,6 @@ AspasMolino::AspasMolino(Ogre::SceneNode* parentNode, int nAspas) : numAspas(nAs
         aux->translate(200, 0, 0, Ogre::Node::TS_LOCAL);
         aux->getChild("adorno_" + std::to_string(i + 1))->roll(Ogre::Degree(-rotation));
 
-
-        /*aspasNode->getChild("aspa_" + std::to_string(i + 1))->roll(Ogre::Degree(rotation), Ogre::Node::TS_PARENT);
-
-        aspasNode->getChild("aspa_" + std::to_string(i + 1))->translate(200, 0, 0, Ogre::Node::TS_LOCAL);
-        aspasNode->getChild("aspa_" + std::to_string(i + 1))->getChild("adorno_" + std::to_string(i + 1))->roll(Ogre::Degree(-rotation));*/
-
-        // Apartado 5
-        /*SceneNode* aspa = aspasNode->createChildSceneNode("aspa_" + std::to_string(i + 1));
-        SceneNode* tablero = aspa->createChildSceneNode("tablero_" + std::to_string(i + 1));
-        Ogre::Entity* ent = parentNode->getCreator()->createEntity("cube.mesh");
-        tablero->attachObject(ent);
-        tablero->setScale(5, 1, 0.1);
-        Ogre::SceneNode* adorno = aspa->createChildSceneNode("adorno_" + std::to_string(i + 1));
-        ent = parentNode->getCreator()->createEntity("Barrel.mesh");
-        adorno->attachObject(ent);
-        adorno->setScale(5, 10, 5);
-        adorno->setPosition(150, 0, 20);
-        float rotation = (360.0f / numAspas) * i;
-        aspa->roll(Ogre::Degree(rotation), Ogre::Node::TS_PARENT);
-        aspa->translate(200, 0, 0, Ogre::Node::TS_LOCAL);
-        adorno->roll(Ogre::Degree(-rotation));*/
-
     }
 }
 
@@ -71,7 +66,7 @@ AspasMolino::~AspasMolino()
 {
 }
 
-// Apartado 6 y 8
+// Apartados 6 y 8
 bool AspasMolino::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
     if (evt.keysym.sym == SDLK_g) // #include <SDL_keycode.h>

@@ -144,7 +144,7 @@ void IG2App::setupScene(void)
   //}
   // Apartado 4
   // Aspa* aspa = new Aspa(mSM->getRootSceneNode());
-  // Apartado 7
+  // Apartados 5 y 7
   molino = new AspasMolino(mSM->getRootSceneNode(), 12);
   addInputListener(molino);
       //------------------------------------------------------------------------
