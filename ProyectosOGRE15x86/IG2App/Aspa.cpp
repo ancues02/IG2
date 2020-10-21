@@ -35,6 +35,8 @@ AspasMolino::AspasMolino(Ogre::SceneNode* parentNode, int nAspas) : numAspas(nAs
     centroNode = aspasNode->createChildSceneNode("centro_aspas");
     Ogre::Entity* ent = parentNode->getCreator()->createEntity("Barrel.mesh");
 	centroNode->attachObject(ent);
+    centroNode->pitch(Ogre::Degree(90.0));
+    centroNode->setScale(20, 5, 20);
     arrayAspas = new Aspa*[numAspas];//array de tamaño del numero de aspas
     for (int i = 0; i < numAspas; i++) {
 		// Apartado 5
