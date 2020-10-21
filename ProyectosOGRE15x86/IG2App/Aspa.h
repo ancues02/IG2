@@ -47,7 +47,9 @@ private:
     Ogre::SceneNode* mNode = nullptr;
     Ogre::SceneNode* esfera = nullptr;
     Ogre::SceneNode* cilCuerpo = nullptr;
+    Ogre::SceneNode* ficticio = nullptr;
     int numAspas;
+
     AspasMolino* aspasMolino = nullptr;
 };
 

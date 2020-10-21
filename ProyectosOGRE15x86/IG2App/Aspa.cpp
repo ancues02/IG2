@@ -95,9 +95,17 @@ Molino::Molino(Ogre::SceneNode* parentNode, int nAspas):  numAspas(nAspas)
     mNode= parentNode->createChildSceneNode("molino");
     esfera = mNode->createChildSceneNode("esfera_techo");
     cilCuerpo = mNode->createChildSceneNode("cil_cuerpo");
-    aspasMolino = new AspasMolino(mNode, numAspas);
-    mNode->getChild("aspas")->setScale(0.5, 0.5, 0.5);
-    mNode->getChild("aspas" )->translate(0, 0,130);
+
+    aspasMolino = new AspasMolino(mNode, numAspas);//sin ficticio
+    mNode->getChild("aspas")->setScale(0.5, 0.5, 0.5);//sin ficticio
+    mNode->getChild("aspas")->translate(0, 0, 130);//sin ficticio
+
+
+    /*ficticio = mNode->createChildSceneNode("ficticio");//con ficticio
+    aspasMolino = new AspasMolino(ficticio, numAspas);//con ficticio
+    ficticio->getChild("aspas")->setScale(0.5, 0.5, 0.5);//con ficticio
+    ficticio->getChild("aspas")->translate(0, 0, 130);//con ficticio
+    */
 
     Ogre::Entity* ent = parentNode->getCreator()->createEntity("sphere.mesh");    
     esfera->attachObject(ent);
@@ -117,14 +125,18 @@ Molino::~Molino()
 
 bool Molino::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
-    aspasMolino->keyPressed(evt);
-    /*if (evt.keysym.sym == SDLK_g) 
+    //aspasMolino->keyPressed(evt);
+    if (evt.keysym.sym == SDLK_h) 
     {
-        for (int i = 0; i < numAspas; i++) {
-            mNode->getChild("aspas")->getChild("aspa_" + std::to_string(i + 1))->getChild("adorno_" + std::to_string(i + 1))->roll(Ogre::Degree(10.0f));
-        }
-        mNode->getChild("aspas")->roll(Ogre::Degree(-10.0f));
+        Vector3 aux=mNode->getChild("aspas")->getPosition();
+
+        mNode->getChild("aspas")->translate(-aux, Ogre::Node::TS_LOCAL);//sin ficticio
+       // aux.x *= 
+        mNode->getChild("aspas")->yaw(Ogre::Degree(-10.0f),Node::TS_PARENT);//sin ficticio
+        mNode->getChild("aspas")->translate(aux, Ogre::Node::TS_LOCAL);//sin ficticio
+
+        //mNode->getChild("ficticio")->yaw(Ogre::Degree(-10.0f));//con ficticio
     }
-    */
+    
     return true;
 }
