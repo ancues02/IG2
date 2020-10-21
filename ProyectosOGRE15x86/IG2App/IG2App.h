@@ -36,6 +36,8 @@ protected:
   Ogre::SceneNode* aspas = nullptr;
   Ogre::SceneNode* numAspas[12];
   AspasMolino* molino = nullptr;
+
+  Molino* molino_Completo = nullptr;
   OgreBites::CameraMan* mCamMgr = nullptr;
  
   int rad = 500;

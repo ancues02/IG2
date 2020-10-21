@@ -44,8 +44,10 @@ public:
     ~Molino();
     virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
 private:
+    Ogre::SceneNode* mNode = nullptr;
     Ogre::SceneNode* esfera = nullptr;
     Ogre::SceneNode* cilCuerpo = nullptr;
+    int numAspas;
     AspasMolino* aspasMolino = nullptr;
 };
 

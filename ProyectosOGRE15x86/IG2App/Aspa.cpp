@@ -81,15 +81,33 @@ bool AspasMolino::keyPressed(const OgreBites::KeyboardEvent& evt)
         }
         aspasNode->roll(Ogre::Degree(-10.0f));
     }
+    //apartado 10
+    else if (evt.keysym.sym == SDLK_c) 
+    {
+        aspasNode->getChild("centro_aspas")->translate(0,0,-2);
+        
+    }
     return true;
 }
 
-Molino::Molino(Ogre::SceneNode* parentNode, int nAspas)
+Molino::Molino(Ogre::SceneNode* parentNode, int nAspas):  numAspas(nAspas)
 {
+    mNode= parentNode->createChildSceneNode("molino");
+    esfera = mNode->createChildSceneNode("esfera_techo");
+    cilCuerpo = mNode->createChildSceneNode("cil_cuerpo");
+    aspasMolino = new AspasMolino(mNode, numAspas);
+    mNode->getChild("aspas")->setScale(0.5, 0.5, 0.5);
+    mNode->getChild("aspas" )->translate(0, 0,130);
 
-    esfera = parentNode->createChildSceneNode("esfera");//creamos el nodo de las aspas como hijo del que nos pasan
-    Ogre::Entity* ent = parentNode->getCreator()->createEntity("Barrel.mesh");
-    ent = parentNode->getCreator()->createEntity("sphere.mesh");
+    Ogre::Entity* ent = parentNode->getCreator()->createEntity("sphere.mesh");    
+    esfera->attachObject(ent);
+    esfera->setScale(1.2, 1.2, 1.2);
+
+    ent = parentNode->getCreator()->createEntity("Barrel.mesh");
+  	cilCuerpo->attachObject(ent);
+    cilCuerpo->setScale(50, 50, 50);
+    cilCuerpo->translate(0, -150, 0);
+
 
 }
 
@@ -99,5 +117,14 @@ Molino::~Molino()
 
 bool Molino::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
-    return false;
+    aspasMolino->keyPressed(evt);
+    /*if (evt.keysym.sym == SDLK_g) 
+    {
+        for (int i = 0; i < numAspas; i++) {
+            mNode->getChild("aspas")->getChild("aspa_" + std::to_string(i + 1))->getChild("adorno_" + std::to_string(i + 1))->roll(Ogre::Degree(10.0f));
+        }
+        mNode->getChild("aspas")->roll(Ogre::Degree(-10.0f));
+    }
+    */
+    return true;
 }

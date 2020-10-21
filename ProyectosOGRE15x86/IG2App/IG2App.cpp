@@ -99,21 +99,21 @@ void IG2App::setupScene(void)
   //------------------------------------------------------------------------
 
    // Apartado 1
-  //aspaNode = mSM->getRootSceneNode()->createChildSceneNode("aspa");
-  //tableroNode = aspaNode->createChildSceneNode("tablero");
-  //cilindroNode = aspaNode->createChildSceneNode("adorno");
+  /*aspaNode = mSM->getRootSceneNode()->createChildSceneNode("aspa");
+  tableroNode = aspaNode->createChildSceneNode("tablero");
+  cilindroNode = aspaNode->createChildSceneNode("adorno");
 
-  //Ogre::Entity* ent = mSM->createEntity("cube.mesh");
-  //tableroNode->attachObject(ent);
-  //tableroNode->setScale(5, 1, 0.1);
-  //
-  //ent = mSM->createEntity("Barrel.mesh");
-  //cilindroNode->attachObject(ent);
-  //cilindroNode->setScale(5, 10,5);
-  //cilindroNode->setPosition(150, 0, 20);
-  //
+  Ogre::Entity* ent = mSM->createEntity("cube.mesh");
+  tableroNode->attachObject(ent);
+  tableroNode->setScale(5, 1, 0.1);
+  
+  ent = mSM->createEntity("Barrel.mesh");
+  cilindroNode->attachObject(ent);
+  cilindroNode->setScale(5, 10,5);
+  cilindroNode->setPosition(150, 0, 20);
+  
 
-  /*for (int i = 0; i < 1; i++) {
+  for (int i = 0; i < 1; i++) {
 	      Ogre::Entity* aguja = mSM->createEntity("cube.mesh");
 	      mAgujas[i] = mSM->getRootSceneNode()->createChildSceneNode("Aguja " + std::to_string(i + 1));
 	      mAgujas[i]->attachObject(aguja);
@@ -123,30 +123,35 @@ void IG2App::setupScene(void)
 
   }*/
   // Apartado 2
-  //aspas = mSM->getRootSceneNode()->createChildSceneNode("aspas");
-  //for (int i = 0; i < 12; i++) {
-  //    numAspas[i] = aspas->createChildSceneNode("aspa_" + std::to_string(i + 1));
-  //    Ogre::SceneNode* tablero = numAspas[i]->createChildSceneNode("tablero_" + std::to_string(i + 1));
-  //    Ogre::Entity* ent = mSM->createEntity("cube.mesh");
-  //    tablero->attachObject(ent);
-  //    tablero->setScale(5, 1, 0.1);
-  //    
+  /*aspas = mSM->getRootSceneNode()->createChildSceneNode("aspas");
+  for (int i = 0; i < 12; i++) {
+      numAspas[i] = aspas->createChildSceneNode("aspa_" + std::to_string(i + 1));
+      Ogre::SceneNode* tablero = numAspas[i]->createChildSceneNode("tablero_" + std::to_string(i + 1));
+      Ogre::Entity* ent = mSM->createEntity("cube.mesh");
+      tablero->attachObject(ent);
+      tablero->setScale(5, 1, 0.1);
+      
 
-  //    Ogre::SceneNode* adorno = numAspas[i]->createChildSceneNode("adorno_" + std::to_string(i + 1));
-  //    ent = mSM->createEntity("Barrel.mesh");
-  //    adorno->attachObject(ent);
-  //    adorno->setScale(5, 10,5);
-  //    adorno->setPosition(150, 0, 20);
-  //    float rotation = (360.0f / 12.0f) * i;
-  //    numAspas[i]->roll(Ogre::Degree(rotation), Ogre::Node::TS_PARENT);
-  //    numAspas[i]->translate(200, 0, 0, Ogre::Node::TS_LOCAL);
-  //    adorno->roll(Ogre::Degree(-rotation));
-  //}
+      Ogre::SceneNode* adorno = numAspas[i]->createChildSceneNode("adorno_" + std::to_string(i + 1));
+      ent = mSM->createEntity("Barrel.mesh");
+      adorno->attachObject(ent);
+      adorno->setScale(5, 10,5);
+      adorno->setPosition(150, 0, 20);
+      float rotation = (360.0f / 12.0f) * i;
+      numAspas[i]->roll(Ogre::Degree(rotation), Ogre::Node::TS_PARENT);
+      numAspas[i]->translate(200, 0, 0, Ogre::Node::TS_LOCAL);
+      adorno->roll(Ogre::Degree(-rotation));
+  }*/
   // Apartado 4
   // Aspa* aspa = new Aspa(mSM->getRootSceneNode());
   // Apartados 5 y 7
-  molino = new AspasMolino(mSM->getRootSceneNode(), 12);
-  addInputListener(molino);
+  /*molino = new AspasMolino(mSM->getRootSceneNode(), 12);
+  addInputListener(molino);*/
+
+  //apartado9
+  molino_Completo = new Molino(mSM->getRootSceneNode(), 6);
+  addInputListener(molino_Completo);
+
       //------------------------------------------------------------------------
  
   mCamMgr = new OgreBites::CameraMan(mCamNode);
