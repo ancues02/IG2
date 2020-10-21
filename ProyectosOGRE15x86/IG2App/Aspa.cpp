@@ -32,6 +32,9 @@ bool Aspa::keyPressed(const OgreBites::KeyboardEvent& evt)
 AspasMolino::AspasMolino(Ogre::SceneNode* parentNode, int nAspas) : numAspas(nAspas)
 {
     aspasNode = parentNode->createChildSceneNode("aspas");//creamos el nodo de las aspas como hijo del que nos pasan
+    centroNode = aspasNode->createChildSceneNode("centro_aspas");
+    Ogre::Entity* ent = parentNode->getCreator()->createEntity("Barrel.mesh");
+	centroNode->attachObject(ent);
     arrayAspas = new Aspa*[numAspas];//array de tamaño del numero de aspas
     for (int i = 0; i < numAspas; i++) {
 		// Apartado 5
@@ -77,4 +80,22 @@ bool AspasMolino::keyPressed(const OgreBites::KeyboardEvent& evt)
         aspasNode->roll(Ogre::Degree(-10.0f));
     }
     return true;
+}
+
+Molino::Molino(Ogre::SceneNode* parentNode, int nAspas)
+{
+
+    esfera = parentNode->createChildSceneNode("esfera");//creamos el nodo de las aspas como hijo del que nos pasan
+    Ogre::Entity* ent = parentNode->getCreator()->createEntity("Barrel.mesh");
+    ent = parentNode->getCreator()->createEntity("sphere.mesh");
+
+}
+
+Molino::~Molino()
+{
+}
+
+bool Molino::keyPressed(const OgreBites::KeyboardEvent& evt)
+{
+    return false;
 }

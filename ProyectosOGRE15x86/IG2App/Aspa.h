@@ -34,4 +34,18 @@ private:
     Ogre::SceneNode* aspasNode = nullptr;
     int numAspas;
     Aspa** arrayAspas;
+    Ogre::SceneNode* centroNode = nullptr;
 };
+
+class Molino : public OgreBites::InputListener
+{
+public:
+    Molino(Ogre::SceneNode* parentNode, int nAspas);
+    ~Molino();
+    virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
+private:
+    Ogre::SceneNode* esfera = nullptr;
+    Ogre::SceneNode* cilCuerpo = nullptr;
+    AspasMolino* aspasMolino = nullptr;
+};
+
