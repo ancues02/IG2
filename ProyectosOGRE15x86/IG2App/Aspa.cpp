@@ -1,5 +1,5 @@
 #include "Aspa.h"
-
+#include <iostream>
 Aspa::Aspa(Ogre::SceneNode* parentNode)
 {
 	aspaNode = parentNode->createChildSceneNode("aspa_" + std::to_string(cont + 1));
@@ -115,7 +115,7 @@ Molino::Molino(Ogre::SceneNode* parentNode, int nAspas):  numAspas(nAspas)
   	cilCuerpo->attachObject(ent);
     cilCuerpo->setScale(50, 50, 50);
     cilCuerpo->translate(0, -150, 0);
-
+    posIni = mNode->getChild("aspas")->getPosition();
 
 }
 
@@ -128,15 +128,16 @@ bool Molino::keyPressed(const OgreBites::KeyboardEvent& evt)
     //aspasMolino->keyPressed(evt);
     if (evt.keysym.sym == SDLK_h) 
     {
-        Vector3 aux=mNode->getChild("aspas")->getPosition();
-
-        mNode->getChild("aspas")->translate(-aux, Ogre::Node::TS_LOCAL);//sin ficticio
-       // aux.x *= 
+        //Vector3 aux=mNode->getChild("aspas")->getPosition();//no funciona porque pilla la posicion con respecto al padre
+      
+        mNode->getChild("aspas")->translate(-posIni, Ogre::Node::TS_LOCAL);//sin ficticio        
         mNode->getChild("aspas")->yaw(Ogre::Degree(-10.0f),Node::TS_PARENT);//sin ficticio
-        mNode->getChild("aspas")->translate(aux, Ogre::Node::TS_LOCAL);//sin ficticio
+        mNode->getChild("aspas")->translate(posIni, Ogre::Node::TS_LOCAL);//sin ficticio
+        
 
         //mNode->getChild("ficticio")->yaw(Ogre::Degree(-10.0f));//con ficticio
     }
     
     return true;
 }
+

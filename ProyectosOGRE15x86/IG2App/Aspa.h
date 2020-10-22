@@ -49,7 +49,7 @@ private:
     Ogre::SceneNode* cilCuerpo = nullptr;
     Ogre::SceneNode* ficticio = nullptr;
     int numAspas;
-
+    Vector3 posIni;
     AspasMolino* aspasMolino = nullptr;
 };
 

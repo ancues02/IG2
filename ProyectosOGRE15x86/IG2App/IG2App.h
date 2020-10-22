@@ -30,17 +30,25 @@ protected:
   Ogre::SceneNode* mEdificioNode = nullptr;
 
   // Apartado 1
-  //Ogre::SceneNode* aspaNode = nullptr;
-  //Ogre::SceneNode* tableroNode = nullptr;;
-  //Ogre::SceneNode* cilindroNode = nullptr;
+  Ogre::SceneNode* aspaNode = nullptr;
+  Ogre::SceneNode* tableroNode = nullptr;;
+  Ogre::SceneNode* cilindroNode = nullptr;
+  //------
   Ogre::SceneNode* aspas = nullptr;
   Ogre::SceneNode* numAspas[12];
   AspasMolino* molino = nullptr;
+    // Escena 0
+  Ogre::SceneNode* Clock = nullptr;
+  Ogre::SceneNode* mHourNode[12];
+  Ogre::SceneNode* mAgujas[3];
+  Ogre::SceneNode* spheresParent = nullptr;
+  Ogre::SceneNode* segundosParent = nullptr;
 
   Molino* molino_Completo = nullptr;
   OgreBites::CameraMan* mCamMgr = nullptr;
  
   int rad = 500;
+  int scene = 12;
  
 };
 
