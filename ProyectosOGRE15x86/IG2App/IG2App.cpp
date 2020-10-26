@@ -22,7 +22,7 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
         aspas->roll(Ogre::Degree(-10.0f));
     }
     else if (evt.keysym.sym == SDLK_h && scene == 12) {
-        Clock->getChild("segundos_Parent")->roll(Ogre::Degree(10.0f),Ogre::Node::TS_PARENT);
+        Clock->getChild("segundos_Parent")->roll(Ogre::Degree(-10.0f),Ogre::Node::TS_PARENT);
        
     }
     //else if (evt.keysym.sym == SDLK_0) scene = 0;
@@ -192,14 +192,14 @@ void IG2App::setupScene(void)
           mAgujas[i] = Clock->createChildSceneNode("Aguja " + std::to_string(i + 1));
           mAgujas[i]->attachObject(aguja);
           mAgujas[i]->setScale(0.2 / (i + 1), 4, 0.1);
+		  
       }
       //creamos un nodo padre ficticio para rotar la aguja de los segundos
-      i++;
-      segundosParent = Clock->createChildSceneNode("segundos_Parent");
-      Ogre::Entity* secs = mSM->createEntity("cube.mesh");
-      mAgujas[i]=segundosParent->createChildSceneNode("Aguja " + std::to_string(i + 1));
-      mAgujas[i]->attachObject(secs);
-      segundosParent->setScale(0.2 / (i + 1), 4, 0.1);
+	  segundosParent = Clock->createChildSceneNode("segundos_Parent");
+	  Ogre::Entity* secs = mSM->createEntity("cube.mesh");
+	  mAgujas[i] = segundosParent->createChildSceneNode("Aguja " + std::to_string(i + 1));
+	  mAgujas[i]->attachObject(secs);
+	  mAgujas[i]->setScale(0.2 / (i + 1), 4, 0.1);
 
 
       Ogre::SceneNode* agujaHora = mSM->getSceneNode("Aguja 1");
