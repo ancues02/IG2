@@ -37,7 +37,7 @@ protected:
   Ogre::SceneNode* aspas = nullptr;
   Ogre::SceneNode* numAspas[12];
   AspasMolino* molino = nullptr;
-    // Escena 0
+    // Escena 0, 12, 13
   Ogre::SceneNode* Clock = nullptr;
   Ogre::SceneNode* mHourNode[12];
   Ogre::SceneNode* mAgujas[3];
@@ -46,9 +46,15 @@ protected:
 
   Molino* molino_Completo = nullptr;
   OgreBites::CameraMan* mCamMgr = nullptr;
- 
+
+  //Escena 14, 15
+  Ogre::SceneNode* Sol = nullptr;
+  Ogre::SceneNode* Tierra = nullptr;
+  Ogre::Vector3 posIni = { 0,0,0 };
+  Ogre::SceneNode* Luna = nullptr;
+
   int rad = 500;
-  int scene = 12;
+  int scene = 14;
  
 };
 
