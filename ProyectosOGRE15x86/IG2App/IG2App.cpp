@@ -245,6 +245,10 @@ void IG2App::setupScene(void)
 		Luna->scale(0.1, 0.1, 0.1);
 
 	}
+	else if (scene == 16) {
+		avion = new Avion(mSM->getRootSceneNode());
+		addInputListener(avion);
+	}
 
 
 	//------------------------------------------------------------------------

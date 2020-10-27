@@ -31,8 +31,8 @@ bool Aspa::keyPressed(const OgreBites::KeyboardEvent& evt)
 
 AspasMolino::AspasMolino(Ogre::SceneNode* parentNode, int nAspas) : numAspas(nAspas)
 {
-    aspasNode = parentNode->createChildSceneNode("aspas");//creamos el nodo de las aspas como hijo del que nos pasan
-    centroNode = aspasNode->createChildSceneNode("centro_aspas");
+    aspasNode = parentNode->createChildSceneNode("aspas" + std::to_string(cont + 1));//creamos el nodo de las aspas como hijo del que nos pasan
+    centroNode = aspasNode->createChildSceneNode("centro_aspas" + std::to_string(cont + 1));
     Ogre::Entity* ent = parentNode->getCreator()->createEntity("Barrel.mesh");
 	centroNode->attachObject(ent);
     centroNode->pitch(Ogre::Degree(90.0));
@@ -59,14 +59,15 @@ AspasMolino::AspasMolino(Ogre::SceneNode* parentNode, int nAspas) : numAspas(nAs
         // Apartado 7
         arrayAspas[i] = new Aspa(aspasNode);
         float rotation = (360.0f / numAspas) * i;
-        Node* aux = aspasNode->getChild("aspa_" + std::to_string(i + 1));
+        Node* aux = aspasNode->getChild("aspa_" + std::to_string(arrayAspas[i]->getAspaID()));
         aux->roll(Ogre::Degree(rotation), Ogre::Node::TS_PARENT);
         aux->translate(200, 0, 0, Ogre::Node::TS_LOCAL);
-        aux->getChild("adorno_" + std::to_string(i + 1))->roll(Ogre::Degree(-rotation));
+        aux->getChild("adorno_" +  std::to_string(arrayAspas[i]->getAspaID()))->roll(Ogre::Degree(-rotation));
 
     }
+    cont++;
 }
-
+int AspasMolino::cont = 0;
 AspasMolino::~AspasMolino()
 {
 }

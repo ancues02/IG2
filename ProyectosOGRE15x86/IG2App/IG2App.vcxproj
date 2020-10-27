@@ -120,11 +120,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Aspa.h" />
+    <ClInclude Include="Avion.h" />
     <ClInclude Include="IG2ApplicationContext.h" />
     <ClInclude Include="IG2App.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Aspa.cpp" />
+    <ClCompile Include="Avion.cpp" />
     <ClCompile Include="IG2ApplicationContext.cpp" />
     <ClCompile Include="IG2Main.cpp" />
     <ClCompile Include="IG2App.cpp" />

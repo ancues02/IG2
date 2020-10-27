@@ -8,6 +8,7 @@
 #include <OgreCameraMan.h>
 
 #include "Aspa.h"
+#include "Avion.h"
 
 class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener 
 {
@@ -53,8 +54,11 @@ protected:
   Ogre::Vector3 posIni = { 0,0,0 };
   Ogre::SceneNode* Luna = nullptr;
 
+  //Escena 16,17
+  Avion* avion = nullptr;
+
   int rad = 500;
-  int scene = 14;
+  int scene = 16;
  
 };
 

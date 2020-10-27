@@ -14,7 +14,9 @@ public:
     Aspa(Ogre::SceneNode* parentNode);
     ~Aspa();
     virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
-
+    int getAspaID(){
+        return cont;
+    }
 private:
 	//Ogre::SceneManager* mSM = nullptr;
 
@@ -35,6 +37,7 @@ private:
     int numAspas;
     Aspa** arrayAspas;
     Ogre::SceneNode* centroNode = nullptr;
+    static int cont;    
 };
 
 class Molino : public OgreBites::InputListener
