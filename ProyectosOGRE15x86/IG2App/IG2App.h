@@ -58,7 +58,7 @@ protected:
   Avion* avion = nullptr;
 
   int rad = 500;
-  int scene = 16;
+  int scene = 18;
  
 };
 

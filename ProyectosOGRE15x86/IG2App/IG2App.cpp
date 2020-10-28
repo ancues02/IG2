@@ -250,6 +250,16 @@ void IG2App::setupScene(void)
 		addInputListener(avion);
 	}
 
+	else if (scene == 18) {
+		MeshManager::getSingleton().createPlane("mPlane1080x800",
+		ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+		Plane(Vector3::UNIT_Y, 0),
+		1080, 800, 100, 80, true, 1, 1.0, 1.0, Vector3::UNIT_Z);		Ogre::Entity* plane = mSM->createEntity("mPlane1080x800");
+		aspaNode = mSM->getRootSceneNode()->createChildSceneNode("aspa");
+
+		aspaNode->attachObject(plane);
+	}
+
 
 	//------------------------------------------------------------------------
 
