@@ -1,8 +1,1 @@
-﻿  EntidadIG.cpp
-  Generando código
-  2 of 627 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
-  Generación de código finalizada
-SDL2main.lib(SDL_windows_main.obj) : warning LNK4099: no se encontró PDB 'SDL2main.pdb' con 'SDL2main.lib(SDL_windows_main.obj)' o en 'C:\Users\andre\OneDrive\Escritorio\UCM\Tercero\IG\IG2\ProyectosOGRE15x86\bin\SDL2main.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-  IG2App.vcxproj -> C:\Users\andre\OneDrive\Escritorio\UCM\Tercero\IG\IG2\ProyectosOGRE15x86\bin\IG2AppRelease.exe
+﻿
