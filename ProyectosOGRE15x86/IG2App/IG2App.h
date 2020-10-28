@@ -48,6 +48,7 @@ protected:
   Molino* molino_Completo = nullptr;
   OgreBites::CameraMan* mCamMgr = nullptr;
 
+  EntidadIG* ent_molino = nullptr;
   //Escena 14, 15
   Ogre::SceneNode* Sol = nullptr;
   Ogre::SceneNode* Tierra = nullptr;
@@ -58,7 +59,7 @@ protected:
   Avion* avion = nullptr;
 
   int rad = 500;
-  int scene = 18;
+  int scene = 9;
  
 };
 

@@ -7,6 +7,8 @@ std::vector<EntidadIG*>(0, nullptr);
 EntidadIG::EntidadIG(SceneNode* node)
 {	
 	mNode = node;
+	//node->createChildSceneNode("");
+	//mSM->createChildSceneNoce("");
 	mSM = mNode->getCreator();
 }
 

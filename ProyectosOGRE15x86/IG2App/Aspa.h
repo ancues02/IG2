@@ -1,37 +1,31 @@
 #pragma once
 
-#include <OgreInput.h>
-#include <OgreSceneNode.h>
-#include <OgreSceneManager.h>
-#include <OgreEntity.h>
-
-#include <SDL_keycode.h>
+#include "EntidadIG.h"
 
 using namespace Ogre;
-class Aspa : public OgreBites::InputListener
+class Aspa : public EntidadIG
 {
 public:
     Aspa(Ogre::SceneNode* parentNode);
     ~Aspa();
-    virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
     int getAspaID(){
         return cont;
     }
 private:
-	//Ogre::SceneManager* mSM = nullptr;
-
+	
     Ogre::SceneNode* aspaNode = nullptr;
     Ogre::SceneNode* tableroNode = nullptr;;
     Ogre::SceneNode* cilindroNode = nullptr;
     static int cont;
 };
 
-class AspasMolino : public OgreBites::InputListener 
+class AspasMolino : public EntidadIG
 {
 public:
     AspasMolino(Ogre::SceneNode* parentNode, int nAspas);
     ~AspasMolino();
-    virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
+    virtual void receiveEvent(msg::MessageType msgType, EntidadIG* entidad);
+
 private:
     Ogre::SceneNode* aspasNode = nullptr;
     int numAspas;
@@ -40,14 +34,14 @@ private:
     static int cont;    
 };
 
-class Molino : public OgreBites::InputListener
+class Molino : public EntidadIG
 {
 public:
     Molino(Ogre::SceneNode* parentNode, int nAspas);
     ~Molino();
-    virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
+    virtual void receiveEvent(msg::MessageType msgType, EntidadIG* entidad);
 private:
-    Ogre::SceneNode* mNode = nullptr;
+    Ogre::SceneNode* molinoNode = nullptr;
     Ogre::SceneNode* esfera = nullptr;
     Ogre::SceneNode* cilCuerpo = nullptr;
     Ogre::SceneNode* ficticio = nullptr;

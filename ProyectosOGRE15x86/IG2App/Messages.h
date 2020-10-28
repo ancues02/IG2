@@ -4,7 +4,9 @@
 namespace msg {
 
 	enum MessageType : size_t {
-		a
+		_GIRAR_ASPAS,
+		_ACERCAR_CENTRO_ASPAS,
+		_ALREDEDOR_MOLINO
 	};
 
 }
