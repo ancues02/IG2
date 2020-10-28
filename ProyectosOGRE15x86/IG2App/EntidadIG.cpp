@@ -1,4 +1,4 @@
-#include "EntidadIG.h"
+/*#include "EntidadIG.h"
 
 EntidadIG::EntidadIG(SceneNode* node, ...)
 {
@@ -19,4 +19,4 @@ bool EntidadIG::keyPressed(const OgreBites::KeyboardEvent& evt)
 	 
 	 }
 	 return true;
-};
+};*/

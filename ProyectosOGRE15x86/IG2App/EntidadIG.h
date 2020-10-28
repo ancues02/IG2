@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include <OgreInput.h>
 #include <OgreSceneNode.h>
 #include <OgreSceneManager.h>
@@ -20,4 +20,4 @@ protected:
 	Ogre::SceneNode* mNode = nullptr;
 	Ogre::SceneManager* mSM = nullptr;
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
-};
+};*/
