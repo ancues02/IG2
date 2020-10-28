@@ -98,14 +98,14 @@ Molino::Molino(Ogre::SceneNode* parentNode, int nAspas):  numAspas(nAspas)
     cilCuerpo = mNode->createChildSceneNode("cil_cuerpo");
 
     aspasMolino = new AspasMolino(mNode, numAspas);//sin ficticio
-    mNode->getChild("aspas")->setScale(0.5, 0.5, 0.5);//sin ficticio
-    mNode->getChild("aspas")->translate(0, 0, 130);//sin ficticio
+    mNode->getChild("aspas1")->setScale(0.5, 0.5, 0.5);//sin ficticio
+    mNode->getChild("aspas1")->translate(0, 0, 130);//sin ficticio
 
 
     /*ficticio = mNode->createChildSceneNode("ficticio");//con ficticio
     aspasMolino = new AspasMolino(ficticio, numAspas);//con ficticio
-    ficticio->getChild("aspas")->setScale(0.5, 0.5, 0.5);//con ficticio
-    ficticio->getChild("aspas")->translate(0, 0, 130);//con ficticio
+    ficticio->getChild("aspas1")->setScale(0.5, 0.5, 0.5);//con ficticio
+    ficticio->getChild("aspas1")->translate(0, 0, 130);//con ficticio
     */
 
     Ogre::Entity* ent = parentNode->getCreator()->createEntity("sphere.mesh");    
@@ -116,7 +116,7 @@ Molino::Molino(Ogre::SceneNode* parentNode, int nAspas):  numAspas(nAspas)
   	cilCuerpo->attachObject(ent);
     cilCuerpo->setScale(50, 50, 50);
     cilCuerpo->translate(0, -150, 0);
-    posIni = mNode->getChild("aspas")->getPosition();
+    posIni = mNode->getChild("aspas1")->getPosition();
 
 }
 
@@ -126,14 +126,14 @@ Molino::~Molino()
 
 bool Molino::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
-    //aspasMolino->keyPressed(evt);
+    aspasMolino->keyPressed(evt);
     if (evt.keysym.sym == SDLK_h) 
     {
-        //Vector3 aux=mNode->getChild("aspas")->getPosition();//no funciona porque pilla la posicion con respecto al padre
+        //Vector3 aux=mNode->getChild("aspas1")->getPosition();//no funciona porque pilla la posicion con respecto al padre
       
-        mNode->getChild("aspas")->translate(-posIni, Ogre::Node::TS_LOCAL);//sin ficticio        
-        mNode->getChild("aspas")->yaw(Ogre::Degree(-10.0f),Node::TS_PARENT);//sin ficticio
-        mNode->getChild("aspas")->translate(posIni, Ogre::Node::TS_LOCAL);//sin ficticio
+        mNode->getChild("aspas1")->translate(-posIni, Ogre::Node::TS_LOCAL);//sin ficticio        
+        mNode->getChild("aspas1")->yaw(Ogre::Degree(-10.0f),Node::TS_PARENT);//sin ficticio
+        mNode->getChild("aspas1")->translate(posIni, Ogre::Node::TS_LOCAL);//sin ficticio
         
 
         //mNode->getChild("ficticio")->yaw(Ogre::Degree(-10.0f));//con ficticio
