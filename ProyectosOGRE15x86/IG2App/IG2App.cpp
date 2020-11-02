@@ -252,16 +252,52 @@ void IG2App::setupScene(void)
 	}
 
 	else if (scene == 18) {
-		MeshManager::getSingleton().createPlane("mPlane1080x800",
+		
+		/*MeshManager::getSingleton().createPlane("mPlane1080x800",
 		ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
 		Plane(Vector3::UNIT_Y, 0),
 		1080, 800, 100, 80, true, 1, 1.0, 1.0, Vector3::UNIT_Z);		Ogre::Entity* plane = mSM->createEntity("mPlane1080x800");
-		aspaNode = mSM->getRootSceneNode()->createChildSceneNode("aspa");
+		planoNode = mSM->getRootSceneNode()->createChildSceneNode("plano");
 
-		aspaNode->attachObject(plane);
+		planoNode->attachObject(plane);*/
+
+
+		//escena 21
+		plano = new Plano(mSM->getRootSceneNode());
+		/*EntidadIG::addListener(plano);
+		addInputListener(plano);*/
 	}
 
+	else if (scene == 23) {
+		plano = new Plano(mSM->getRootSceneNode());
+		plano2 = new Plano(mSM->getRootSceneNode());
+		plano3 = new Plano(mSM->getRootSceneNode());
+		
+		ent_molino = new Molino(mSM->getRootSceneNode(), 6);
+		addInputListener(ent_molino);
 
+		avion = new Avion(mSM->getRootSceneNode());
+		addInputListener(avion);
+
+		Ogre::Entity* ent = mSM->createEntity("Sinbad.mesh");
+		mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
+		mSinbadNode->attachObject(ent);
+		mSinbadNode->translate(-800, 100, 400);
+		mSinbadNode->setScale(20, 20, 20);
+
+		mSM->getSceneNode("plano_1")->scale(2, 2, 2);
+		mSM->getSceneNode("plano_2")->scale(1, 1, 1);
+		mSM->getSceneNode("plano_2")->translate(-500, 10, 300);//plano debajo de sinbad
+		mSM->getSceneNode("plano_3")->translate(800, 10, -400);//plano debajo del molino
+		mSM->getSceneNode("plano_3")->scale(0.4, 0.4, 0.4);
+
+		mSM->getSceneNode("molino")->translate(800, 300, -400);
+		auto aux2 = mSM->getSceneNode("avion"); 
+		aux2->translate(900, 600, -450);
+		aux2->yaw(Ogre::Degree(-50.0f));
+		aux2->scale(0.2, 0.2, 0.2);
+
+	}
 	//------------------------------------------------------------------------
 
 	mCamMgr = new OgreBites::CameraMan(mCamNode);

@@ -3,7 +3,7 @@ Avion::Avion(Ogre::SceneNode* parentNode):EntidadIG(parentNode)
 {
     // Apartado 16
     // Creacion de los nodos para cada elemento del avión
-    avionNode = mNode->createChildSceneNode("Avion");
+    avionNode = mNode->createChildSceneNode("avion");
     cuerpoNode = avionNode->createChildSceneNode("cuerpo_Node");
     alaINode = avionNode->createChildSceneNode("alaI_Node");
     alaDNode = avionNode->createChildSceneNode("alaD_Node");
@@ -42,10 +42,10 @@ Avion::Avion(Ogre::SceneNode* parentNode):EntidadIG(parentNode)
     frenteNode->scale(10, 3, 10);
 	frenteNode->translate(0, 0, 100);
 
-    auto aux = avionNode->getChild("aspas1");
+    auto aux = avionNode->getChild("aspas" + std::to_string(heliceNode_D->getID()));
     aux->translate(200,0,50, Ogre::Node::TS_LOCAL);//sin ficticio 
     aux->scale(0.2, 0.2, 0.2);
-    aux = avionNode->getChild("aspas2");
+    aux = avionNode->getChild("aspas" + std::to_string(heliceNode_I->getID()));
 	aux->translate(-200,0,50, Ogre::Node::TS_LOCAL);//sin ficticio 
 	aux->scale(0.2, 0.2, 0.2);
 

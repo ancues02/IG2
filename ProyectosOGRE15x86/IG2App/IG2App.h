@@ -9,6 +9,7 @@
 
 #include "Aspa.h"
 #include "Avion.h"
+#include "Plano.h"
 
 class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener 
 {
@@ -27,8 +28,8 @@ protected:
   OgreBites::TrayManager* mTrayMgr = nullptr;    
   Ogre::SceneNode* mLightNode = nullptr;
   Ogre::SceneNode* mCamNode = nullptr;
-  Ogre::SceneNode* mSinbadNode = nullptr;
-  Ogre::SceneNode* mEdificioNode = nullptr;
+  Ogre::SceneNode* mSinbadNode = nullptr;   // tambien se usa en el apartado 23
+  Ogre::SceneNode* mEdificioNode = nullptr; //solo se usaba en la escena 0
 
   // Apartado 1
   Ogre::SceneNode* aspaNode = nullptr;
@@ -37,7 +38,7 @@ protected:
   //------
   Ogre::SceneNode* aspas = nullptr;
   Ogre::SceneNode* numAspas[12];
-  AspasMolino* molino = nullptr;
+  AspasMolino* molino = nullptr;            
     // Escena 0, 12, 13
   Ogre::SceneNode* Clock = nullptr;
   Ogre::SceneNode* mHourNode[12];
@@ -45,7 +46,7 @@ protected:
   Ogre::SceneNode* spheresParent = nullptr;
   Ogre::SceneNode* segundosParent = nullptr;
 
-  Molino* molino_Completo = nullptr;
+  Molino* molino_Completo = nullptr;            // tambien se usa en el apartado 23
   OgreBites::CameraMan* mCamMgr = nullptr;
 
   EntidadIG* ent_molino = nullptr;
@@ -56,10 +57,17 @@ protected:
   Ogre::SceneNode* Luna = nullptr;
 
   //Escena 16,17
-  Avion* avion = nullptr;
+  Avion* avion = nullptr;	// tambien se usa en el apartado 23
+
+  Ogre::SceneNode* planoNode = nullptr;
+  // Escena 23
+  Plano* plano = nullptr;
+  Plano* plano2 = nullptr;
+  Plano* plano3 = nullptr;
+
 
   int rad = 500;
-  int scene = 16;
+  int scene = 23;
  
 };
 

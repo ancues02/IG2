@@ -63,7 +63,7 @@ AspasMolino::AspasMolino(Ogre::SceneNode* parentNode, int nAspas) : EntidadIG(pa
         aux->getChild("adorno_" + std::to_string(arrayAspas[i]->getAspaID()))->roll(Ogre::Degree(-rotation));
     }
     addListener(this);
-    cont++;
+    cont++; id = cont;
 }
 
 int AspasMolino::cont = 0;
@@ -119,8 +119,8 @@ Molino::Molino(Ogre::SceneNode* parentNode, int nAspas): EntidadIG(parentNode), 
     cilCuerpo = molinoNode->createChildSceneNode("cil_cuerpo");
 
     aspasMolino = new AspasMolino(molinoNode, numAspas);//sin ficticio
-    molinoNode->getChild("aspas1")->setScale(0.5, 0.5, 0.5);//sin ficticio
-    molinoNode->getChild("aspas1")->translate(0, 0, 130);//sin ficticio
+    molinoNode->getChild("aspas" + std::to_string(aspasMolino->getID()))->setScale(0.5, 0.5, 0.5);//sin ficticio
+    molinoNode->getChild("aspas"+ std::to_string(aspasMolino->getID()))->translate(0, 0, 130);//sin ficticio
 
 
     /*ficticio = mNode->createChildSceneNode("ficticio");//con ficticio
@@ -137,7 +137,7 @@ Molino::Molino(Ogre::SceneNode* parentNode, int nAspas): EntidadIG(parentNode), 
   	cilCuerpo->attachObject(ent);
     cilCuerpo->setScale(50, 50, 50);
     cilCuerpo->translate(0, -150, 0);
-    posIni = molinoNode->getChild("aspas1")->getPosition();
+    posIni = molinoNode->getChild("aspas" + std::to_string(aspasMolino->getID()))->getPosition();
 
     addListener(this);
 }

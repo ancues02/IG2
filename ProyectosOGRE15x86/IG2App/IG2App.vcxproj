@@ -125,6 +125,7 @@
     <ClInclude Include="IG2ApplicationContext.h" />
     <ClInclude Include="IG2App.h" />
     <ClInclude Include="Messages.h" />
+    <ClInclude Include="Plano.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Aspa.cpp" />
@@ -134,6 +135,7 @@
     <ClCompile Include="IG2Main.cpp" />
     <ClCompile Include="IG2App.cpp" />
     <ClCompile Include="Messages.cpp" />
+    <ClCompile Include="Plano.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
