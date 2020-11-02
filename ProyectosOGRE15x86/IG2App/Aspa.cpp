@@ -16,8 +16,9 @@ Aspa::Aspa(Ogre::SceneNode* parentNode) : EntidadIG(parentNode)
     cilindroNode->attachObject(ent);
     cilindroNode->setScale(5, 10, 5);
     cilindroNode->setPosition(150, 0, 20);
-
     cont++;
+	id = cont;
+
 }
 
 int Aspa::cont = 0;
@@ -73,18 +74,19 @@ AspasMolino::~AspasMolino()
 
 void AspasMolino::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
 {
+    
     switch (msgType)
     {
     case msg::_GIRAR_ASPAS:
     {
         for (int i = 0; i < numAspas; i++) {
-            aspasNode->getChild("aspa_" + std::to_string(i + 1))->getChild("adorno_" + std::to_string(i + 1))->roll(Ogre::Degree(10.0f));
+           aspasNode->getChild("aspa_"+ std::to_string(arrayAspas[i]->getAspaID()))->getChild("adorno_"+ std::to_string(arrayAspas[i]->getAspaID()))->roll(Ogre::Degree(10.0f));
         }
         aspasNode->roll(Ogre::Degree(-10.0f));
     }
         break;
     case msg::_ACERCAR_CENTRO_ASPAS:
-        aspasNode->getChild("centro_aspas")->translate(0, 0, -2);
+        centroNode->translate(0, 0, -2);
         break;
     default:
         break;
@@ -152,9 +154,9 @@ void Molino::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
     {
         //Vector3 aux=mNode->getChild("aspas1")->getPosition();//no funciona porque pilla la posicion con respecto al padre
 
-        mNode->getChild("aspas1")->translate(-posIni, Ogre::Node::TS_LOCAL);//sin ficticio        
-        mNode->getChild("aspas1")->yaw(Ogre::Degree(-10.0f), Node::TS_PARENT);//sin ficticio
-        mNode->getChild("aspas1")->translate(posIni, Ogre::Node::TS_LOCAL);//sin ficticio
+        molinoNode->getChild("aspas1")->translate(-posIni, Ogre::Node::TS_LOCAL);//sin ficticio        
+        molinoNode->getChild("aspas1")->yaw(Ogre::Degree(-10.0f), Node::TS_PARENT);//sin ficticio
+        molinoNode->getChild("aspas1")->translate(posIni, Ogre::Node::TS_LOCAL);//sin ficticio
 
 
         //mNode->getChild("ficticio")->yaw(Ogre::Degree(-10.0f));//con ficticio

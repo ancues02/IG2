@@ -9,7 +9,7 @@ public:
     Aspa(Ogre::SceneNode* parentNode);
     ~Aspa();
     int getAspaID(){
-        return cont;
+        return id;
     }
 private:
 	
@@ -17,6 +17,7 @@ private:
     Ogre::SceneNode* tableroNode = nullptr;;
     Ogre::SceneNode* cilindroNode = nullptr;
     static int cont;
+    int id;
 };
 
 class AspasMolino : public EntidadIG

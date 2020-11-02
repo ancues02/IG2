@@ -25,8 +25,22 @@ void EntidadIG::sendEvent(msg::MessageType msgType, EntidadIG* entidad)
 
 bool EntidadIG::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
-	 if (evt.keysym.sym == SDLK_g ) {
-		
-	 }
-	 return true;
+	switch (evt.keysym.sym) {
+	case SDLK_g://rotan aspas
+		sendEvent(msg::_GIRAR_ASPAS, this);
+		break;
+	case SDLK_c://el cilindro central de las aspas se mueve hacia dentro
+		sendEvent(msg::_ACERCAR_CENTRO_ASPAS, this);
+		break;
+	case SDLK_h://las aspas giran al rededor del molino
+		sendEvent(msg::_ALREDEDOR_MOLINO, this);
+		break;
+	/*case SDLK_j://gira la tierra al rederor del sol
+		sendEvent(msg::_GIRAR_ASPAS, this);
+		break;*/
+	default:
+		return false;
+		break;
+	}	
+	return false;
 };

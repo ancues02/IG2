@@ -1,16 +1,16 @@
 #include "Avion.h"
-Avion::Avion(Ogre::SceneNode* parentNode)
+Avion::Avion(Ogre::SceneNode* parentNode):EntidadIG(parentNode)
 {
     // Apartado 16
     // Creacion de los nodos para cada elemento del avión
-    mNode = parentNode->createChildSceneNode("Avion");
-    cuerpoNode = mNode->createChildSceneNode("cuerpo_Node");
-    alaINode = mNode->createChildSceneNode("alaI_Node");
-    alaDNode = mNode->createChildSceneNode("alaD_Node");
-    frenteNode = mNode->createChildSceneNode("frente_Node");
-    pilotoNode = mNode->createChildSceneNode("piloto_Node");
-    heliceNode_D = new AspasMolino(mNode, 5);
-    heliceNode_I = new AspasMolino(mNode, 5);
+    avionNode = mNode->createChildSceneNode("Avion");
+    cuerpoNode = avionNode->createChildSceneNode("cuerpo_Node");
+    alaINode = avionNode->createChildSceneNode("alaI_Node");
+    alaDNode = avionNode->createChildSceneNode("alaD_Node");
+    frenteNode = avionNode->createChildSceneNode("frente_Node");
+    pilotoNode = avionNode->createChildSceneNode("piloto_Node");
+    heliceNode_D = new AspasMolino(avionNode, 5);
+    heliceNode_I = new AspasMolino(avionNode, 5);
 
     // Creacion del cuerpo del avion
     Ogre::Entity* ent = parentNode->getCreator()->createEntity("sphere.mesh");
@@ -42,10 +42,10 @@ Avion::Avion(Ogre::SceneNode* parentNode)
     frenteNode->scale(10, 3, 10);
 	frenteNode->translate(0, 0, 100);
 
-    auto aux = mNode->getChild("aspas1");
+    auto aux = avionNode->getChild("aspas1");
     aux->translate(200,0,50, Ogre::Node::TS_LOCAL);//sin ficticio 
     aux->scale(0.2, 0.2, 0.2);
-    aux = mNode->getChild("aspas2");
+    aux = avionNode->getChild("aspas2");
 	aux->translate(-200,0,50, Ogre::Node::TS_LOCAL);//sin ficticio 
 	aux->scale(0.2, 0.2, 0.2);
 
@@ -56,16 +56,20 @@ Avion::~Avion()
 {
 }
 
+void Avion::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
+{
+}
+
 // Apartado 17
-bool Avion::keyPressed(const OgreBites::KeyboardEvent& evt)
+/*bool Avion::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
     if (evt.keysym.sym == SDLK_g) 
     {
-        auto aux = mNode->getChild("aspas1");
+        auto aux = avionNode->getChild("aspas1");
 		aux->roll(Ogre::Degree(-10.0));
-		aux = mNode->getChild("aspas2");
+		aux = avionNode->getChild("aspas2");
 		aux->roll(Ogre::Degree(-10.0));
     }
     
     return true;
-}
+}*/

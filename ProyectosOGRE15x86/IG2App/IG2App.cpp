@@ -173,8 +173,8 @@ void IG2App::setupScene(void)
 	//apartados 9, 10 y 11
 	else if (scene == 9) {
 		//molino_Completo = new Molino(mSM->getRootSceneNode(), 6);
-		ent_molino = new AspasMolino(mSM->getRootSceneNode(), 6);
-		//addInputListener(molino_Completo);
+		ent_molino = new Molino(mSM->getRootSceneNode(), 6);
+		addInputListener(ent_molino);
 	}
 	//-------------------------------------------------------------------
 

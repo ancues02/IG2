@@ -1,22 +1,18 @@
 #pragma once
 
-#include <OgreInput.h>
-#include <OgreSceneNode.h>
-#include <OgreSceneManager.h>
-#include <OgreEntity.h>
 
-#include <SDL_keycode.h>
 #include "Aspa.h"
+
 using namespace Ogre;
-class Avion : public OgreBites::InputListener
+class Avion : public EntidadIG
 {
 public:
     Avion(Ogre::SceneNode* parentNode);
     ~Avion();
-    virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
-
+    //virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
+    virtual void receiveEvent(msg::MessageType msgType, EntidadIG* entidad);
 private:
-    Ogre::SceneNode* mNode = nullptr;
+    Ogre::SceneNode* avionNode = nullptr;
     Ogre::SceneNode* cuerpoNode = nullptr;
     Ogre::SceneNode* alaINode = nullptr;;
     Ogre::SceneNode* alaDNode = nullptr;
