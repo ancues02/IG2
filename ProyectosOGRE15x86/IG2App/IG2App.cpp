@@ -276,11 +276,11 @@ void IG2App::setupScene(void)
 	else if (scene == 23) {
 		plano = new Plano(mSM->getRootSceneNode());
 		plano->setMaterial("Practica1/agua");
-
 		plano2 = new Plano(mSM->getRootSceneNode());
 		plano2->setMaterial("Practica1/rojete");
 		plano3 = new Plano(mSM->getRootSceneNode());
-		
+		plano3->setMaterial("Practica1/naranjete");
+
 		ent_molino = new Molino(mSM->getRootSceneNode(), 6);
 		addInputListener(ent_molino);
 
@@ -290,12 +290,12 @@ void IG2App::setupScene(void)
 		simbad = new Simbad(mSM->getRootSceneNode());
 
 		mSM->getSceneNode("plano_1")->scale(2, 2, 2);
-		mSM->getSceneNode("plano_2")->scale(1, 1, 1);
-		mSM->getSceneNode("plano_2")->translate(-500, 10, 300);//plano debajo de sinbad
-		mSM->getSceneNode("plano_3")->translate(800, 10, -400);//plano debajo del molino
+		mSM->getSceneNode("plano_2")->scale(0.8, 0.8, 0.8);
+		mSM->getSceneNode("plano_2")->translate(-650, 1, 480);//plano debajo de sinbad
+		mSM->getSceneNode("plano_3")->translate(860, 1, -630);//plano debajo del molino
 		mSM->getSceneNode("plano_3")->scale(0.4, 0.4, 0.4);
 
-		mSM->getSceneNode("molino")->translate(800, 300, -400);
+		mSM->getSceneNode("molino")->translate(860, 300, -630);
 		/*auto aux2 = mSM->getSceneNode("avion"); 
 		aux2->translate(900, 600, -450);
 		aux2->yaw(Ogre::Degree(-50.0f));

@@ -15,7 +15,7 @@ Plano::Plano(Ogre::SceneNode* parentNode):EntidadIG(parentNode) {
 int Plano::cont = 0;
 
 Plano::~Plano() {
-	//delete 
+	//delete plane;
 }
 
 void Plano::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)

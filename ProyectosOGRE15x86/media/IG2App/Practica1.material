@@ -13,34 +13,63 @@ material Practica1/cabeza {
 material Practica1/agua {
     technique {
         pass {
-        texture_unit {
-            texture Water02.jpg
-            scroll_anim -0.1 0.0 
+            texture_unit {
+                texture Water02.jpg
+                scroll_anim -0.1 0.0 
             }
         }
     }
 }
+material Practica1/piedra {
+    technique {
+        pass {
+            texture_unit {
+                texture floor_diffuse.PNG
+            }
+        }
+    }
+}
+material Practica1/centroAspas {
+    technique {
+        pass {
+            texture_unit {
+                texture BumpyMetal.jpg
+            }
+        }
+    }
+}
+
+material Practica1/tableroHelice {
+    technique {
+        pass {
+            texture_unit {
+                texture checker.png
+            }
+        }
+    }
+}
+
 material Practica1/amarillete {
     technique {
         pass {
-        diffuse 0.5 0.5 0.5
-        texture_unit {
-            texture checker.jpg
-            colour_op add
+            diffuse 1.0 1.0 0.0
+            
+        }
+    }
+}
+material Practica1/amarilleteEsf {
+    technique {
+        pass {
+            diffuse 1.0 1.0 0.0
             env_map spherical
-            }
+
         }
     }
 }
 material Practica1/azulete {
     technique {
         pass {
-        diffuse 0.5 0.5 0.5
-        texture_unit {
-            texture checker.jpg
-            colour_op add
-            env_map spherical
-            }
+        diffuse 0.3 0.8 1.0
         }
     }
 }
@@ -48,12 +77,8 @@ material Practica1/azulete {
 material Practica1/marroncete {
     technique {
         pass {
-        diffuse 0.5 0.5 0.5
-        texture_unit {
-            texture checker.jpg
-            colour_op add
-            env_map spherical
-            }
+            diffuse 0.5 0.25 0.0
+            
         }
     }
 }
@@ -65,29 +90,22 @@ material Practica1/rojete {
         }
     }
 }
-
-material Practica1/piedra {
+material Practica1/rojeteEsf {
     technique {
         pass {
-        diffuse 0.5 0.5 0.5
-        texture_unit {
-            texture floor_diffuse.PNG
-            colour_op add
+            diffuse 1.0 0.0 0.0
             env_map spherical
-            }
+
         }
     }
 }
 
+
+
 material Practica1/naranjete {
     technique {
         pass {
-        diffuse 0.5 0.5 0.5
-        texture_unit {
-            texture checker.jpg
-            colour_op add
-            env_map spherical
-            }
+            diffuse 1 0.5 0.0
         }
     }
 }

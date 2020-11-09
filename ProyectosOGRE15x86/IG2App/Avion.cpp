@@ -14,22 +14,26 @@ Avion::Avion(Ogre::SceneNode* parentNode):EntidadIG(parentNode)
 
     // Creacion del cuerpo del avion
     Ogre::Entity* ent = parentNode->getCreator()->createEntity("sphere.mesh");
+	ent->setMaterialName("Practica1/rojeteEsf"); 
     cuerpoNode->attachObject(ent);
 
     // Creacion del ala izquierda
     ent = parentNode->getCreator()->createEntity("cube.mesh");
+	ent->setMaterialName("Practica1/tableroHelice");
 	alaINode->attachObject(ent);
     alaINode->scale(4, 0.2, 1);
 	alaINode->translate(100,0,0);
     
     // Creacion del ala derecha
 	ent = parentNode->getCreator()->createEntity("cube.mesh");
+	ent->setMaterialName("Practica1/tableroHelice");
 	alaDNode->attachObject(ent);
     alaDNode->scale(4.0, 0.2, 1.0);
     alaDNode->translate(-100,0.0,0.0);
 
     // Creacion del piloto
     ent = parentNode->getCreator()->createEntity("ninja.mesh");
+	ent->setMaterialName("Practica1/amarillete");
     pilotoNode->attachObject(ent);
 	pilotoNode->yaw(Ogre::Degree(180.0));
 	pilotoNode->scale(0.7, 0.7, 0.7);
@@ -37,6 +41,7 @@ Avion::Avion(Ogre::SceneNode* parentNode):EntidadIG(parentNode)
 
     // Creaicion del frente del avion
     ent = parentNode->getCreator()->createEntity("Barrel.mesh");
+	ent->setMaterialName("Practica1/naranjete");
     frenteNode->attachObject(ent);
     frenteNode->pitch(Ogre::Degree(90.0));
     frenteNode->scale(10, 3, 10);

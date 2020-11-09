@@ -910,6 +910,7 @@ C:\Users\andre\OneDrive\Escritorio\UCM\Tercero\IG\IG2\ProyectosOGRE15x86\IG2App\
 C:\Users\andre\OneDrive\Escritorio\UCM\Tercero\IG\IG2\ProyectosOGRE15x86\IG2App\IG2App.cpp(218,45): warning C4305:  'argumento': truncamiento de 'double' a 'Ogre::Real'
 C:\Users\andre\OneDrive\Escritorio\UCM\Tercero\IG\IG2\ProyectosOGRE15x86\IG2App\IG2App.cpp(218,28): warning C4244:  'argumento': conversión de 'double' a 'Ogre::Real'; posible pérdida de datos
 C:\Users\andre\OneDrive\Escritorio\UCM\Tercero\IG\IG2\ProyectosOGRE15x86\IG2App\IG2App.cpp(250,28): warning C4305:  'argumento': truncamiento de 'double' a 'Ogre::Real'
+C:\Users\andre\OneDrive\Escritorio\UCM\Tercero\IG\IG2\ProyectosOGRE15x86\IG2App\IG2App.cpp(293,52): warning C4305:  'argumento': truncamiento de 'double' a 'Ogre::Real'
 C:\Users\andre\OneDrive\Escritorio\UCM\Tercero\IG\IG2\ProyectosOGRE15x86\IG2App\IG2App.cpp(296,52): warning C4305:  'argumento': truncamiento de 'double' a 'Ogre::Real'
   Generando código
   1 of 707 functions ( 0.1%) were compiled, the rest were copied from previous compilation.

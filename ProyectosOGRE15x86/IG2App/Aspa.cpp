@@ -8,11 +8,13 @@ Aspa::Aspa(Ogre::SceneNode* parentNode) : EntidadIG(parentNode)
 	cilindroNode = aspaNode->createChildSceneNode("adorno_" + std::to_string(cont + 1));
 
     Ogre::Entity* ent = mSM->createEntity("cube.mesh");
+	ent->setMaterialName("Practica1/marroncete");
     tableroNode->attachObject(ent);
     tableroNode->setScale(5, 1, 0.1);
 
 
     ent = mSM->createEntity("Barrel.mesh");
+	ent->setMaterialName("Practica1/azulete");
     cilindroNode->attachObject(ent);
     cilindroNode->setScale(5, 10, 5);
     cilindroNode->setPosition(150, 0, 20);
@@ -32,6 +34,7 @@ AspasMolino::AspasMolino(Ogre::SceneNode* parentNode, int nAspas) : EntidadIG(pa
     aspasNode = mNode->createChildSceneNode("aspas" + std::to_string(cont + 1));//creamos el nodo de las aspas como hijo del que nos pasan
     centroNode = aspasNode->createChildSceneNode("centro_aspas" + std::to_string(cont + 1));
     Ogre::Entity* ent = mSM->createEntity("Barrel.mesh");
+	ent->setMaterialName("Practica1/centroAspas");
 	centroNode->attachObject(ent);
     centroNode->pitch(Ogre::Degree(90.0));
     centroNode->setScale(20, 5, 20);
@@ -120,8 +123,7 @@ Molino::Molino(Ogre::SceneNode* parentNode, int nAspas): EntidadIG(parentNode), 
 
     aspasMolino = new AspasMolino(molinoNode, numAspas);//sin ficticio
     molinoNode->getChild("aspas" + std::to_string(aspasMolino->getID()))->setScale(0.5, 0.5, 0.5);//sin ficticio
-    molinoNode->getChild("aspas"+ std::to_string(aspasMolino->getID()))->translate(0, 0, 130);//sin ficticio
-
+    molinoNode->getChild("aspas"+ std::to_string(aspasMolino->getID()))->translate(0, 0, 140);//sin ficticio
 
     /*ficticio = mNode->createChildSceneNode("ficticio");//con ficticio
     aspasMolino = new AspasMolino(ficticio, numAspas);//con ficticio
@@ -129,11 +131,14 @@ Molino::Molino(Ogre::SceneNode* parentNode, int nAspas): EntidadIG(parentNode), 
     ficticio->getChild("aspas1")->translate(0, 0, 130);//con ficticio
     */
 
-    Ogre::Entity* ent = mSM->createEntity("sphere.mesh");    
+    Ogre::Entity* ent = mSM->createEntity("sphere.mesh");  
+	ent->setMaterialName("Practica1/amarilleteEsf");
     esfera->attachObject(ent);
     esfera->setScale(1.2, 1.2, 1.2);
 
     ent = mSM->createEntity("Barrel.mesh");
+	ent->setMaterialName("Practica1/piedra");
+
   	cilCuerpo->attachObject(ent);
     cilCuerpo->setScale(50, 50, 50);
     cilCuerpo->translate(0, -150, 0);
