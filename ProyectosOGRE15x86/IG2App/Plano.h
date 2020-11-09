@@ -10,7 +10,9 @@ public:
     int getID() {
         return id;
     }
+	void setMaterial(std::string name);
 private:
+	Ogre::Entity* plane;
     static int cont;
 	Ogre::SceneNode* planoNode = nullptr;
     int id;

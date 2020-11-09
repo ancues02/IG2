@@ -110,7 +110,8 @@ void IG2App::setupScene(void)
 	mLightNode->setDirection(Ogre::Vector3(0, -1, -1));  //vec3.normalise();
 
 
-	mSM->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
+	mSM->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
+
 	//lightNode->setPosition(0, 0, 1000);
 
 	//------------------------------------------------------------------------
@@ -274,7 +275,10 @@ void IG2App::setupScene(void)
 
 	else if (scene == 23) {
 		plano = new Plano(mSM->getRootSceneNode());
+		plano->setMaterial("Practica1/agua");
+
 		plano2 = new Plano(mSM->getRootSceneNode());
+		plano2->setMaterial("Practica1/rojete");
 		plano3 = new Plano(mSM->getRootSceneNode());
 		
 		ent_molino = new Molino(mSM->getRootSceneNode(), 6);
