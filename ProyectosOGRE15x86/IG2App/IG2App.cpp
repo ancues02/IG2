@@ -107,7 +107,10 @@ void IG2App::setupScene(void)
 	//mLightNode = mCamNode->createChildSceneNode("nLuz");
 	mLightNode->attachObject(luz);
 
-	mLightNode->setDirection(Ogre::Vector3(0, 0, -1));  //vec3.normalise();
+	mLightNode->setDirection(Ogre::Vector3(0, -1, -1));  //vec3.normalise();
+
+
+	mSM->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
 	//lightNode->setPosition(0, 0, 1000);
 
 	//------------------------------------------------------------------------
@@ -256,7 +259,8 @@ void IG2App::setupScene(void)
 		/*MeshManager::getSingleton().createPlane("mPlane1080x800",
 		ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
 		Plane(Vector3::UNIT_Y, 0),
-		1080, 800, 100, 80, true, 1, 1.0, 1.0, Vector3::UNIT_Z);		Ogre::Entity* plane = mSM->createEntity("mPlane1080x800");
+		1080, 800, 100, 80, true, 1, 1.0, 1.0, Vector3::UNIT_Z);
+		Ogre::Entity* plane = mSM->createEntity("mPlane1080x800");
 		planoNode = mSM->getRootSceneNode()->createChildSceneNode("plano");
 
 		planoNode->attachObject(plane);*/
@@ -279,11 +283,7 @@ void IG2App::setupScene(void)
 		avion = new Avion(mSM->getRootSceneNode());
 		addInputListener(avion);
 
-		Ogre::Entity* ent = mSM->createEntity("Sinbad.mesh");
-		mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
-		mSinbadNode->attachObject(ent);
-		mSinbadNode->translate(-800, 100, 400);
-		mSinbadNode->setScale(20, 20, 20);
+		simbad = new Simbad(mSM->getRootSceneNode());
 
 		mSM->getSceneNode("plano_1")->scale(2, 2, 2);
 		mSM->getSceneNode("plano_2")->scale(1, 1, 1);
@@ -292,10 +292,10 @@ void IG2App::setupScene(void)
 		mSM->getSceneNode("plano_3")->scale(0.4, 0.4, 0.4);
 
 		mSM->getSceneNode("molino")->translate(800, 300, -400);
-		auto aux2 = mSM->getSceneNode("avion"); 
+		/*auto aux2 = mSM->getSceneNode("avion"); 
 		aux2->translate(900, 600, -450);
 		aux2->yaw(Ogre::Degree(-50.0f));
-		aux2->scale(0.2, 0.2, 0.2);
+		aux2->scale(0.2, 0.2, 0.2);*/
 
 	}
 	//------------------------------------------------------------------------

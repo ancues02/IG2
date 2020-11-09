@@ -139,7 +139,20 @@ Molino::Molino(Ogre::SceneNode* parentNode, int nAspas): EntidadIG(parentNode), 
     cilCuerpo->translate(0, -150, 0);
     posIni = molinoNode->getChild("aspas" + std::to_string(aspasMolino->getID()))->getPosition();
 
-    addListener(this);
+    addListener(this);//para eventos de teclado
+}
+
+void Molino::frameRendered(const Ogre::FrameEvent& evt)
+{
+	//aspasNode->getChild("aspa_" + std::to_string(arrayAspas[i]->getAspaID()))->getChild("adorno_" + std::to_string(arrayAspas[i]->getAspaID()))->roll(Ogre::Degree(10.0f));
+
+	auto aux=molinoNode->getChild("aspas" + std::to_string(aspasMolino->getID()));//sin ficticio
+	Aspa** arrayAspas = aspasMolino->getAspasArray();
+	for (int i = 0; i < aspasMolino->getNumAspas(); ++i) {
+		aux->getChild("aspa_" + std::to_string(arrayAspas[i]->getAspaID()))->getChild("adorno_" + std::to_string(arrayAspas[i]->getAspaID()))->roll(Ogre::Degree(1.0f));
+
+	}
+	aux->roll(Ogre::Degree(-1.0f));
 }
 
 Molino::~Molino()
@@ -154,9 +167,9 @@ void Molino::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
     {
         //Vector3 aux=mNode->getChild("aspas1")->getPosition();//no funciona porque pilla la posicion con respecto al padre
 
-        molinoNode->getChild("aspas1")->translate(-posIni, Ogre::Node::TS_LOCAL);//sin ficticio        
-        molinoNode->getChild("aspas1")->yaw(Ogre::Degree(-10.0f), Node::TS_PARENT);//sin ficticio
-        molinoNode->getChild("aspas1")->translate(posIni, Ogre::Node::TS_LOCAL);//sin ficticio
+        molinoNode->getChild("aspas" + std::to_string(aspasMolino->getID()))->translate(-posIni, Ogre::Node::TS_LOCAL);//sin ficticio        
+        molinoNode->getChild("aspas" + std::to_string(aspasMolino->getID()))->yaw(Ogre::Degree(-10.0f), Node::TS_PARENT);//sin ficticio
+        molinoNode->getChild("aspas" + std::to_string(aspasMolino->getID()))->translate(posIni, Ogre::Node::TS_LOCAL);//sin ficticio
 
 
         //mNode->getChild("ficticio")->yaw(Ogre::Degree(-10.0f));//con ficticio

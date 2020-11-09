@@ -29,6 +29,10 @@ public:
     int getID() {
         return id;
     }
+	Aspa** getAspasArray() const {
+		return arrayAspas;
+	}
+	int getNumAspas() const { return numAspas; }
 
 private:
     Ogre::SceneNode* aspasNode = nullptr;
@@ -43,6 +47,8 @@ class Molino : public EntidadIG
 {
 public:
     Molino(Ogre::SceneNode* parentNode, int nAspas);
+	virtual void frameRendered(const Ogre::FrameEvent& evt);
+
     ~Molino();
     virtual void receiveEvent(msg::MessageType msgType, EntidadIG* entidad);
 private:
