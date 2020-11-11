@@ -3,7 +3,7 @@
 #include <OgreSceneNode.h>
 #include <OgreSceneManager.h>
 #include <OgreEntity.h>
-
+#include <OgreFrameListener.h>
 #include <SDL_keycode.h>
 
 #include "Messages.h"

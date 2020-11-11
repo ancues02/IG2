@@ -99,6 +99,7 @@ void Avion::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
 }
 
 void Avion::frameRendered(const Ogre::FrameEvent& evt){
+	
     //movemos el avion con el truco
 	if (move_avion) {
 		avionNode->translate(-posIni, Ogre::Node::TS_LOCAL);

@@ -292,6 +292,7 @@ void IG2App::setupScene(void)
 		EntidadIG::addListener(avion);
 
 		simbad = new Simbad(mSM->getRootSceneNode());
+		addInputListener(simbad);
 
 		mSM->getSceneNode("plano_1")->scale(2, 2, 2);
 		mSM->getSceneNode("plano_2")->scale(0.8, 0.8, 0.8);
@@ -309,7 +310,7 @@ void IG2App::setupScene(void)
 		esfera->setScale(0.2, 0.2, 0.2);
 		esfera->translate(1000, 20, -550);
 
-
+		//mSM->createAnimationState()
 	}
 	//------------------------------------------------------------------------
 
