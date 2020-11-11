@@ -13,9 +13,9 @@ Aspa::Aspa(Ogre::SceneNode* parentNode) : EntidadIG(parentNode)
     tableroNode->setScale(5, 1, 0.1);
 
 
-    ent = mSM->createEntity("Barrel.mesh");
-	ent->setMaterialName("Practica1/azulete");
-    cilindroNode->attachObject(ent);
+    cilindro_ent = mSM->createEntity("Barrel.mesh");
+	cilindro_ent->setMaterialName("Practica1/azulete");
+    cilindroNode->attachObject(cilindro_ent);
     cilindroNode->setScale(5, 10, 5);
     cilindroNode->setPosition(150, 0, 20);
     cont++;
@@ -25,6 +25,22 @@ Aspa::Aspa(Ogre::SceneNode* parentNode) : EntidadIG(parentNode)
 
 int Aspa::cont = 0;
 
+/*void Aspa::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
+{
+
+	switch (msgType)
+	{
+	case msg::_PARAR:
+		for (int i = 0; i < numAspas; i++) {
+			aspasNode->getChild("aspa_" + std::to_string(arrayAspas[i]->getAspaID()))->removeChild("adorno_" + std::to_string(arrayAspas[i]->getAspaID()));
+            //aspasNode->getChild("aspa_" + std::to_string(arrayAspas[i]->getAspaID()))
+		}
+		break;
+
+	default:
+		break;
+	}
+}*/
 Aspa::~Aspa()
 {
 }
@@ -82,15 +98,23 @@ void AspasMolino::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
     {
     case msg::_GIRAR_ASPAS:
     {
-        for (int i = 0; i < numAspas; i++) {
-           aspasNode->getChild("aspa_"+ std::to_string(arrayAspas[i]->getAspaID()))->getChild("adorno_"+ std::to_string(arrayAspas[i]->getAspaID()))->roll(Ogre::Degree(10.0f));
-        }
-        aspasNode->roll(Ogre::Degree(-10.0f));
+		if (gira) {
+			for (int i = 0; i < numAspas; i++) {
+				aspasNode->getChild("aspa_" + std::to_string(arrayAspas[i]->getAspaID()))->getChild("adorno_" + std::to_string(arrayAspas[i]->getAspaID()))->roll(Ogre::Degree(10.0f));
+			}
+			aspasNode->roll(Ogre::Degree(-10.0f));
+		}
     }
         break;
-    case msg::_ACERCAR_CENTRO_ASPAS:
-        centroNode->translate(0, 0, -2);
-        break;
+	case msg::_ACERCAR_CENTRO_ASPAS:
+		centroNode->translate(0, 0, -2);
+		break;
+	case msg::_PARAR:
+		for (int i = 0; i < numAspas; i++) {
+			arrayAspas[i]->getAdorno_ent()->setVisible(false);
+			
+		}
+		break;
     default:
         break;
     }
@@ -131,12 +155,12 @@ Molino::Molino(Ogre::SceneNode* parentNode, int nAspas): EntidadIG(parentNode), 
     ficticio->getChild("aspas1")->translate(0, 0, 130);//con ficticio
     */
 
-    Ogre::Entity* ent = mSM->createEntity("sphere.mesh");  
-	ent->setMaterialName("Practica1/amarilleteEsf");
-    esfera->attachObject(ent);
+    esfera_ent = mSM->createEntity("sphere.mesh");  
+	esfera_ent->setMaterialName("Practica1/amarilleteEsf");
+    esfera->attachObject(esfera_ent);
     esfera->setScale(1.2, 1.2, 1.2);
 
-    ent = mSM->createEntity("Barrel.mesh");
+    Ogre::Entity*ent = mSM->createEntity("Barrel.mesh");
 	ent->setMaterialName("Practica1/piedra");
 
   	cilCuerpo->attachObject(ent);
@@ -150,14 +174,15 @@ Molino::Molino(Ogre::SceneNode* parentNode, int nAspas): EntidadIG(parentNode), 
 void Molino::frameRendered(const Ogre::FrameEvent& evt)
 {
 	//aspasNode->getChild("aspa_" + std::to_string(arrayAspas[i]->getAspaID()))->getChild("adorno_" + std::to_string(arrayAspas[i]->getAspaID()))->roll(Ogre::Degree(10.0f));
+	if (gira) {
+		auto aux = molinoNode->getChild("aspas" + std::to_string(aspasMolino->getID()));//sin ficticio
+		Aspa** arrayAspas = aspasMolino->getAspasArray();
+		for (int i = 0; i < aspasMolino->getNumAspas(); ++i) {
+			aux->getChild("aspa_" + std::to_string(arrayAspas[i]->getAspaID()))->getChild("adorno_" + std::to_string(arrayAspas[i]->getAspaID()))->roll(Ogre::Degree(1.0f));
 
-	auto aux=molinoNode->getChild("aspas" + std::to_string(aspasMolino->getID()));//sin ficticio
-	Aspa** arrayAspas = aspasMolino->getAspasArray();
-	for (int i = 0; i < aspasMolino->getNumAspas(); ++i) {
-		aux->getChild("aspa_" + std::to_string(arrayAspas[i]->getAspaID()))->getChild("adorno_" + std::to_string(arrayAspas[i]->getAspaID()))->roll(Ogre::Degree(1.0f));
-
+		}
+		aux->roll(Ogre::Degree(-1.0f));
 	}
-	aux->roll(Ogre::Degree(-1.0f));
 }
 
 Molino::~Molino()
@@ -179,6 +204,12 @@ void Molino::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
 
         //mNode->getChild("ficticio")->yaw(Ogre::Degree(-10.0f));//con ficticio
     }
+    break;
+	case msg::_PARAR:
+    {
+		gira = false;
+        esfera_ent->setMaterialName("Practica1/rojeteEsf");
+	}
     break;
     default:
         break;

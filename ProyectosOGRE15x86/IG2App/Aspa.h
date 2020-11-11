@@ -11,11 +11,16 @@ public:
     int getAspaID(){
         return id;
     }
+	
+    Entity* getAdorno_ent(){
+		return cilindro_ent;
+	}
 private:
 	
     Ogre::SceneNode* aspaNode = nullptr;
     Ogre::SceneNode* tableroNode = nullptr;;
     Ogre::SceneNode* cilindroNode = nullptr;
+	Ogre::Entity* cilindro_ent = nullptr;
     static int cont;
     int id;
 };
@@ -41,6 +46,7 @@ private:
     Ogre::SceneNode* centroNode = nullptr;
     static int cont; 
     int id;
+	bool gira = true;
 };
 
 class Molino : public EntidadIG
@@ -56,8 +62,10 @@ private:
     Ogre::SceneNode* esfera = nullptr;
     Ogre::SceneNode* cilCuerpo = nullptr;
     Ogre::SceneNode* ficticio = nullptr;
+	Ogre::Entity* esfera_ent = nullptr;
     int numAspas;
     Vector3 posIni;
     AspasMolino* aspasMolino = nullptr;
+	bool gira = true;
 };
 

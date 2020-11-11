@@ -10,6 +10,7 @@ Plano::Plano(Ogre::SceneNode* parentNode):EntidadIG(parentNode) {
 	planoNode = mNode->createChildSceneNode("plano_" + std::to_string(cont + 1));
 	planoNode->attachObject(plane);
 	cont++; id = cont;
+
 }
 
 int Plano::cont = 0;
@@ -21,7 +22,9 @@ Plano::~Plano() {
 void Plano::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
 {
 	switch(msgType) {
-	
+	case msg::_PARAR:
+		plane->setMaterialName("Practica1/rioSeco");
+		break;
 		default:
 			break;
 	}

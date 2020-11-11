@@ -276,6 +276,9 @@ void IG2App::setupScene(void)
 	else if (scene == 23) {
 		plano = new Plano(mSM->getRootSceneNode());
 		plano->setMaterial("Practica1/agua");
+		addInputListener(plano);
+		EntidadIG::addListener(plano);
+
 		plano2 = new Plano(mSM->getRootSceneNode());
 		plano2->setMaterial("Practica1/rojete");
 		plano3 = new Plano(mSM->getRootSceneNode());
@@ -286,6 +289,7 @@ void IG2App::setupScene(void)
 
 		avion = new Avion(mSM->getRootSceneNode());
 		addInputListener(avion);
+		EntidadIG::addListener(avion);
 
 		simbad = new Simbad(mSM->getRootSceneNode());
 

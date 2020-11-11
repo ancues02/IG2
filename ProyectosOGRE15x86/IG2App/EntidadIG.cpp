@@ -35,6 +35,9 @@ bool EntidadIG::keyPressed(const OgreBites::KeyboardEvent& evt)
 	case SDLK_h://las aspas giran al rededor del molino
 		sendEvent(msg::_ALREDEDOR_MOLINO, this);
 		break;
+	case SDLK_r://paran un monton de animaciones
+		sendEvent(msg::_PARAR, this);
+		break;
 	/*case SDLK_j://gira la tierra al rederor del sol
 		sendEvent(msg::_GIRAR_ASPAS, this);
 		break;*/

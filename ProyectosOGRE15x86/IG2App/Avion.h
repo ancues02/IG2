@@ -26,5 +26,8 @@ private:
 
 	//luz
     Ogre::SceneNode* lightNode = nullptr;
+    Light* luzFoco = nullptr;
+
+	bool move_avion = true;
 
 };

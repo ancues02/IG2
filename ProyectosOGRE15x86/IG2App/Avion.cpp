@@ -68,7 +68,7 @@ Avion::Avion(Ogre::SceneNode* parentNode):EntidadIG(parentNode)
     //Luz
     lightNode = avionNode->createChildSceneNode("luz_avion");
 
-	Light* luzFoco = mSM->createLight("LuzFoco");
+	luzFoco = mSM->createLight("LuzFoco");
     //lightNode = mSM->createSceneNode();
 	luzFoco->setType(Ogre::Light::LT_SPOTLIGHT);
 	luzFoco->setDiffuseColour(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
@@ -76,6 +76,7 @@ Avion::Avion(Ogre::SceneNode* parentNode):EntidadIG(parentNode)
 	/*luzFoco->setSpotlightInnerAngle(Ogre::Degree(1.0f));
 	luzFoco->setSpotlightOuterAngle(Ogre::Degree(25.0f));*/
 	luzFoco->setSpotlightFalloff(0.5f);
+	
 
     lightNode->attachObject(luzFoco);
 }
@@ -86,13 +87,24 @@ Avion::~Avion()
 
 void Avion::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
 {
+	switch (msgType)
+	{
+	case msg::_PARAR:
+		move_avion = false;
+		luzFoco->setVisible(false);
+		break;
+	default:
+		break;
+	}
 }
 
 void Avion::frameRendered(const Ogre::FrameEvent& evt){
     //movemos el avion con el truco
-    avionNode->translate(-posIni, Ogre::Node::TS_LOCAL);      
-    avionNode->yaw(Ogre::Degree(-1.0f), Node::TS_LOCAL);
-    avionNode->translate(posIni, Ogre::Node::TS_LOCAL);
+	if (move_avion) {
+		avionNode->translate(-posIni, Ogre::Node::TS_LOCAL);
+		avionNode->yaw(Ogre::Degree(-1.0f), Node::TS_LOCAL);
+		avionNode->translate(posIni, Ogre::Node::TS_LOCAL);
+	}
 
 	//girar aspas de helice derecha
 	auto aux = avionNode->getChild("aspas" + std::to_string(heliceNode_D->getID()));//sin ficticio
