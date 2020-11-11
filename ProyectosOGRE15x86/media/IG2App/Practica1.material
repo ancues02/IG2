@@ -29,6 +29,16 @@ material Practica1/piedra {
         }
     }
 }
+material Practica1/cara {
+    technique {
+        pass {
+            texture_unit {
+                texture spotlight_image.png
+                env_map spherical
+            }
+        }
+    }
+}
 material Practica1/centroAspas {
     technique {
         pass {
@@ -38,7 +48,6 @@ material Practica1/centroAspas {
         }
     }
 }
-
 material Practica1/tableroHelice {
     technique {
         pass {

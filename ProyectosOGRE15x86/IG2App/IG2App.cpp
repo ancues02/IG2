@@ -296,10 +296,15 @@ void IG2App::setupScene(void)
 		mSM->getSceneNode("plano_3")->scale(0.4, 0.4, 0.4);
 
 		mSM->getSceneNode("molino")->translate(860, 300, -630);
-		/*auto aux2 = mSM->getSceneNode("avion"); 
-		aux2->translate(900, 600, -450);
-		aux2->yaw(Ogre::Degree(-50.0f));
-		aux2->scale(0.2, 0.2, 0.2);*/
+		
+		Ogre::SceneNode* esfera = nullptr;
+		esfera = mSM->getRootSceneNode()->createChildSceneNode("cara");
+		Ogre::Entity* ent = mSM->createEntity("sphere.mesh");
+		ent->setMaterialName("Practica1/cara");
+		esfera->attachObject(ent);
+		esfera->setScale(0.2, 0.2, 0.2);
+		esfera->translate(1000, 20, -550);
+
 
 	}
 	//------------------------------------------------------------------------
