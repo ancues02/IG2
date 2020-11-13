@@ -20,6 +20,9 @@ private:
 	AnimationState* as_runTop;
 	AnimationState* as_runBot;
 
+	AnimationState* run_animation;
+
 	bool dance=true;
 	bool dcha = true;
+	Vector3 keyframePos;
 };

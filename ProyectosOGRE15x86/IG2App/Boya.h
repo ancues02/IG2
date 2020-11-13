@@ -1,8 +1,6 @@
 #pragma once
 
 
-#include <OgreAnimation.h>
-#include <OgreKeyFrame.h>
 #include "EntidadIG.h"
 
 class Boya : public EntidadIG

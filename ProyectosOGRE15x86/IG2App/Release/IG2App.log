@@ -1,8 +1,10 @@
-﻿  Boya.cpp
-D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\IG2App\Boya.cpp(15,59): warning C4244: 'argumento': conversión de 'int' a 'Ogre::Real'; posible pérdida de datos
-D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\IG2App\Boya.cpp(21,15): warning C4244: 'inicializando': conversión de 'double' a 'Ogre::Real'; posible pérdida de datos
+﻿  Simbad.cpp
+D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\OGREsdk\include\OGRE\OgreHardwareBuffer.h(180,58): warning C4251: 'Ogre::HardwareBuffer::mShadowBuffer': class 'std::unique_ptr<Ogre::HardwareBuffer,std::default_delete<Ogre::HardwareBuffer>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Ogre::HardwareBuffer'
+D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\OGREsdk\include\OGRE\OgreHardwareBuffer.h(180): message : vea la declaración de 'std::unique_ptr<Ogre::HardwareBuffer,std::default_delete<Ogre::HardwareBuffer>>'
+D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\IG2App\Simbad.cpp(36,56): warning C4244: 'argumento': conversión de 'int' a 'Ogre::Real'; posible pérdida de datos
+D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\IG2App\Simbad.cpp(43,20): warning C4244: 'inicializando': conversión de 'double' a 'Ogre::Real'; posible pérdida de datos
   Generando código
-  2 of 733 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+  2 of 731 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     2 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada

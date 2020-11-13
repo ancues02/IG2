@@ -10,6 +10,7 @@ Boya::Boya(Ogre::SceneNode* parentNode) : EntidadIG(parentNode)
 	Vector3 _scale = { 30, 40, 30 };
 	bCilindro->scale(_scale);
 
+	bCilindro->setInitialState();
 	int duracion=16;
 	//---------------------
 	Animation * animation = mSM -> createAnimation("animVV", duracion);
@@ -22,30 +23,25 @@ Boya::Boya(Ogre::SceneNode* parentNode) : EntidadIG(parentNode)
 	TransformKeyFrame * kf; // 5 keyFrames: origen(0), arriba, origen, abajo, origen(4)
 	kf = track->createNodeKeyFrame(durPaso * 0); // Keyframe 0: origen
 	kf->setTranslate(keyframePos); // Origen: Vector3
-	kf->setScale(_scale); // lo escalamos
 	kf->setRotation(src.getRotationTo(src));
 
 	kf = track -> createNodeKeyFrame(durPaso * 1); // Keyframe 1: arriba
 	keyframePos += Ogre::Vector3::UNIT_Y * long_desp;
-	kf -> setTranslate(keyframePos); // Origen: Vector3
-	kf->setScale(_scale); // lo escalamos
+	kf->setTranslate(keyframePos); // Origen: Vector3
 	kf->setRotation(src.getRotationTo(Vector3(1, 0, 1))); // Yaw(-45)
 
 	kf = track -> createNodeKeyFrame(durPaso * 2); // Keyframe 0: origen
 	keyframePos += Ogre::Vector3::NEGATIVE_UNIT_Y * long_desp;
-	kf -> setTranslate(keyframePos); // Origen: Vector3
-	kf->setScale(_scale); // lo escalamos
+	kf->setTranslate(keyframePos); // Origen: Vector3
 
 	kf = track -> createNodeKeyFrame(durPaso * 3); // Keyframe 0: abajo
 	keyframePos += Ogre::Vector3::NEGATIVE_UNIT_Y * long_desp;
-	kf -> setTranslate(keyframePos); // Origen: Vector3
-	kf->setScale(_scale); // lo escalamos
+	kf->setTranslate(keyframePos); // Origen: Vector3
 	kf->setRotation(src.getRotationTo(Vector3(-1, 0, 1))); // Yaw(-45)
 
 	kf = track -> createNodeKeyFrame(durPaso * 4); // Keyframe 0: origen
 	keyframePos += Ogre::Vector3::UNIT_Y * long_desp;
-	kf -> setTranslate(keyframePos); // Origen: Vector3
-	kf->setScale(_scale); // lo escalamos
+	kf->setTranslate(keyframePos); // Origen: Vector3
 
 	animationState = mSM->createAnimationState("animVV");
 	animationState -> setLoop(true);

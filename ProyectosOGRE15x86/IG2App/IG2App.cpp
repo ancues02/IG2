@@ -295,8 +295,8 @@ void IG2App::setupScene(void)
 		addInputListener(simbad);
 		EntidadIG::addListener(simbad);
 
-		boya = new Boya(mSM->getRootSceneNode());
-		addInputListener(boya);
+		//boya = new Boya(mSM->getRootSceneNode());
+		//addInputListener(boya);
 
 
 		mSM->getSceneNode("plano_1")->scale(2, 2, 2);
