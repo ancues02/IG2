@@ -14,5 +14,8 @@ public:
 private:
 	Ogre::SceneNode* simbadNode = nullptr;
 	AnimationState* animationState;
+	AnimationState* as_runTop;
+	AnimationState* as_runBot;
 
+	bool dance=true;
 };

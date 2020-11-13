@@ -293,6 +293,7 @@ void IG2App::setupScene(void)
 
 		simbad = new Simbad(mSM->getRootSceneNode());
 		addInputListener(simbad);
+		EntidadIG::addListener(simbad);
 
 		mSM->getSceneNode("plano_1")->scale(2, 2, 2);
 		mSM->getSceneNode("plano_2")->scale(0.8, 0.8, 0.8);
