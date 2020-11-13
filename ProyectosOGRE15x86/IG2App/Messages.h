@@ -8,7 +8,8 @@ namespace msg {
 		_ACERCAR_CENTRO_ASPAS,
 		_ALREDEDOR_MOLINO,
 		_PARAR,
-		_CAMBIO_ANIM
+		_CAMBIO_ANIM,
+		_CAMBIO_ESPADA
 	};
 
 }

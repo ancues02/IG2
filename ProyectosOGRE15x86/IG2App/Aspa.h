@@ -56,6 +56,7 @@ public:
 	virtual void frameRendered(const Ogre::FrameEvent& evt);
 
     ~Molino();
+    virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
     virtual void receiveEvent(msg::MessageType msgType, EntidadIG* entidad);
 private:
     Ogre::SceneNode* molinoNode = nullptr;

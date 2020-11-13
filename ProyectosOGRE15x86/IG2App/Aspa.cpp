@@ -189,29 +189,52 @@ Molino::~Molino()
 {
 }
 
+bool Molino::keyPressed(const OgreBites::KeyboardEvent& evt) {
+	
+	switch (evt.keysym.sym) {
+	case SDLK_g://rotan aspas
+		sendEvent(msg::_GIRAR_ASPAS, this);
+		break;
+	case SDLK_c://el cilindro central de las aspas se mueve hacia dentro
+		sendEvent(msg::_ACERCAR_CENTRO_ASPAS, this);
+		break;
+	case SDLK_h://las aspas giran al rededor del molino
+		sendEvent(msg::_ALREDEDOR_MOLINO, this);
+		break;
+	case SDLK_r:
+		sendEvent(msg::_PARAR, this);
+		break;
+	default:
+		break;
+	}
+	return false;
+}
+
 void Molino::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
 {
-    switch (msgType)
-    {
-    case msg::_ALREDEDOR_MOLINO:
-    {
-        //Vector3 aux=mNode->getChild("aspas1")->getPosition();//no funciona porque pilla la posicion con respecto al padre
+	if (entidad == this){
+		switch (msgType)
+		{
+		case msg::_ALREDEDOR_MOLINO:
+		{
+			//Vector3 aux=mNode->getChild("aspas1")->getPosition();//no funciona porque pilla la posicion con respecto al padre
 
-        molinoNode->getChild("aspas" + std::to_string(aspasMolino->getID()))->translate(-posIni, Ogre::Node::TS_LOCAL);//sin ficticio        
-        molinoNode->getChild("aspas" + std::to_string(aspasMolino->getID()))->yaw(Ogre::Degree(-10.0f), Node::TS_PARENT);//sin ficticio
-        molinoNode->getChild("aspas" + std::to_string(aspasMolino->getID()))->translate(posIni, Ogre::Node::TS_LOCAL);//sin ficticio
+			molinoNode->getChild("aspas" + std::to_string(aspasMolino->getID()))->translate(-posIni, Ogre::Node::TS_LOCAL);//sin ficticio        
+				molinoNode->getChild("aspas" + std::to_string(aspasMolino->getID()))->yaw(Ogre::Degree(-10.0f), Node::TS_PARENT);//sin ficticio
+				molinoNode->getChild("aspas" + std::to_string(aspasMolino->getID()))->translate(posIni, Ogre::Node::TS_LOCAL);//sin ficticio
 
 
-        //mNode->getChild("ficticio")->yaw(Ogre::Degree(-10.0f));//con ficticio
-    }
-    break;
-	case msg::_PARAR:
-    {
-		gira = false;
-        esfera_ent->setMaterialName("Practica1/rojeteEsf");
+				//mNode->getChild("ficticio")->yaw(Ogre::Degree(-10.0f));//con ficticio
+		}
+		break;
+		case msg::_PARAR:
+		{
+			gira = false;
+			esfera_ent->setMaterialName("Practica1/rojeteEsf");
+		}
+		break;
+		default:
+			break;
+		}
 	}
-    break;
-    default:
-        break;
-    }
 }

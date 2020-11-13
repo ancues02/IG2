@@ -11,6 +11,8 @@ public:
         return id;
     }
 	void setMaterial(std::string name);
+	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
+
 private:
 	Ogre::Entity* plane;
     static int cont;

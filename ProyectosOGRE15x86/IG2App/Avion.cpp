@@ -84,17 +84,32 @@ Avion::Avion(Ogre::SceneNode* parentNode):EntidadIG(parentNode)
 Avion::~Avion()
 {
 }
-
-void Avion::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
+bool Avion::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
-	switch (msgType)
-	{
-	case msg::_PARAR:
-		move_avion = false;
-		luzFoco->setVisible(false);
+	switch (evt.keysym.sym) {
+	case SDLK_g://rotan aspas
+		sendEvent(msg::_GIRAR_ASPAS, this);
+		break;
+	case SDLK_r://rotan aspas
+		sendEvent(msg::_PARAR, this);
 		break;
 	default:
 		break;
+	}	
+	return false;
+};
+void Avion::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
+{
+	if (entidad == this) {
+		switch (msgType)
+		{
+		case msg::_PARAR:
+			move_avion = false;
+			luzFoco->setVisible(false);
+			break;
+		default:
+			break;
+		}
 	}
 }
 

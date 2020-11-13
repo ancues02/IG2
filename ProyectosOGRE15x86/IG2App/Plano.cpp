@@ -19,14 +19,29 @@ Plano::~Plano() {
 	//delete plane;
 }
 
+bool Plano::keyPressed(const OgreBites::KeyboardEvent& evt)
+{
+	switch (evt.keysym.sym) {
+	
+	case SDLK_r://rotan aspas
+		sendEvent(msg::_PARAR, this);
+		break;
+	default:
+		break;
+	}
+	return false;
+};
+
 void Plano::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
 {
-	switch(msgType) {
-	case msg::_PARAR:
-		plane->setMaterialName("Practica1/rioSeco");
-		break;
+	if (entidad == this) {
+		switch (msgType) {
+		case msg::_PARAR:
+			plane->setMaterialName("Practica1/rioSeco");
+			break;
 		default:
 			break;
+		}
 	}
 }
 

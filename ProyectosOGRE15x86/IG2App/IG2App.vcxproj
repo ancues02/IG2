@@ -121,6 +121,7 @@
   <ItemGroup>
     <ClInclude Include="Aspa.h" />
     <ClInclude Include="Avion.h" />
+    <ClInclude Include="Boya.h" />
     <ClInclude Include="EntidadIG.h" />
     <ClInclude Include="IG2ApplicationContext.h" />
     <ClInclude Include="IG2App.h" />
@@ -131,6 +132,7 @@
   <ItemGroup>
     <ClCompile Include="Aspa.cpp" />
     <ClCompile Include="Avion.cpp" />
+    <ClCompile Include="Boya.cpp" />
     <ClCompile Include="EntidadIG.cpp" />
     <ClCompile Include="IG2ApplicationContext.cpp" />
     <ClCompile Include="IG2Main.cpp" />

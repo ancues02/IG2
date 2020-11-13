@@ -3,47 +3,77 @@
 Simbad::Simbad(Ogre::SceneNode* parentNode):EntidadIG(parentNode)
 {
 	//mSM->createAnimationState("Sinbad.mesh");
-	Ogre::Entity* ent = mSM->createEntity("Sinbad.mesh");
+	simbadEnt = mSM->createEntity("Sinbad.mesh");
 	simbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSimbad");
-	simbadNode->attachObject(ent);
+	simbadNode->attachObject(simbadEnt);
 	simbadNode->translate(-780, 100, 500);
 	simbadNode->setScale(20, 20, 20);
 
-	dance = true;
+	//dance = true;
 
-	animationState=ent->getAnimationState("Dance");
+	animationState=simbadEnt->getAnimationState("Dance");
 	animationState->setEnabled(dance);
 	animationState->setLoop(true);
 	
 	
-	as_runBot=ent->getAnimationState("RunBase");
+	as_runBot=simbadEnt->getAnimationState("RunBase");
 	as_runBot->setEnabled(!dance);
 	as_runBot->setLoop(true);
 
-	as_runTop=ent->getAnimationState("RunTop");
+	as_runTop=simbadEnt->getAnimationState("RunTop");
 	as_runTop->setEnabled(!dance);
 	as_runTop->setLoop(true);
-	//Ogre::Entity* sword = mSM->createEntity("Sword.mesh");
-	//ent->attachObjectToBone("Handle.R", sword);
-	//ent->detachObjectFromBone(sword);//para quitar la espada
+
+	sword = mSM->createEntity("Sword.mesh");
+	simbadEnt->attachObjectToBone("Handle.R", sword);
+	//simbadEnt->detachObjectFromBone(sword);//para quitar la espada
+	dcha = true;
 }
 
 Simbad::~Simbad()
 {
 }
 
-void Simbad::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
+bool Simbad::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
-	switch (msgType)
-	{
-	case msg::_CAMBIO_ANIM:
-		dance = !dance;
-		animationState->setEnabled(dance);
-		as_runBot->setEnabled(!dance);
-		as_runTop->setEnabled(!dance);
+	switch (evt.keysym.sym) {
+	case SDLK_c://cambiar animacion
+		sendEvent(msg::_CAMBIO_ANIM, this);
+		break;
+	case SDLK_e://cambiar animacion
+		sendEvent(msg::_CAMBIO_ESPADA, this);
 		break;
 	default:
 		break;
+	}
+	return false;
+};
+
+void Simbad::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
+{	
+	if (entidad == this) {
+		switch (msgType)
+		{
+		case msg::_CAMBIO_ANIM:
+			dance = !dance;
+			animationState->setEnabled(dance);
+			as_runBot->setEnabled(!dance);
+			as_runTop->setEnabled(!dance);
+			break;
+		case msg::_CAMBIO_ESPADA:
+			dcha = !dcha;
+			if (dcha) {
+				simbadEnt->detachObjectFromBone(sword);//para quitar la espada
+				simbadEnt->attachObjectToBone("Handle.R", sword);
+			}
+			else {
+				simbadEnt->detachObjectFromBone(sword);//para quitar la espada
+				simbadEnt->attachObjectToBone("Handle.L", sword);
+			}
+			break;
+		default:
+			break;
+		}
 	}
 }
 

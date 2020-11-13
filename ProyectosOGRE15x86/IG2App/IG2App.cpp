@@ -295,6 +295,10 @@ void IG2App::setupScene(void)
 		addInputListener(simbad);
 		EntidadIG::addListener(simbad);
 
+		boya = new Boya(mSM->getRootSceneNode());
+		addInputListener(boya);
+
+
 		mSM->getSceneNode("plano_1")->scale(2, 2, 2);
 		mSM->getSceneNode("plano_2")->scale(0.8, 0.8, 0.8);
 		mSM->getSceneNode("plano_2")->translate(-650, 1, 480);//plano debajo de sinbad
