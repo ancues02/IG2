@@ -25,22 +25,7 @@ Aspa::Aspa(Ogre::SceneNode* parentNode) : EntidadIG(parentNode)
 
 int Aspa::cont = 0;
 
-/*void Aspa::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
-{
 
-	switch (msgType)
-	{
-	case msg::_PARAR:
-		for (int i = 0; i < numAspas; i++) {
-			aspasNode->getChild("aspa_" + std::to_string(arrayAspas[i]->getAspaID()))->removeChild("adorno_" + std::to_string(arrayAspas[i]->getAspaID()));
-            //aspasNode->getChild("aspa_" + std::to_string(arrayAspas[i]->getAspaID()))
-		}
-		break;
-
-	default:
-		break;
-	}
-}*/
 Aspa::~Aspa()
 {
 }
@@ -81,7 +66,7 @@ AspasMolino::AspasMolino(Ogre::SceneNode* parentNode, int nAspas) : EntidadIG(pa
         aux->translate(200, 0, 0, Ogre::Node::TS_LOCAL);
         aux->getChild("adorno_" + std::to_string(arrayAspas[i]->getAspaID()))->roll(Ogre::Degree(-rotation));
     }
-    addListener(this);
+    //addListener(this);
     cont++; id = cont;
 }
 
@@ -93,51 +78,41 @@ AspasMolino::~AspasMolino()
 
 void AspasMolino::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
 {
-    
-    switch (msgType)
-    {
-    case msg::_GIRAR_ASPAS:
-    {
-		if (gira) {
-			for (int i = 0; i < numAspas; i++) {
-				aspasNode->getChild("aspa_" + std::to_string(arrayAspas[i]->getAspaID()))->getChild("adorno_" + std::to_string(arrayAspas[i]->getAspaID()))->roll(Ogre::Degree(10.0f));
+	if (entidad == this) {
+		switch (msgType)
+		{
+		case msg::_GIRAR_ASPAS:
+		{
+			if (gira) {
+				for (int i = 0; i < numAspas; i++) {
+					aspasNode->getChild("aspa_" + std::to_string(arrayAspas[i]->getAspaID()))->getChild("adorno_" + std::to_string(arrayAspas[i]->getAspaID()))->roll(Ogre::Degree(10.0f));
+				}
+				aspasNode->roll(Ogre::Degree(-10.0f));
 			}
-			aspasNode->roll(Ogre::Degree(-10.0f));
-		}
-    }
-        break;
-	case msg::_ACERCAR_CENTRO_ASPAS:
-		centroNode->translate(0, 0, -2);
-		break;
-	case msg::_PARAR:
-		for (int i = 0; i < numAspas; i++) {
-			arrayAspas[i]->getAdorno_ent()->setVisible(false);
-			
 		}
 		break;
-    default:
-        break;
-    }
+		
+		default:
+			break;
+		}
+	}
 }
 
-// Apartados 6 y 8
-//bool AspasMolino::keyPressed(const OgreBites::KeyboardEvent& evt)
-//{
-//    if (evt.keysym.sym == SDLK_g) // #include <SDL_keycode.h>
-//    {
-//        for (int i = 0; i < numAspas; i++) {
-//            aspasNode->getChild("aspa_" + std::to_string(i + 1))->getChild("adorno_" + std::to_string(i + 1))->roll(Ogre::Degree(10.0f));
-//        }
-//        aspasNode->roll(Ogre::Degree(-10.0f));
-//    }
-//    //apartado 10
-//    else if (evt.keysym.sym == SDLK_c) 
-//    {
-//        aspasNode->getChild("centro_aspas")->translate(0,0,-2);
-//        
-//    }
-//    return true;
-//}
+ 
+bool AspasMolino::keyPressed(const OgreBites::KeyboardEvent& evt)
+{
+	
+	switch (evt.keysym.sym) {
+	case SDLK_g://rotan aspas
+		sendEvent(msg::_GIRAR_ASPAS, this);
+		break;
+	
+	
+	default:
+		break;
+	}
+	return false;
+}
 
 Molino::Molino(Ogre::SceneNode* parentNode, int nAspas): EntidadIG(parentNode),  numAspas(nAspas)
 {
@@ -146,14 +121,8 @@ Molino::Molino(Ogre::SceneNode* parentNode, int nAspas): EntidadIG(parentNode), 
     cilCuerpo = molinoNode->createChildSceneNode("cil_cuerpo");
 
     aspasMolino = new AspasMolino(molinoNode, numAspas);//sin ficticio
-    molinoNode->getChild("aspas" + std::to_string(aspasMolino->getID()))->setScale(0.5, 0.5, 0.5);//sin ficticio
-    molinoNode->getChild("aspas"+ std::to_string(aspasMolino->getID()))->translate(0, 0, 140);//sin ficticio
-
-    /*ficticio = mNode->createChildSceneNode("ficticio");//con ficticio
-    aspasMolino = new AspasMolino(ficticio, numAspas);//con ficticio
-    ficticio->getChild("aspas1")->setScale(0.5, 0.5, 0.5);//con ficticio
-    ficticio->getChild("aspas1")->translate(0, 0, 130);//con ficticio
-    */
+    aspasMolino->getAspasNode()->setScale(0.5, 0.5, 0.5);//sin ficticio
+    aspasMolino->getAspasNode()->translate(0, 0, 140);//sin ficticio
 
     esfera_ent = mSM->createEntity("sphere.mesh");  
 	esfera_ent->setMaterialName("Practica1/amarillete");
@@ -166,16 +135,14 @@ Molino::Molino(Ogre::SceneNode* parentNode, int nAspas): EntidadIG(parentNode), 
   	cilCuerpo->attachObject(ent);
     cilCuerpo->setScale(50, 50, 50);
     cilCuerpo->translate(0, -150, 0);
-    posIni = molinoNode->getChild("aspas" + std::to_string(aspasMolino->getID()))->getPosition();
+    posIni = aspasMolino->getAspasNode()->getPosition();
 
-    addListener(this);//para eventos de teclado
 }
 
 void Molino::frameRendered(const Ogre::FrameEvent& evt)
 {
-	//aspasNode->getChild("aspa_" + std::to_string(arrayAspas[i]->getAspaID()))->getChild("adorno_" + std::to_string(arrayAspas[i]->getAspaID()))->roll(Ogre::Degree(10.0f));
 	if (gira) {
-		auto aux = molinoNode->getChild("aspas" + std::to_string(aspasMolino->getID()));//sin ficticio
+		auto aux = aspasMolino->getAspasNode();//sin ficticio
 		Aspa** arrayAspas = aspasMolino->getAspasArray();
 		for (int i = 0; i < aspasMolino->getNumAspas(); ++i) {
 			aux->getChild("aspa_" + std::to_string(arrayAspas[i]->getAspaID()))->getChild("adorno_" + std::to_string(arrayAspas[i]->getAspaID()))->roll(Ogre::Degree(1.0f));
@@ -192,9 +159,6 @@ Molino::~Molino()
 bool Molino::keyPressed(const OgreBites::KeyboardEvent& evt) {
 	
 	switch (evt.keysym.sym) {
-	case SDLK_g://rotan aspas
-		sendEvent(msg::_GIRAR_ASPAS, this);
-		break;
 	case SDLK_c://el cilindro central de las aspas se mueve hacia dentro
 		sendEvent(msg::_ACERCAR_CENTRO_ASPAS, this);
 		break;
@@ -209,7 +173,7 @@ bool Molino::keyPressed(const OgreBites::KeyboardEvent& evt) {
 	}
 	return false;
 }
-
+//tratamos los mensajes que queremos (solo los que ha mandado esta entidad)
 void Molino::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
 {
 	if (entidad == this){
@@ -217,22 +181,25 @@ void Molino::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
 		{
 		case msg::_ALREDEDOR_MOLINO:
 		{
-			//Vector3 aux=mNode->getChild("aspas1")->getPosition();//no funciona porque pilla la posicion con respecto al padre
-
-			molinoNode->getChild("aspas" + std::to_string(aspasMolino->getID()))->translate(-posIni, Ogre::Node::TS_LOCAL);//sin ficticio        
-				molinoNode->getChild("aspas" + std::to_string(aspasMolino->getID()))->yaw(Ogre::Degree(-10.0f), Node::TS_PARENT);//sin ficticio
-				molinoNode->getChild("aspas" + std::to_string(aspasMolino->getID()))->translate(posIni, Ogre::Node::TS_LOCAL);//sin ficticio
-
-
-				//mNode->getChild("ficticio")->yaw(Ogre::Degree(-10.0f));//con ficticio
+			aspasMolino->getAspasNode()->translate(-posIni, Ogre::Node::TS_LOCAL);//sin ficticio  
+			aspasMolino->getAspasNode()->yaw(Ogre::Degree(-10.0f), Node::TS_PARENT);//sin ficticio
+			aspasMolino->getAspasNode()->translate(posIni, Ogre::Node::TS_LOCAL);//sin ficticio
+			
+			
+			//mNode->getChild("ficticio")->yaw(Ogre::Degree(-10.0f));//con ficticio
 		}
 		break;
 		case msg::_PARAR:
 		{
 			gira = false;
-			esfera_ent->setMaterialName("Practica1/rojeteEsf");
+			esfera_ent->setMaterialName("Practica1/rojete");
 		}
 		break;
+		case msg::_ACERCAR_CENTRO_ASPAS://el cilindro central de las aspas se mueve hacia dentro
+		{
+			aspasMolino->getCentroNode()->translate(0, 0, -2);
+		}
+			break;
 		default:
 			break;
 		}

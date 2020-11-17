@@ -48,10 +48,9 @@ protected:
   Ogre::SceneNode* spheresParent = nullptr;
   Ogre::SceneNode* segundosParent = nullptr;
 
-  Molino* molino_Completo = nullptr;            // tambien se usa en el apartado 23
   OgreBites::CameraMan* mCamMgr = nullptr;
 
-  EntidadIG* ent_molino = nullptr;
+  Molino* ent_molino = nullptr;
   //Escena 14, 15
   Ogre::SceneNode* Sol = nullptr;
   Ogre::SceneNode* Tierra = nullptr;

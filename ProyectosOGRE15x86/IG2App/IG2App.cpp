@@ -176,7 +176,6 @@ void IG2App::setupScene(void)
 	}
 	//apartados 9, 10 y 11
 	else if (scene == 9) {
-		//molino_Completo = new Molino(mSM->getRootSceneNode(), 6);
 		ent_molino = new Molino(mSM->getRootSceneNode(), 6);
 		addInputListener(ent_molino);
 	}
@@ -285,15 +284,27 @@ void IG2App::setupScene(void)
 		plano3->setMaterial("Practica1/naranjete");
 
 		ent_molino = new Molino(mSM->getRootSceneNode(), 6);
-		addInputListener(ent_molino);
+		addInputListener(ent_molino);//para eventos de teclado
+		EntidadIG::addListener(ent_molino);//para recibir mensajes entre entidades
 
+		addInputListener(ent_molino->getAspas());//para eventos de teclado
+		EntidadIG::addListener(ent_molino->getAspas());//para recibir mensajes entre entidades
+		
+		//añadimos al avion y sus helices como listeners tanto de teclado como de mensajes(receive)
 		avion = new Avion(mSM->getRootSceneNode());
 		addInputListener(avion);
 		EntidadIG::addListener(avion);
 
+		addInputListener(avion->getHeliceDer());
+		EntidadIG::addListener(avion->getHeliceDer());
+
+		addInputListener(avion->getHeliceIzq());
+		EntidadIG::addListener(avion->getHeliceIzq());
+
+
 		simbad = new Simbad(mSM->getRootSceneNode());
-		addInputListener(simbad);
-		EntidadIG::addListener(simbad);
+		addInputListener(simbad);//para eventos de teclado
+		EntidadIG::addListener(simbad);//para recibir mensajes entre entidades
 
 		//boya = new Boya(mSM->getRootSceneNode());
 		//addInputListener(boya);

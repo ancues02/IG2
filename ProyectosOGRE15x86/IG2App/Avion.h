@@ -1,6 +1,4 @@
 #pragma once
-
-
 #include "Aspa.h"
 
 using namespace Ogre;
@@ -14,6 +12,14 @@ public:
     virtual void receiveEvent(msg::MessageType msgType, EntidadIG* entidad);
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
 
+    AspasMolino* getHeliceDer(){
+		return helice_D;
+	}
+
+    AspasMolino* getHeliceIzq(){
+		return helice_I;
+	}
+
 private:
     Ogre::SceneNode* avionNode = nullptr;
     Ogre::SceneNode* cuerpoNode = nullptr;
@@ -21,8 +27,8 @@ private:
     Ogre::SceneNode* alaDNode = nullptr;
 	Ogre::SceneNode* frenteNode = nullptr;
     Ogre::SceneNode* pilotoNode = nullptr;
-    AspasMolino* heliceNode_D = nullptr;
-	AspasMolino* heliceNode_I = nullptr;
+    AspasMolino* helice_D = nullptr;
+	AspasMolino* helice_I = nullptr;
     static int cont;
     Vector3 posIni;
 
