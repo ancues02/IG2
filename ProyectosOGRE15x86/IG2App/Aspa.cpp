@@ -156,7 +156,7 @@ Molino::Molino(Ogre::SceneNode* parentNode, int nAspas): EntidadIG(parentNode), 
     */
 
     esfera_ent = mSM->createEntity("sphere.mesh");  
-	esfera_ent->setMaterialName("Practica1/amarilleteEsf");
+	esfera_ent->setMaterialName("Practica1/amarillete");
     esfera->attachObject(esfera_ent);
     esfera->setScale(1.2, 1.2, 1.2);
 

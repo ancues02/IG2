@@ -14,7 +14,7 @@ Avion::Avion(Ogre::SceneNode* parentNode):EntidadIG(parentNode)
 
     // Creacion del cuerpo del avion
     Ogre::Entity* ent = parentNode->getCreator()->createEntity("sphere.mesh");
-	ent->setMaterialName("Practica1/rojeteEsf"); 
+	ent->setMaterialName("Practica1/rojete"); 
     cuerpoNode->attachObject(ent);
 
     // Creacion del ala izquierda

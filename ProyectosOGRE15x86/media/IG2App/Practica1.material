@@ -78,15 +78,7 @@ material Practica1/amarillete {
         }
     }
 }
-material Practica1/amarilleteEsf {
-    technique {
-        pass {
-            diffuse 1.0 1.0 0.0
-            env_map spherical
 
-        }
-    }
-}
 material Practica1/azulete {
     technique {
         pass {
@@ -111,16 +103,6 @@ material Practica1/rojete {
         }
     }
 }
-material Practica1/rojeteEsf {
-    technique {
-        pass {
-            diffuse 1.0 0.0 0.0
-            env_map spherical
-
-        }
-    }
-}
-
 
 
 material Practica1/naranjete {
