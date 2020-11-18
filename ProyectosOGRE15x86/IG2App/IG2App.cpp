@@ -109,7 +109,7 @@ void IG2App::setupScene(void)
 
 	mLightNode->setDirection(Ogre::Vector3(0, -1, -1));  //vec3.normalise();
 
-
+	// para las sombras
 	mSM->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
 
 	//lightNode->setPosition(0, 0, 1000);
@@ -131,7 +131,7 @@ void IG2App::setupScene(void)
 		cilindroNode->setPosition(150, 0, 20);
 
 
-		for (int i = 0; i < 1; i++) {
+		/*for (int i = 0; i < 1; i++) {
 			Ogre::Entity* aguja = mSM->createEntity("cube.mesh");
 			mAgujas[i] = mSM->getRootSceneNode()->createChildSceneNode("Aguja " + std::to_string(i + 1));
 			mAgujas[i]->attachObject(aguja);
@@ -139,7 +139,7 @@ void IG2App::setupScene(void)
 			mAgujas[i]->setScale(1, 5, 0.1);
 
 
-		}
+		}*/
 	}
 
 	// Apartado 2
@@ -173,11 +173,18 @@ void IG2App::setupScene(void)
 
 		molino = new AspasMolino(mSM->getRootSceneNode(), 12);
 		addInputListener(molino);
+		// Para que reciba los eventos cuando implementamos la comunicacion por mensajes (no había que ponerlo en el apartado original)
+		// EntidadIG::addListener(molino);		
 	}
 	//apartados 9, 10 y 11
 	else if (scene == 9) {
 		ent_molino = new Molino(mSM->getRootSceneNode(), 6);
 		addInputListener(ent_molino);
+		// Para que reciba los eventos cuando implementamos la comunicacion por mensajes (no había que ponerlo en el apartado original)
+		// EntidadIG::addListener(ent_molino);		
+		// addInputListener(ent_molino->getAspas());
+		// EntidadIG::addListener(ent_molino->getAspas());
+
 	}
 	//-------------------------------------------------------------------
 
