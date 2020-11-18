@@ -27,15 +27,22 @@ private:
     Ogre::SceneNode* alaDNode = nullptr;
 	Ogre::SceneNode* frenteNode = nullptr;
     Ogre::SceneNode* pilotoNode = nullptr;
+
     AspasMolino* helice_D = nullptr;
 	AspasMolino* helice_I = nullptr;
     static int cont;
     Vector3 posIni;
-
+    
 	//luz
     Ogre::SceneNode* lightNode = nullptr;
     Light* luzFoco = nullptr;
 
 	bool move_avion = true;
 
+    // Billboards
+    BillboardSet* bbSet = nullptr;
+    // Particle Systems
+    ParticleSystem* pSys = nullptr;
+    
+    //Ogre::SceneNode* bbNode = nullptr;
 };

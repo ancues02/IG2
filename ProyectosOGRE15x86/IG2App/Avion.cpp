@@ -73,6 +73,20 @@ Avion::Avion(Ogre::SceneNode* parentNode):EntidadIG(parentNode)
 	luzFoco->setSpotlightOuterAngle(Ogre::Degree(25.0f));*/
 	luzFoco->setSpotlightFalloff(0.5f);
     lightNode->attachObject(luzFoco);
+
+	//Billboard
+	bbSet = mSM->createBillboardSet("bbAvion", 1);
+	bbSet->setDefaultDimensions(200, 100);
+	bbSet->setMaterialName("IG2App/Panel");
+
+	avionNode->attachObject(bbSet);
+	Billboard* bb = bbSet->createBillboard(Vector3(0, 0, -200));
+
+	//ParticleSystem
+	pSys = mSM->createParticleSystem("pSysAvion", "IG2App/Explosion");
+	pSys->setEmitting(false);
+	avionNode->attachObject(pSys);
+	
 }
 
 Avion::~Avion()
@@ -99,6 +113,8 @@ void Avion::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
 		case msg::_PARAR:
 			move_avion = false;
 			luzFoco->setVisible(false);
+			avionNode->setVisible(false);
+			pSys->setEmitting(true);
 			break;
 		default:
 			break;

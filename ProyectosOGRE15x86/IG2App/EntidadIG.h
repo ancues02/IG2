@@ -6,6 +6,10 @@
 #include <OgreFrameListener.h>
 #include <OgreAnimation.h>
 #include <OgreKeyFrame.h>
+#include <OgreBillboard.h>
+#include <OgreBillboardSet.h>
+#include <OgreBillboardChain.h>
+#include <OgreParticleSystem.h>
 #include <SDL_keycode.h>
 
 #include "Messages.h"
