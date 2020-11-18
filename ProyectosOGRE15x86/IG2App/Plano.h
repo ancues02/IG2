@@ -4,7 +4,7 @@ class Plano : public EntidadIG
 {
 public:
     Plano(Ogre::SceneNode* parentNode);
-    ~Plano();
+    virtual ~Plano();
     virtual void receiveEvent(msg::MessageType msgType, EntidadIG* entidad);
     int getID() {
         return id;

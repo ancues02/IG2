@@ -91,7 +91,12 @@ void AspasMolino::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
 			}
 		}
 		break;
-		
+		case msg::_PARAR:
+		{
+			for (int i = 0; i < numAspas; i++) {
+				arrayAspas[i]->getAdorno_ent()->setVisible(false);
+			}
+		}
 		default:
 			break;
 		}
@@ -100,14 +105,14 @@ void AspasMolino::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
 
  
 bool AspasMolino::keyPressed(const OgreBites::KeyboardEvent& evt)
-{
-	
+{	
 	switch (evt.keysym.sym) {
 	case SDLK_g://rotan aspas
 		sendEvent(msg::_GIRAR_ASPAS, this);
 		break;
-	
-	
+	case SDLK_r://rotan aspas
+		sendEvent(msg::_PARAR, this);
+		break;
 	default:
 		break;
 	}

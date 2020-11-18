@@ -11,8 +11,9 @@ Boya::Boya(Ogre::SceneNode* parentNode) : EntidadIG(parentNode)
 	bCilindro->scale(_scale);
 
 	bCilindro->setInitialState();
-	int duracion=16;
-	//---------------------
+	
+	//--------SceneNode Animation-------------
+	int duracion = 16;
 	Animation * animation = mSM -> createAnimation("animVV", duracion);
 	animation->setInterpolationMode(Ogre::Animation::IM_SPLINE);
 	animation->setRotationInterpolationMode(Ogre::Animation::RIM_SPHERICAL);

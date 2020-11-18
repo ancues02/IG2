@@ -7,7 +7,7 @@ class Aspa : public EntidadIG
 {
 public:
     Aspa(Ogre::SceneNode* parentNode);
-    ~Aspa();
+    virtual ~Aspa();
     int getAspaID(){
         return id;
     }
@@ -29,7 +29,7 @@ class AspasMolino : public EntidadIG
 {
 public:
     AspasMolino(Ogre::SceneNode* parentNode, int nAspas);
-    ~AspasMolino();
+    virtual ~AspasMolino();
     virtual void receiveEvent(msg::MessageType msgType, EntidadIG* entidad);
     int getID() {
         return id;
@@ -62,7 +62,7 @@ public:
     Molino(Ogre::SceneNode* parentNode, int nAspas);
 	virtual void frameRendered(const Ogre::FrameEvent& evt);
 
-    ~Molino();
+    virtual ~Molino();
     virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
     virtual void receiveEvent(msg::MessageType msgType, EntidadIG* entidad);
 	AspasMolino* getAspas() {

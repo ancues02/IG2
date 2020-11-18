@@ -6,7 +6,7 @@ class Avion : public EntidadIG
 {
 public:
     Avion(Ogre::SceneNode* parentNode);
-    ~Avion();
+    virtual ~Avion();
     //virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
     virtual void frameRendered(const Ogre::FrameEvent& evt);
     virtual void receiveEvent(msg::MessageType msgType, EntidadIG* entidad);

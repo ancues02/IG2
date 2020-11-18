@@ -123,11 +123,6 @@ void Simbad::frameRendered(const Ogre::FrameEvent& evt)
 	else{
 		as_runBot->addTime(evt.timeSinceLastFrame);
 		as_runTop->addTime(evt.timeSinceLastFrame);
-		run_animation->addTime(evt.timeSinceLastFrame);
+		run_animation->addTime(evt.timeSinceLastFrame); // Node animation
 	}
-
-	// Node animation
-
 }
-
-

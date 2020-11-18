@@ -9,7 +9,7 @@ public:
 	Boya(Ogre::SceneNode* parentNode);
 	virtual void frameRendered(const Ogre::FrameEvent& evt);
 
-	~Boya();
+	virtual ~Boya();
 private:
 	Ogre::SceneNode* bCilindro = nullptr;
 	Ogre::Entity* bEnt = nullptr;

@@ -16,7 +16,7 @@ class EntidadIG :public OgreBites::InputListener {
 public:
 	//Constructora y destructora
 	EntidadIG(SceneNode* node);
-	~EntidadIG() {}
+	virtual ~EntidadIG() {}
 	//Vector estático de listeners
 	static std::vector<EntidadIG*> appListeners;
 	//Añadir entidad como listener al vector con push_back()
