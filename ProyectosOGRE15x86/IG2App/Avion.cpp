@@ -3,7 +3,8 @@ Avion::Avion(Ogre::SceneNode* parentNode):EntidadIG(parentNode)
 {
     // Apartado 16
     // Creacion de los nodos para cada elemento del avión
-    avionNode = mNode->createChildSceneNode("avion");
+	mainNode = mNode->createChildSceneNode("avion_principal");
+    avionNode = mainNode->createChildSceneNode("avion");
     cuerpoNode = avionNode->createChildSceneNode("cuerpo_Node");
     alaINode = avionNode->createChildSceneNode("alaI_Node");
     alaDNode = avionNode->createChildSceneNode("alaD_Node");
@@ -85,7 +86,11 @@ Avion::Avion(Ogre::SceneNode* parentNode):EntidadIG(parentNode)
 	//ParticleSystem
 	pSys = mSM->createParticleSystem("pSysAvion", "IG2App/Explosion");
 	pSys->setEmitting(false);
-	avionNode->attachObject(pSys);
+	mainNode->attachObject(pSys);
+
+	trailSys = mSM->createParticleSystem("pSysTrailAvion", "IG2App/SmokeTrail");
+	trailSys->setEmitting(true);
+	avionNode->attachObject(trailSys);
 	
 }
 
@@ -114,7 +119,10 @@ void Avion::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
 			move_avion = false;
 			luzFoco->setVisible(false);
 			avionNode->setVisible(false);
+			trailSys->setEmitting(false);
+			mainNode->setPosition(avionNode->getPosition());
 			pSys->setEmitting(true);
+
 			break;
 		default:
 			break;

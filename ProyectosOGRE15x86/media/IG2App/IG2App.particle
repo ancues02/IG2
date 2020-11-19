@@ -5,25 +5,27 @@ particle_system IG2App/Explosion
     billboard_type point
     particle_width 35
     particle_height 35
-    quota 500
+    quota 300
     material IG2App/Smoke
 
     emitter Point
     { // e. attributes
         direction 0 1 0
-        angle 35
-        emission_rate 15
-        time_to_live 4
+        angle 180
+        emission_rate 30
+        time_to_live 2.5
         velocity_min 50
         velocity_max 80
-        colour 0.7 0.7 0.7 0.5
+        colour 0.2 0.2 0.2 0.5
     }
 
     affector ColourFader
     { // a. attributes
-        red -0.25
-        green -0.25
-        blue -0.25
+        red 0.25
+        green 0.25
+        blue 0.25
+        alpha -0.1
+
     }
 
     affector Rotator // the texture
@@ -38,6 +40,41 @@ particle_system IG2App/Explosion
     { // a. attributes
         rate 50
     }
+
+    affector DirectionRandomiser
+    { // a. attributes
+        randomness 5
+    }
+}
+particle_system IG2App/SmokeTrail 
+{ // p. s. attributes
+
+    renderer billboard
+    billboard_type point
+    particle_width 40
+    particle_height 20
+    quota 200
+    material IG2App/Smoke
+
+    emitter Point
+    { // e. attributes
+        direction -1 0 0
+        angle 0
+        emission_rate 30
+        time_to_live 3
+        velocity_min 50
+        velocity_max 50
+        colour 0.8 0.8 0.8 0.6
+    }
+
+    affector ColourFader
+    { // a. attributes
+        red 0.25
+        green 0.25
+        blue 0.25
+        alpha -0.2
+    }
+
 
     affector DirectionRandomiser
     { // a. attributes

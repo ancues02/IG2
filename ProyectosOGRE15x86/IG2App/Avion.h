@@ -21,6 +21,7 @@ public:
 	}
 
 private:
+    Ogre::SceneNode* mainNode = nullptr;
     Ogre::SceneNode* avionNode = nullptr;
     Ogre::SceneNode* cuerpoNode = nullptr;
     Ogre::SceneNode* alaINode = nullptr;
@@ -41,8 +42,10 @@ private:
 
     // Billboards
     BillboardSet* bbSet = nullptr;
+    BillboardChain* trailChain = nullptr;
     // Particle Systems
     ParticleSystem* pSys = nullptr;
+    ParticleSystem* trailSys = nullptr;
     
     //Ogre::SceneNode* bbNode = nullptr;
 };

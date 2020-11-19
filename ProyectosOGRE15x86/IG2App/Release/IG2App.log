@@ -1,12 +1,12 @@
 ﻿  Avion.cpp
 D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\OGREsdk\include\OGRE\OgreHardwareBuffer.h(180,58): warning C4251: 'Ogre::HardwareBuffer::mShadowBuffer': class 'std::unique_ptr<Ogre::HardwareBuffer,std::default_delete<Ogre::HardwareBuffer>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Ogre::HardwareBuffer'
 D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\OGREsdk\include\OGRE\OgreHardwareBuffer.h(180): message : vea la declaración de 'std::unique_ptr<Ogre::HardwareBuffer,std::default_delete<Ogre::HardwareBuffer>>'
-D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\IG2App\Avion.cpp(24,30): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
-D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\IG2App\Avion.cpp(31,34): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
-D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\IG2App\Avion.cpp(39,33): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
-D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\IG2App\Avion.cpp(52,29): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
-D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\IG2App\Avion.cpp(55,26): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
-D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\IG2App\Avion.cpp(62,32): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
+D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\IG2App\Avion.cpp(25,30): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
+D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\IG2App\Avion.cpp(32,34): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
+D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\IG2App\Avion.cpp(40,33): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
+D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\IG2App\Avion.cpp(53,29): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
+D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\IG2App\Avion.cpp(56,26): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
+D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\IG2App\Avion.cpp(63,32): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
   IG2App.cpp
 D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\OGREsdk\include\OGRE\RTShaderSystem\OgreShaderProgramManager.h(208,33): warning C4251: 'Ogre::RTShader::ProgramManager::mCpuProgramsList': class 'std::set<Ogre::RTShader::Program *,std::less<Ogre::RTShader::Program *>,std::allocator<Ogre::RTShader::Program *>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Ogre::RTShader::ProgramManager'
 D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\OGREsdk\include\OGRE\RTShaderSystem\OgreShaderProgramManager.h(105): message : vea la declaración de 'std::set<Ogre::RTShader::Program *,std::less<Ogre::RTShader::Program *>,std::allocator<Ogre::RTShader::Program *>>'
@@ -965,10 +965,17 @@ D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\OGREsdk\include\OGRE\Bites\Ogr
 D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\OGREsdk\include\OGRE\Bites\OgreTrays.h(189): message : vea la declaración de 'std::vector<OgreBites::Widget *,std::allocator<OgreBites::Widget *>>'
 D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\OGREsdk\include\OGRE\Bites\OgreTrays.h(1174,35): warning C4251: 'OgreBites::TrayManager::mWidgetDeathRow': class 'std::vector<OgreBites::Widget *,std::allocator<OgreBites::Widget *>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OgreBites::TrayManager'
 D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\OGREsdk\include\OGRE\Bites\OgreTrays.h(189): message : vea la declaración de 'std::vector<OgreBites::Widget *,std::allocator<OgreBites::Widget *>>'
+  Simbad.cpp
+D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\OGREsdk\include\OGRE\OgreHardwareBuffer.h(180,58): warning C4251: 'Ogre::HardwareBuffer::mShadowBuffer': class 'std::unique_ptr<Ogre::HardwareBuffer,std::default_delete<Ogre::HardwareBuffer>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Ogre::HardwareBuffer'
+D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\OGREsdk\include\OGRE\OgreHardwareBuffer.h(180): message : vea la declaración de 'std::unique_ptr<Ogre::HardwareBuffer,std::default_delete<Ogre::HardwareBuffer>>'
+D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\IG2App\Simbad.cpp(42,56): warning C4244: 'argumento': conversión de 'int' a 'Ogre::Real'; posible pérdida de datos
+D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\IG2App\Simbad.cpp(49,20): warning C4244: 'inicializando': conversión de 'double' a 'Ogre::Real'; posible pérdida de datos
+D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\IG2App\Simbad.cpp(61,56): warning C4305: 'argumento': truncamiento de 'double' a 'const Ogre::Real'
+D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\IG2App\Simbad.cpp(69,56): warning C4305: 'argumento': truncamiento de 'double' a 'const Ogre::Real'
   Generando código
-  2 of 738 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+  5 of 738 functions ( 0.7%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    8 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
 SDL2main.lib(SDL_windows_main.obj) : warning LNK4099: no se encontró PDB 'SDL2main.pdb' con 'SDL2main.lib(SDL_windows_main.obj)' o en 'D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\bin\SDL2main.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
   IG2App.vcxproj -> D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\bin\IG2AppRelease.exe

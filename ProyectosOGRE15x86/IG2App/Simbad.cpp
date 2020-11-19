@@ -1,4 +1,5 @@
 #include "Simbad.h"
+#include "Avion.h"
 
 Simbad::Simbad(Ogre::SceneNode* parentNode):EntidadIG(parentNode)
 {
@@ -27,6 +28,10 @@ Simbad::Simbad(Ogre::SceneNode* parentNode):EntidadIG(parentNode)
 	as_runTop->setEnabled(!dance);
 	as_runTop->setLoop(true);
 
+	dead = simbadEnt->getAnimationState("IdleTop");
+	dead->setEnabled(false);
+	dead->setLoop(true);
+	
 	sword = mSM->createEntity("Sword.mesh");
 	simbadEnt->attachObjectToBone("Handle.R", sword);
 	dcha = true;
@@ -79,7 +84,7 @@ bool Simbad::keyPressed(const OgreBites::KeyboardEvent& evt)
 		break;
 	case SDLK_e://cambiar animacion
 		sendEvent(msg::_CAMBIO_ESPADA, this);
-		break;
+		break;	
 	default:
 		break;
 	}
@@ -109,8 +114,22 @@ void Simbad::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
 				simbadEnt->attachObjectToBone("Handle.L", sword);
 			}
 			break;
+
 		default:
 			break;
+		}
+	}
+	//probamos que el mensaje lo haya mandado el avion para cambiar de animacion a muerto
+	if (dynamic_cast<Avion*>(entidad) != nullptr) {
+		if (msgType == msg::_PARAR && !muerto) {
+			muerto = true;
+			animationState->setEnabled(false);
+			as_runBot->setEnabled(false);
+			as_runTop->setEnabled(false);
+			run_animation->setEnabled(false);
+			simbadNode->pitch(Ogre::Degree(-90.0));
+			simbadNode->translate({ 0,-85,0 });
+			dead->setEnabled(true);
 		}
 	}
 }

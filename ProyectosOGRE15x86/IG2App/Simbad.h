@@ -19,10 +19,12 @@ private:
 	AnimationState* animationState;
 	AnimationState* as_runTop;
 	AnimationState* as_runBot;
+	AnimationState* dead;
 
 	AnimationState* run_animation;
 
 	bool dance=true;
 	bool dcha = true;
+	bool muerto = false;
 	Vector3 keyframePos;
 };
