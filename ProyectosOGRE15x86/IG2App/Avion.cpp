@@ -63,18 +63,7 @@ Avion::Avion(Ogre::SceneNode* parentNode):EntidadIG(parentNode)
 	avionNode->scale(0.2, 0.2, 0.2);
 
 
-    //Luz
-    lightNode = avionNode->createChildSceneNode("luz_avion");
-
-	luzFoco = mSM->createLight("LuzFoco");
-	luzFoco->setType(Ogre::Light::LT_SPOTLIGHT);
-	luzFoco->setDiffuseColour(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
-	luzFoco->setDirection(Ogre::Vector3(1, -1, 0));
-	/*luzFoco->setSpotlightInnerAngle(Ogre::Degree(1.0f));
-	luzFoco->setSpotlightOuterAngle(Ogre::Degree(25.0f));*/
-	luzFoco->setSpotlightFalloff(0.5f);
-    lightNode->attachObject(luzFoco);
-
+    
 	//Billboard
 	bbSet = mSM->createBillboardSet("bbAvion", 1);
 	bbSet->setDefaultDimensions(200, 100);
@@ -117,7 +106,6 @@ void Avion::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
 		{
 		case msg::_PARAR:
 			move_avion = false;
-			luzFoco->setVisible(false);
 			avionNode->setVisible(false);
 			trailSys->setEmitting(false);
 			mainNode->setPosition(avionNode->getPosition());

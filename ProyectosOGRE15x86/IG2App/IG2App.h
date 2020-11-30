@@ -35,7 +35,6 @@ protected:
   // Escena 1
   Plano* plano = nullptr;
   Plano* plano2 = nullptr;
-  Plano* plano3 = nullptr;
 
   Molino* ent_molino = nullptr;
   Avion* avion = nullptr;

@@ -68,7 +68,7 @@ void IG2App::setupScene(void)
 
 	// and tell it to render into the main window
 	Viewport* vp = getRenderWindow()->addViewport(cam);
-	vp->setBackgroundColour(Ogre::ColourValue(0.7, 0.8, 0.9));//cambia el color del fondo
+	vp->setBackgroundColour(Ogre::ColourValue(0.0, 0.0, 0.0));//cambia el color del fondo
 
 	//------------------------------------------------------------------------
 
@@ -84,22 +84,24 @@ void IG2App::setupScene(void)
 
 	mLightNode->setDirection(Ogre::Vector3(0, -1, -1));  //vec3.normalise();
 
-	// para las sombras
-	mSM->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
-
 	//lightNode->setPosition(0, 0, 1000);
+
+	// SkyPlane
+	//mSM->setSkyPlane(true, Plane(Vector3::UNIT_Z, -200), "IG2App/space", 1, 1, true, 0.0, 10, 10);
+	mSM->setSkyPlane(true, Plane(Vector3::UNIT_Z, -20), "IG2App/space", 1, 1, true, 1.0, 10, 10);
 
 	//------------------------------------------------------------------------
 	if (scene == 1) {
 		plano = new Plano(mSM->getRootSceneNode());
-		plano->setMaterial("Practica1/agua");
+		plano->setMaterial("IG2App/reflejo");
+		
+		plano->setReflejo(cam);
+
 		addInputListener(plano);
 		EntidadIG::addListener(plano);
 
 		plano2 = new Plano(mSM->getRootSceneNode());
-		plano2->setMaterial("Practica1/rojete");
-		plano3 = new Plano(mSM->getRootSceneNode());
-		plano3->setMaterial("Practica1/naranjete");
+		plano2->setMaterial("Practica1/naranjete");
 
 		ent_molino = new Molino(mSM->getRootSceneNode(), 6);
 		addInputListener(ent_molino);//para eventos de teclado
@@ -129,11 +131,8 @@ void IG2App::setupScene(void)
 
 
 		mSM->getSceneNode("plano_1")->scale(2, 2, 2);
-		mSM->getSceneNode("plano_2")->scale(0.8, 0.8, 0.8);
-		mSM->getSceneNode("plano_2")->translate(-650, 1, 480);//plano debajo de sinbad
-		mSM->getSceneNode("plano_3")->translate(860, 1, -630);//plano debajo del molino
-		mSM->getSceneNode("plano_3")->scale(0.4, 0.4, 0.4);
-
+		mSM->getSceneNode("plano_2")->translate(860, 1, -630);//plano debajo del molino
+		mSM->getSceneNode("plano_2")->scale(0.4, 0.4, 0.4);
 		mSM->getSceneNode("molino")->translate(860, 300, -630);
 		
 		Ogre::SceneNode* esfera = nullptr;

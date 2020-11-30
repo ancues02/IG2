@@ -32,3 +32,58 @@ material IG2App/Smoke
         }
     }
 }
+material IG2App/space
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+
+            texture_unit
+            {
+                texture "spaceSky.jpg"
+                tex_coord_set 0
+                tex_address_mode clamp
+                rotate_anim 0.01
+            }
+            texture_unit
+            {
+                texture "lightMap.jpg"
+                tex_coord_set 0
+                colour_op modulate
+
+            }
+
+        }
+    }
+}
+
+material IG2App/reflejo
+{
+    technique
+    {
+        pass
+        {
+            ambient 1.0 1.0 1.0 1.0 
+            diffuse 1.0 1.0 1.0 1.0 
+            specular 1.0 1.0 1.0 1
+            emissive 1.0 1.0 1.0 0.5
+            texture_unit
+            {
+                texture "BeachStones.jpg"
+                tex_coord_set 0
+                tex_address_mode clamp
+            }
+            texture_unit
+            {
+                texture "Water02.jpg"
+                tex_coord_set 0
+                colour_op modulate
+                scroll_anim -0.1 0.0
+
+            }
+
+        }
+    }
+}

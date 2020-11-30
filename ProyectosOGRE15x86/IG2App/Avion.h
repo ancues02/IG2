@@ -34,9 +34,7 @@ private:
     static int cont;
     Vector3 posIni;
     
-	//luz
-    Ogre::SceneNode* lightNode = nullptr;
-    Light* luzFoco = nullptr;
+
 
 	bool move_avion = true;
 
