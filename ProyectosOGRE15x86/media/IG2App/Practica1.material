@@ -50,6 +50,17 @@ material Practica1/cara {
         }
     }
 }
+material Practica1/caraRotada {
+    technique {
+        pass {
+            texture_unit {
+                texture spotlight_image2.png
+
+                env_map spherical
+            }
+        }
+    }
+}
 material Practica1/centroAspas {
     technique {
         pass {

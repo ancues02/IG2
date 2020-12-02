@@ -23,11 +23,11 @@ public:
 	void setMaterial(std::string name);
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
     void setReflejo(Camera* camRef);
-
+    RenderTargetListener* getRenderTarget() { return this; }
     // RenderTargetListener
 
-    //virtual void preRenderTargetUpdate(const Ogre::RenderTargetEvent& evt);
-    //virtual void postRenderTargetUpdate(const Ogre::RenderTargetEvent& evt);
+    virtual void preRenderTargetUpdate(const Ogre::RenderTargetEvent& evt);
+    virtual void postRenderTargetUpdate(const Ogre::RenderTargetEvent& evt);
 private:
 	Ogre::Entity* plane;
     static int cont;

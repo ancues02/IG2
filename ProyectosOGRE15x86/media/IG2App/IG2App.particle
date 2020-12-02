@@ -17,6 +17,7 @@ particle_system IG2App/Explosion
         velocity_min 50
         velocity_max 80
         colour 0.2 0.2 0.2 0.5
+        duration 5
     }
 
     affector ColourFader
@@ -60,7 +61,7 @@ particle_system IG2App/SmokeTrail
     { // e. attributes
         direction -1 0 0
         angle 0
-        emission_rate 30
+        emission_rate 50
         time_to_live 3
         velocity_min 50
         velocity_max 50

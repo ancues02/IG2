@@ -64,19 +64,21 @@ void Plano::setReflejo(Camera* cam)
 	tu->setColourOperation(LBO_MODULATE);
 	tu->setProjectiveTexturing(true, camRef);
 
+	renderTexture->addListener(this);
 }
 
-//void Plano::preRenderTargetUpdate(const Ogre::RenderTargetEvent& evt)
-//{
-//	plane->setVisible(false);
-//	mNode->getCreator()->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
-//}
-//
-//void Plano::postRenderTargetUpdate(const Ogre::RenderTargetEvent& evt)
-//{
-//	plane->setVisible(true);
-//	mNode->getCreator()->setAmbientLight(ColourValue(0, 0, 0));
-//}
+void Plano::preRenderTargetUpdate(const Ogre::RenderTargetEvent& evt)
+{
+	SceneNode* cara=mSM->getSceneNode("cara");
+	static_cast<Entity*>(cara->getAttachedObjects()[0])->setMaterialName("Practica1/caraRotada");
+}
+
+void Plano::postRenderTargetUpdate(const Ogre::RenderTargetEvent& evt)
+{
+	SceneNode* cara = mSM->getSceneNode("cara");
+	static_cast<Entity*>(cara->getAttachedObjects()[0])->setMaterialName("Practica1/cara");
+
+}
 
 
 void Plano::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
