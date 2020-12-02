@@ -17,18 +17,18 @@ material IG2/spaceGLSL
                 source SpaceFS.glsl
                 default_params
                 {
-                    param_named texturaL int 0 // 1º unidad de textura ‐> *
-                    param_named texturaM int 1 // 2º unidad de textura ‐> *
-                    param_named BF float 1.0
-                    param_named intLuzAmb float 100.0
+                    param_named texturaL int 0 
+                    param_named texturaM int 1 
+                    //param_named BF float 1.0
+                    //param_named intLuzAmb float 100.0
                 }
             }
-            texture_unit { // * ‐> int 0
+            texture_unit {
                 texture lightMap.jpg 2d // archivo
                 tex_address_mode clamp // sólo configuración
                 filtering bilinear // de acceso al texel
             }
-            texture_unit { // * ‐> int 1
+            texture_unit {
                 texture numbers.jpg 2d // archivo
                 tex_address_mode clamp // sólo configuración
             }
