@@ -1,12 +1,1 @@
-﻿  Plano.cpp
-D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\OGREsdk\include\OGRE\OgreHardwareBuffer.h(180,58): warning C4251: 'Ogre::HardwareBuffer::mShadowBuffer': class 'std::unique_ptr<Ogre::HardwareBuffer,std::default_delete<Ogre::HardwareBuffer>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Ogre::HardwareBuffer'
-D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\OGREsdk\include\OGRE\OgreHardwareBuffer.h(180): message : vea la declaración de 'std::unique_ptr<Ogre::HardwareBuffer,std::default_delete<Ogre::HardwareBuffer>>'
-D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\OGREsdk\include\OGRE\OgreTextureManager.h(409,35): warning C4251: 'Ogre::TextureManager::mWarningTexture': class 'Ogre::SharedPtr<Ogre::Texture>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Ogre::TextureManager'
-D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\OGREsdk\include\OGRE\OgrePrerequisites.h(303): message : vea la declaración de 'Ogre::SharedPtr<Ogre::Texture>'
-  Generando código
-  0 of 758 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
-  Generación de código finalizada
-SDL2main.lib(SDL_windows_main.obj) : warning LNK4099: no se encontró PDB 'SDL2main.pdb' con 'SDL2main.lib(SDL_windows_main.obj)' o en 'D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\bin\SDL2main.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-  IG2App.vcxproj -> D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\bin\IG2AppRelease.exe
+﻿
