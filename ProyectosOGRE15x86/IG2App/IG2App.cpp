@@ -88,7 +88,7 @@ void IG2App::setupScene(void)
 
 	// SkyPlane
 	//mSM->setSkyPlane(true, Plane(Vector3::UNIT_Z, -200), "IG2App/space", 1, 1, true, 0.0, 10, 10);
-	mSM->setSkyPlane(true, Plane(Vector3::UNIT_Z, -20), "IG2App/space", 1, 1, true, 1.0, 10, 10);
+	mSM->setSkyPlane(true, Plane(Vector3::UNIT_Z, -20), "IG2/spaceGLSL", 1, 1, true, 1.0, 10, 10);
 
 	//------------------------------------------------------------------------
 	if (scene == 1) {

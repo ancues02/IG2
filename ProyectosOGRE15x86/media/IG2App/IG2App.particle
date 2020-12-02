@@ -17,6 +17,7 @@ particle_system IG2App/Explosion
         velocity_min 50
         velocity_max 80
         colour 0.2 0.2 0.2 0.5
+        duration 5.0
     }
 
     affector ColourFader
