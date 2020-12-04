@@ -4,11 +4,12 @@ Boya::Boya(Ogre::SceneNode* parentNode) : EntidadIG(parentNode)
 {
 	bCilindro = mNode->createChildSceneNode();
 
-	bEnt = mSM->createEntity("Barrel.mesh");
-	bEnt->setMaterialName("Practica1/tableroHelice");
+	bEnt = mSM->createEntity("uv_sphere.mesh");
+	//bEnt->setMaterialName("Practica1/tableroHelice");
+	bEnt->setMaterialName("IG2/agujerosGLSL");
 	bCilindro->attachObject(bEnt);
-	Vector3 _scale = { 30, 40, 30 };
-	bCilindro->scale(_scale);
+	//Vector3 _scale = { 30, 40, 30 };
+	//bCilindro->scale(_scale);
 
 	bCilindro->setInitialState();
 	
@@ -46,7 +47,7 @@ Boya::Boya(Ogre::SceneNode* parentNode) : EntidadIG(parentNode)
 
 	animationState = mSM->createAnimationState("animVV");
 	animationState -> setLoop(true);
-	animationState -> setEnabled(true);
+	animationState -> setEnabled(false);
 
 }
 

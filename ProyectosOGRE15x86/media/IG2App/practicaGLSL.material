@@ -1,37 +1,103 @@
+
+vertex_program SpaceVS glsl
+{
+    source SpaceVS.glsl
+    default_params
+    {
+        param_named_auto modelViewProjMat worldviewproj_matrix
+        param_named_auto SinTiempo sintime_0_2pi 32 
+       // param_named ZF float 0.5
+
+    }
+}
+fragment_program SpaceFS glsl
+{ 
+    source SpaceFS.glsl
+    default_params
+    {
+        param_named texturaL int 0 
+        param_named texturaM int 1 
+        //param_named BF float 1.0
+        //param_named intLuzAmb float 100.0
+    }
+}
+
 material IG2/spaceGLSL
 {
     technique
     {
         pass
         {
-            vertex_program SpaceVS glsl
+            vertex_program_ref SpaceVS 
             {
-                source SpaceVS.glsl
-                default_params
-                {
-                    param_named_auto modelViewProjMat worldviewproj_matrix
-                }
+               
             }
-            fragment_program SpaceFS glsl
+            fragment_program_ref SpaceFS 
             { 
-                source SpaceFS.glsl
-                default_params
-                {
-                    param_named texturaL int 0 
-                    param_named texturaM int 1 
-                    //param_named BF float 1.0
-                    //param_named intLuzAmb float 100.0
-                }
+               
             }
-            texture_unit {
+           
+            texture_unit 0 {
                 texture lightMap.jpg 2d // archivo
                 tex_address_mode clamp // sólo configuración
                 filtering bilinear // de acceso al texel
             }
-            texture_unit {
-                texture numbers.jpg 2d // archivo
-                tex_address_mode clamp // sólo configuración
+             texture_unit 1 {
+                texture spaceSky.jpg 2d // archivo
+                tex_address_mode wrap // sólo configuración
+
             }
+
+        }
+    }
+}
+
+
+
+vertex_program AgujerosVS glsl
+{
+    source AgujerosVS.glsl
+    default_params
+    {
+        param_named_auto modelViewProjMat worldviewproj_matrix       
+    }
+}
+fragment_program AgujerosFS glsl
+{ 
+    source AgujerosFS.glsl
+    default_params
+    {
+        param_named textureC int 0 
+        param_named_auto Flipping render_target_flipping 
+        param_named InColor float4 0.9 1.0 0.0 1.0
+        param_named OutColor float4 0.9 0.2 0.2 1.0
+        
+    }
+}
+
+material IG2/agujerosGLSL
+{
+    technique
+    {
+        pass
+        {
+            vertex_program_ref AgujerosVS 
+            {
+               
+            }
+            fragment_program_ref AgujerosFS 
+            { 
+               
+            }
+           
+            texture_unit 0 {
+                cull_hardware none
+                cull_software none
+                texture corrosion.jpg 2d // archivo
+                tex_address_mode clamp // sólo configuración
+                filtering nearest // de acceso al texel
+                 
+            } 
 
         }
     }
