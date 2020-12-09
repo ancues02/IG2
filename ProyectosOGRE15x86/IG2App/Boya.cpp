@@ -47,7 +47,7 @@ Boya::Boya(Ogre::SceneNode* parentNode) : EntidadIG(parentNode)
 
 	animationState = mSM->createAnimationState("animVV");
 	animationState -> setLoop(true);
-	animationState -> setEnabled(false);
+	animationState -> setEnabled(true);
 
 }
 
