@@ -1,5 +1,1 @@
 ﻿  Aspa.cpp
-D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\OGREsdk\include\OGRE\OgreHardwareBuffer.h(180,58): warning C4251: 'Ogre::HardwareBuffer::mShadowBuffer': class 'std::unique_ptr<Ogre::HardwareBuffer,std::default_delete<Ogre::HardwareBuffer>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Ogre::HardwareBuffer'
-D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\OGREsdk\include\OGRE\OgreHardwareBuffer.h(180): message : vea la declaración de 'std::unique_ptr<Ogre::HardwareBuffer,std::default_delete<Ogre::HardwareBuffer>>'
-D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\IG2App\Aspa.cpp(13,36): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
-D:\Pablo\3º\1ºCuatri\IG2\IG2\ProyectosOGRE15x86\IG2App\Aspa.cpp(135,35): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
