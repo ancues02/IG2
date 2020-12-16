@@ -13,6 +13,10 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
     {
         getRoot()->queueEndRendering();
     }  
+	else if (evt.keysym.sym == SDLK_l) {
+		lum_active = !lum_active;
+		CompositorManager::getSingleton().setCompositorEnabled(getRenderWindow()->getViewport(0), "IG2/Luminance", lum_active);
+	}
   return true;
 }
 
@@ -70,6 +74,8 @@ void IG2App::setupScene(void)
 	Viewport* vp = getRenderWindow()->addViewport(cam);
 	vp->setBackgroundColour(Ogre::ColourValue(0.0, 0.0, 0.0));//cambia el color del fondo
 
+	// Compositors
+	CompositorManager::getSingleton().addCompositor(vp, "IG2/Luminance");
 	//------------------------------------------------------------------------
 
 	// without light we would just get a black screen 
@@ -90,6 +96,7 @@ void IG2App::setupScene(void)
 	//mSM->setSkyPlane(true, Plane(Vector3::UNIT_Z, -200), "IG2App/space", 1, 1, true, 0.0, 10, 10);
 	mSM->setSkyPlane(true, Plane(Vector3::UNIT_Z, -20), "IG2/spaceGLSL", 1, 1, true, 1.0, 10, 10);
 
+	
 	//------------------------------------------------------------------------
 	if (scene == 1) {
 		plano = new Plano(mSM->getRootSceneNode());

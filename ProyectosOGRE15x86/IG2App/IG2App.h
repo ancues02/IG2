@@ -6,6 +6,7 @@
 #include <OgreSceneNode.h>
 #include <OgreTrays.h>
 #include <OgreCameraMan.h>
+#include <OgreCompositorManager.h>
 
 #include "Aspa.h"
 #include "Avion.h"
@@ -42,6 +43,8 @@ protected:
   Boya* boya = nullptr;
 
   int scene = 1; 
+  bool lum_active = false;
+  bool blur_active = false;
 };
 
 #endif
