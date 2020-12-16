@@ -44,7 +44,7 @@ protected:
 
   int scene = 1; 
   bool lum_active = false;
-  bool blur_active = false;
+  bool edge_active = false;
 };
 
 #endif

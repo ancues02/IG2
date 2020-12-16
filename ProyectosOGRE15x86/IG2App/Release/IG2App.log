@@ -477,8 +477,8 @@ U:\hlocal\IG2\ProyectosOGRE15x86\OGREsdk\include\OGRE\Bites\OgreTrays.h(1174,35)
 U:\hlocal\IG2\ProyectosOGRE15x86\OGREsdk\include\OGRE\Bites\OgreTrays.h(189): message : see declaration of 'std::vector<OgreBites::Widget *,std::allocator<OgreBites::Widget *>>'
 U:\hlocal\IG2\ProyectosOGRE15x86\OGREsdk\include\OGRE\OgreTextureManager.h(409,35): warning C4251: 'Ogre::TextureManager::mWarningTexture': class 'Ogre::SharedPtr<Ogre::Texture>' needs to have dll-interface to be used by clients of class 'Ogre::TextureManager'
 U:\hlocal\IG2\ProyectosOGRE15x86\OGREsdk\include\OGRE\OgrePrerequisites.h(303): message : see declaration of 'Ogre::SharedPtr<Ogre::Texture>'
-U:\hlocal\IG2\ProyectosOGRE15x86\IG2App\IG2App.cpp(142,52): warning C4305: 'argument': truncation from 'double' to 'Ogre::Real'
-U:\hlocal\IG2\ProyectosOGRE15x86\IG2App\IG2App.cpp(150,33): warning C4305: 'argument': truncation from 'double' to 'Ogre::Real'
+U:\hlocal\IG2\ProyectosOGRE15x86\IG2App\IG2App.cpp(148,52): warning C4305: 'argument': truncation from 'double' to 'Ogre::Real'
+U:\hlocal\IG2\ProyectosOGRE15x86\IG2App\IG2App.cpp(156,33): warning C4305: 'argument': truncation from 'double' to 'Ogre::Real'
   Generating code
   1 of 755 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation

@@ -17,6 +17,10 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 		lum_active = !lum_active;
 		CompositorManager::getSingleton().setCompositorEnabled(getRenderWindow()->getViewport(0), "IG2/Luminance", lum_active);
 	}
+	else if (evt.keysym.sym == SDLK_k) {
+		edge_active = !edge_active;
+		CompositorManager::getSingleton().setCompositorEnabled(getRenderWindow()->getViewport(0), "IG2/EdgeEmboss", edge_active);
+	}
   return true;
 }
 
@@ -76,6 +80,8 @@ void IG2App::setupScene(void)
 
 	// Compositors
 	CompositorManager::getSingleton().addCompositor(vp, "IG2/Luminance");
+	CompositorManager::getSingleton().addCompositor(vp, "IG2/EdgeEmboss");
+
 	//------------------------------------------------------------------------
 
 	// without light we would just get a black screen 
