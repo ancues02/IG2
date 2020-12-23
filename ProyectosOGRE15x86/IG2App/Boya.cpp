@@ -59,3 +59,16 @@ void Boya::frameRendered(const Ogre::FrameEvent& evt)
 Boya::~Boya()
 {
 }
+
+bool Boya::keyPressed(const OgreBites::KeyboardEvent& evt)
+{
+	switch (evt.keysym.sym) {
+
+	case SDLK_r:
+		bEnt->setMaterialName("IG2/ExplotaGS");
+		break;
+	default:
+		break;
+	}
+	return false;
+}

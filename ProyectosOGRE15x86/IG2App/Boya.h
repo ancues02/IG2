@@ -8,7 +8,7 @@ class Boya : public EntidadIG
 public:
 	Boya(Ogre::SceneNode* parentNode);
 	virtual void frameRendered(const Ogre::FrameEvent& evt);
-
+	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
 	virtual ~Boya();
 private:
 	Ogre::SceneNode* bCilindro = nullptr;
