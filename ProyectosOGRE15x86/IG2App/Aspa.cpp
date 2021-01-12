@@ -96,6 +96,7 @@ void AspasMolino::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
 			for (int i = 0; i < numAspas; i++) {
 				arrayAspas[i]->getAdorno_ent()->setVisible(false);
 			}
+
 		}
 		default:
 			break;
@@ -197,7 +198,9 @@ void Molino::receiveEvent(msg::MessageType msgType, EntidadIG* entidad)
 		case msg::_PARAR:
 		{
 			gira = false;
-			esfera_ent->setMaterialName("Practica1/rojete");
+			//esfera_ent->setMaterialName("Practica1/rojete");
+			esfera_ent->setMaterialName("IG2/NormalesGS");
+
 		}
 		break;
 		case msg::_ACERCAR_CENTRO_ASPAS://el cilindro central de las aspas se mueve hacia dentro
