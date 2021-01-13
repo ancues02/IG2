@@ -24,7 +24,7 @@ uniform float Flipping;
 void main() {
 
 
-   // bool frontFacing = (Flipping > -1)? gl_FrontFacing : ! gl_FrontFacing; 
+    bool frontFacing = (Flipping > -1)? gl_FrontFacing : ! gl_FrontFacing; 
 
     //vec3 ambient = lightAmbient * materialDiffuse; 
     vec3 color;
