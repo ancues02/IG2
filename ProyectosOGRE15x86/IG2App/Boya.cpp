@@ -65,7 +65,8 @@ bool Boya::keyPressed(const OgreBites::KeyboardEvent& evt)
 	switch (evt.keysym.sym) {
 
 	case SDLK_r:
-		bEnt->setMaterialName("IG2/Explota2GS");
+		animationState->setEnabled(false);
+		bEnt->setMaterialName("IG2/ExplotaGS");
 		break;
 	default:
 		break;

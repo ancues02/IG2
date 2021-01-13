@@ -24,7 +24,7 @@ uniform float Flipping;
 void main() {
 
 
-    bool frontFacing = (Flipping > -1)? gl_FrontFacing : ! gl_FrontFacing; 
+   // bool frontFacing = (Flipping > -1)? gl_FrontFacing : ! gl_FrontFacing; 
 
     //vec3 ambient = lightAmbient * materialDiffuse; 
     vec3 color;
@@ -34,12 +34,12 @@ void main() {
     if(frontFacing){
        // diffuse= diff(vViewVertex, vViewNormal) * lightDiffuse * materialDiffuse;
        // vColor = ambient + diffuse;
-        color = /*vColor **/ texture(texturaCorrosion, _vUv0).rgb ;
+        color = /*vColor **/ texture(texturaBumpy, _vUv0).rgb ;
     }
     else{
        // diffuse=diff(vViewVertex,-vViewNormal)*lightDiffuse* materialDiffuse;
        // vColor = ambient + diffuse;
-        color = /*vColor  **/ texture(texturaBumpy, _vUv0).rgb;
+        color = /*vColor  **/ texture(texturaCorrosion, _vUv0).rgb;
     }    
 
 

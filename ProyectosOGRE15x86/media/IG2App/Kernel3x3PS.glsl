@@ -14,7 +14,7 @@ void main() {
     
     vec2 incUV[9];//texels vecinos
     incUV[0] = vec2(-incS,incT);
-    incUV[1] = vec2(-incS,incT);
+    incUV[1] = vec2(-incS,0.0);
     incUV[2] = vec2(-incS, -incT);
     incUV[3] = vec2(0.0, incT);
     incUV[4] = vec2(0.0,0.0);
