@@ -6,6 +6,7 @@ uniform mat4 modelViewProjMat;
 uniform float tiempo;
 
 const float VD=50;
+const float scale = 2;
 in vec2 vUv0[];
  //in vec2 vUv0;
  out vec2 _vUv0;
@@ -29,22 +30,23 @@ vec3 baricentroVec(vec3 v[3]){
 
 void main(){
    
-   
+    mat4 yawMatrix = mat4(
+       vec4(cos(tiempo2pi), 0.0, sin(tiempo2pi), 0.0),
+       vec4(           0.0, 1.0,            0.0, 0.0),
+       vec4(-sin(tiempo2pi), 0.0, cos(tiempo2pi), 0.0),
+       vec4(            0.0, 0.0,           0.0, 1.0)
+   );
 
-    vec3 vertices[3] = vec3[](  gl_in[0].gl_Position.xyz*tiempo, 
-                                gl_in[1].gl_Position.xyz*tiempo,
-                                gl_in[2].gl_Position.xyz*tiempo);
+    vec3 vertices[3] = vec3[](  gl_in[0].gl_Position.xyz * scale, 
+                                gl_in[1].gl_Position.xyz * scale,
+                                gl_in[2].gl_Position.xyz * scale);
 
     vec3 dir = baricentroVec(vertices);
     for(int i = 0; i < 3; ++i){
         vec3 posDes = vertices[i] + dir * VD * tiempo;
-         _vUv0=vUv0[i];
-            //vUv1= (uv0 - 0.5) * (SinTiempo*0.25 + 0.75) + 0.5;  
-       // yaw()
-        gl_Position = modelViewProjMat * vec4(posDes, 1.0);
-        //gl_Position.x=gl_Position.x*cos(tiempo2pi)+sin(tiempo2pi)*gl_Position.z;
-        //gl_Position.z=gl_Position.x*-sin(tiempo2pi)+cos(tiempo2pi)*gl_Position.z;
-       
+        _vUv0=vUv0[i];
+        mat4 aux = (modelViewProjMat * yawMatrix);
+        gl_Position = aux * vec4(posDes, 1.0);
         EmitVertex();
     }
 
