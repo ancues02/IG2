@@ -5,6 +5,12 @@ uniform float tiempo2pi;
 uniform mat4 modelViewProjMat;
 uniform float tiempo;
 
+mat4 yawMatrix = mat4(
+       vec4(cos(tiempo2pi), 0.0, sin(tiempo2pi), 0.0),
+       vec4(           0.0, 1.0,            0.0, 0.0),
+       vec4(-sin(tiempo2pi), 0.0, cos(tiempo2pi), 0.0),
+       vec4(            0.0, 0.0,           0.0, 1.0)
+   );
 const float VD=50;
 const float scale = 2;
 in vec2 vUv0[];
@@ -30,12 +36,7 @@ vec3 baricentroVec(vec3 v[3]){
 
 void main(){
    
-    mat4 yawMatrix = mat4(
-       vec4(cos(tiempo2pi), 0.0, sin(tiempo2pi), 0.0),
-       vec4(           0.0, 1.0,            0.0, 0.0),
-       vec4(-sin(tiempo2pi), 0.0, cos(tiempo2pi), 0.0),
-       vec4(            0.0, 0.0,           0.0, 1.0)
-   );
+    
 
     vec3 vertices[3] = vec3[](  gl_in[0].gl_Position.xyz * tiempo, 
                                 gl_in[1].gl_Position.xyz * tiempo,

@@ -89,19 +89,19 @@ void IG2App::setupScene(void)
 	Light* luz = mSM->createLight("Luz");
 	luz->setType(Ogre::Light::LT_DIRECTIONAL);
 	luz->setDiffuseColour(0.75, 0.75, 0.75);
-
+	
 	mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
 	//mLightNode = mCamNode->createChildSceneNode("nLuz");
 	mLightNode->attachObject(luz);
 
 	mLightNode->setDirection(Ogre::Vector3(0, -1, -1));  //vec3.normalise();
-
+	
 	//lightNode->setPosition(0, 0, 1000);
 
 	// SkyPlane
 	//mSM->setSkyPlane(true, Plane(Vector3::UNIT_Z, -200), "IG2App/space", 1, 1, true, 0.0, 10, 10);
 	mSM->setSkyPlane(true, Plane(Vector3::UNIT_Z, -20), "IG2/spaceGLSL", 1, 1, true, 1.0, 10, 10);
-
+	mSM->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
 	
 	//------------------------------------------------------------------------
 	if (scene == 1) {
