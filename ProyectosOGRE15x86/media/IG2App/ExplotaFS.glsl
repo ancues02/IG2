@@ -23,7 +23,6 @@ float  diff(vec3 cVertex, vec3 cNormal){
 
 void main() {
 
-
     bool frontFacing = (Flipping > -1)? gl_FrontFacing : ! gl_FrontFacing; 
 
     vec3 ambient = lightAmbient * materialDiffuse; 

@@ -192,7 +192,6 @@ vertex_program ExplotaVS glsl
     source  ExplotaVS.glsl
     default_params {
         param_named_auto modelViewMat world_matrix // matriz de modelado y vista
-        param_named_auto modelViewProjMat worldviewproj_matrix
         param_named_auto normalMat inverse_transpose_world_matrix // matriz de modelado para vectores
     }
 }
@@ -214,7 +213,7 @@ fragment_program ExplotaFS glsl
     source  ExplotaFS.glsl
     default_params {
         param_named texturaCorrosion int 0 
-        param_named texturaBumpy int 1         
+        param_named texturaBumpy int 1       
         param_named_auto Flipping render_target_flipping 
         param_named_auto lightAmbient ambient_light_colour 0
         param_named_auto lightDiffuse light_diffuse_colour 0
@@ -241,15 +240,15 @@ material IG2/ExplotaGS{
 
             texture_unit 0 {
                
-                texture corrosion.jpg 2d // archivo
-                tex_address_mode clamp // sólo configuración
+                texture "corrosion.jpg"  // archivo
+                tex_address_mode wrap // sólo configuración
                 filtering bilinear // de acceso al texel
                  
             } 
             texture_unit 1 {
                
-                texture BumpyMetal.jpg 2d // archivo
-                tex_address_mode clamp // sólo configuración
+                texture "BumpyMetal.jpg"  // archivo
+                tex_address_mode wrap // sólo configuración
                 filtering bilinear // de acceso al texel
                  
             } 
