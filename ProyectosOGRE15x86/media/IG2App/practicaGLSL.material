@@ -191,6 +191,9 @@ vertex_program ExplotaVS glsl
 {
     source  ExplotaVS.glsl
     default_params {
+        param_named_auto modelViewMat world_matrix // matriz de modelado y vista
+        param_named_auto modelViewProjMat worldviewproj_matrix
+        param_named_auto normalMat inverse_transpose_world_matrix // matriz de modelado para vectores
     }
 }
 
@@ -213,10 +216,10 @@ fragment_program ExplotaFS glsl
         param_named texturaCorrosion int 0 
         param_named texturaBumpy int 1         
         param_named_auto Flipping render_target_flipping 
-        //param_named_auto lightAmbient ambient_light_colour 0
-       // param_named_auto lightDiffuse light_diffuse_colour 0
-        //param_named_auto lightPosition light_position 0
-        //param_named_auto materialDiffuse surface_diffuse_colour
+        param_named_auto lightAmbient ambient_light_colour 0
+        param_named_auto lightDiffuse light_diffuse_colour 0
+        param_named_auto lightPosition light_position 0
+        param_named_auto materialDiffuse surface_diffuse_colour
 
     }
 }
@@ -279,7 +282,7 @@ fragment_program NormalesFS glsl
     source  NormalesFS.glsl
     default_params {
                 
-        param_named_auto Flipping render_target_flipping 
+       // param_named_auto Flipping render_target_flipping 
         //param_named_auto lightAmbient ambient_light_colour 0
        // param_named_auto lightDiffuse light_diffuse_colour 0
         //param_named_auto lightPosition light_position 0
