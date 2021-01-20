@@ -48,7 +48,7 @@ void main(){
         _vUv0=vUv0[i];
         
         mat4 aux = (modelViewProjMat * yawMatrix);
-        vViewNormal=vViewNormal_[i];
+        vViewNormal=vec3(yawMatrix*vec4(vViewNormal_[i],0.0));
         vViewVertex=vViewVertex_[i];
         gl_Position = aux * vec4(posDes, 1.0);
         
