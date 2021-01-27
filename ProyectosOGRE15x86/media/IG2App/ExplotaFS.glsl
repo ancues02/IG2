@@ -3,8 +3,8 @@ out vec4 fFragColor;
 uniform sampler2D texturaCorrosion; // tipo sampler2D para texturas 2D
 uniform sampler2D texturaBumpy; // tipo sampler2D para texturas 2D
 
-in vec3 vViewNormal;
-in vec3 vViewVertex;
+in vec3 vNormal;
+in vec3 vVertex;
 in vec2 _vUv0;
 uniform float Flipping;
 
@@ -31,12 +31,12 @@ void main() {
     vec3 diffuse;
     vec3 vColor;
     if(frontFacing){
-        diffuse= diff(vViewVertex, vViewNormal) * lightDiffuse * materialDiffuse;
+        diffuse= diff(vVertex, vNormal) * lightDiffuse * materialDiffuse;
         vColor = ambient + diffuse;
         color = vColor * texture(texturaBumpy, _vUv0).rgb ;
     }
     else{
-        diffuse=diff(vViewVertex,-vViewNormal)*lightDiffuse* materialDiffuse;
+        diffuse=diff(vVertex,-vNormal)*lightDiffuse* materialDiffuse;
         vColor = ambient + diffuse;
         color = vColor  * texture(texturaCorrosion, _vUv0).rgb;
     }    

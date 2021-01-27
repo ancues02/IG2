@@ -191,8 +191,8 @@ vertex_program ExplotaVS glsl
 {
     source  ExplotaVS.glsl
     default_params {
-        param_named_auto modelViewMat world_matrix // matriz de modelado y vista
-        param_named_auto normalMat inverse_transpose_world_matrix // matriz de modelado para vectores
+       // param_named_auto modelViewMat world_matrix // matriz de modelado y vista 
+      //  param_named_auto normalMat inverse_transpose_world_matrix // matriz de modelado para vectores
     }
 }
 

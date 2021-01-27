@@ -14,13 +14,13 @@ mat4 yawMatrix = mat4(
 const float VD=50;
 const float scale = 2;
 in vec2 vUv0[];
- //in vec2 vUv0;
- out vec2 _vUv0;
-in vec3 vViewNormal_[];
-in vec3 vViewVertex_[];
 
-out vec3 vViewNormal;
-out vec3 vViewVertex;
+ out vec2 _vUv0;
+in vec3 vNormal_[];
+
+
+out vec3 vNormal;
+out vec3 vVertex;
 
 vec3 normalVec(vec3 v[3]){
     vec3 normal= normalize(cross ((v[2]-v[1]),(v[0]-v[1])));
@@ -48,8 +48,9 @@ void main(){
         _vUv0=vUv0[i];
         
         mat4 aux = (modelViewProjMat * yawMatrix);
-        vViewNormal=vec3(yawMatrix*vec4(vViewNormal_[i],0.0));
-        vViewVertex=vViewVertex_[i];
+        vNormal=vec3(yawMatrix*vec4(vNormal_[i],0.0));
+        vVertex=vec3(yawMatrix*vec4(vertices[i],0.0));
+        
         gl_Position = aux * vec4(posDes, 1.0);
         
         EmitVertex();
