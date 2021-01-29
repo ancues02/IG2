@@ -203,6 +203,8 @@ geometry_program ExplotaGS glsl {
     max_output_vertices 3
     default_params {
         param_named_auto modelViewProjMat worldviewproj_matrix
+        param_named_auto modelViewMat world_matrix // matriz de modelado y vista 
+        param_named_auto normalMat inverse_transpose_world_matrix // matriz de modelado para vectores
         param_named_auto tiempo time 
     }
 }
@@ -321,6 +323,8 @@ geometry_program Explota2GS glsl {
     default_params {
         param_named_auto tiempo time 
         param_named_auto tiempo2pi time_0_2pi 32 
+        param_named_auto modelViewMat world_matrix // matriz de modelado y vista 
+        param_named_auto normalMat inverse_transpose_world_matrix // matriz de modelado para vectores
         param_named_auto modelViewProjMat worldviewproj_matrix
 
     }

@@ -5,6 +5,9 @@ uniform float tiempo2pi;
 uniform mat4 modelViewProjMat;
 uniform float tiempo;
 
+uniform mat4 modelViewMat;
+uniform mat4 normalMat;
+
 mat4 yawMatrix = mat4(
        vec4(cos(tiempo2pi), 0.0, sin(tiempo2pi), 0.0),
        vec4(           0.0, 1.0,            0.0, 0.0),
@@ -17,6 +20,8 @@ in vec2 vUv0[];
 
  out vec2 _vUv0;
 in vec3 vNormal_[];
+
+
 
 
 out vec3 vNormal;
@@ -47,12 +52,11 @@ void main(){
         vec3 posDes = vertices[i] + dir * VD * tiempo;
         _vUv0=vUv0[i];
         
-        mat4 aux = (modelViewProjMat * yawMatrix);
-        vNormal=vec3(yawMatrix*vec4(vNormal_[i],0.0));
-        vVertex=vec3(yawMatrix*vec4(vertices[i],0.0));
-        
-        gl_Position = aux * vec4(posDes, 1.0);
-        
+        vNormal=vec3(normalMat * vec4(yawMatrix*vec4(vNormal_[i],1.0)));
+        vVertex=vec3(modelViewMat * vec4(yawMatrix*vec4(posDes,1.0)));
+        //mat4 aux = (modelViewProjMat * yawMatrix);
+
+        gl_Position = modelViewProjMat * (yawMatrix * vec4(posDes, 1.0));
         EmitVertex();
     }
 

@@ -91,7 +91,7 @@ void IG2App::setupScene(void)
 	//luz->setType(Ogre::Light::LT_SPOTLIGHT);
 	luz->setDiffuseColour(0.75, 0.75, 0.75);
 	//luz->setDirection({ 0,0,-1 });
-	//luz->setPosition({ 0,0,5000 });
+	//luz->setPosition({ 0,0,2000 });
 	mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
 	//mLightNode = mCamNode->createChildSceneNode("nLuz");
 	mLightNode->attachObject(luz);

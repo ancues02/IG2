@@ -2,6 +2,10 @@
 layout (triangles) in;
 layout (triangle_strip, max_vertices=3) out;
 uniform mat4 modelViewProjMat;
+
+uniform mat4 modelViewMat;
+uniform mat4 normalMat;
+
 const float VD=50;
 in vec2 vUv0[];
 //uniform float tiempo2pi;
@@ -29,8 +33,8 @@ void main(){
     for(int i = 0; i < 3; ++i){
         vec3 posDes = vertices[i] + dir * VD * tiempo;
          _vUv0=vUv0[i];
-         vNormal=vNormal_[i];
-         vVertex=vertices[i];
+         vNormal=vec3(normalMat * vec4(vNormal_[i],1.0));
+         vVertex=vec3(modelViewMat * vec4(posDes,1.0));
 
         gl_Position = modelViewProjMat * vec4(posDes, 1.0);
         EmitVertex();
